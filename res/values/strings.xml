@@ -2,7 +2,7 @@
 <resources>
 
     <string name="app_name">Making Bank</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="button1_name">Create Account!</string>
     <string name="action_settings">Settings</string>
 
 </resources>
