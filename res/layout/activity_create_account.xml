@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- XML COMMENT
+  - This is the XML file that defines the attributes of the account creation
+  - page when the user presses the "Create Account" button on the main menu
+  - Creation date: October 21, 2014
+  - UNCOMMENT -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="cse110.makingbank.CreateAccountPage">
+
+   <!-- Title for account creation page -->
+   <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textAppearance="?android:attr/textAppearanceLarge"
+      android:text="@string/create_account_page_title"
+      android:textSize="30dp"
+      android:textColor="@color/BLUE"
+      android:editable="false"
+      android:id="@+id/createAccountPageTitle"
+      android:layout_alignParentTop="true"
+      android:layout_alignParentLeft="true"
+      android:layout_alignParentRight="true"/>
+
+   <!-- Ask for user's first name -->
+   <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textAppearance="?android:attr/textAppearanceMedium"
+      android:text="@string/string_first_name"
+      android:textColor="@color/ORANGE"
+      android:editable="false"
+      android:id="@+id/createAccountFirstName"
+      android:layout_below="@+id/createAccountPageTitle"
+      android:layout_alignParentLeft="true"/>
+
+   <!-- Ask for user's middle initial -->
+   <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textAppearance="?android:attr/textAppearanceMedium"
+      android:text="@string/string_middle_initial"
+      android:textColor="@color/ORANGE"
+      android:editable="false"
+      android:id="@+id/createAccountMiddleName"
+      android:layout_below="@+id/createAccountPageTitle"
+      android:layout_centerHorizontal="true"/>
+
+   <!-- Ask for user's last name -->
+   <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textAppearance="?android:attr/textAppearanceMedium"
+      android:text="@string/string_last_name"
+      android:textColor="@color/ORANGE"
+      android:editable="false"
+      android:id="@+id/createAccountLastName"
+      android:layout_below="@+id/createAccountPageTitle"
+      android:layout_alignRight="@+id/createAccountPageTitle"/>
+
+   <!-- Field to fill in first name -->
+   <EditText
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:inputType="textPersonName"
+      android:textSize="16dp"
+      android:ems="7"
+      android:maxEms="7"
+      android:id="@+id/editBoxFirstName"
+      android:layout_below="@+id/createAccountFirstName"
+      android:layout_alignParentLeft="true"/>
+
+   <!-- Field to fill in middle initial" -->
+   <EditText
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:inputType="textPersonName"
+      android:textSize="16dp"
+      android:ems="1"
+      android:maxEms="1"
+      android:id="@+id/editBoxMiddleName"
+      android:layout_below="@+id/createAccountMiddleName"
+      android:layout_centerHorizontal="true"/>
+
+   <!-- Field to fill in last name -->
+   <EditText
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:inputType="textPersonName"
+      android:textSize="16dp"
+      android:ems="7"
+      android:maxEms="7"
+      android:id="@+id/editBoxLastName"
+      android:layout_below="@+id/createAccountLastName"
+      android:layout_alignParentRight="true"/>
+
+   <!-- TODO prompt and field for user address and account type -->
+   <!-- TODO submit button -->
+
+</RelativeLayout>

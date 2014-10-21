@@ -6,6 +6,11 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+/*These following imports pertain to the online server/database
+import com.parse.Parse;
+import com.parse.ParseAnalytics;
+import com.parse.ParseObject;
+UNCOMMENT WHEN READY TO CREATE LOGIN PAGE AND/OR ONLINE STORAGE*/
 
 /**
  * Class: MainPage
@@ -17,6 +22,10 @@ public class MainPage extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        /* THIS INITIALIZES CONNECTION TO ONLINE SERVER
+        Parse.initialize(this, "eUnkK8i47gQC0hsPlTuuzFOge4ASo1sw5AokYoE4",
+              "Csx3JZmQdTWWc1EgVQhRZJdxWPUsImUKhOFClM1K"); //App ID for online storage
+       UNCOMMENT WHEN READY TO CREATE LOGIN PAGE AND/OR ONLINE STORAGE*/
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_page);
     }
