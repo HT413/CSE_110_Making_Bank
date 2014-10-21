@@ -1,11 +1,18 @@
 package cse110.makingbank;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
-
+/**
+ * Class: MainPage
+ *
+ * This is the first page to be called whenever the application is launched.
+ * TODO: Add login method later on
+ */
 public class MainPage extends Activity {
 
     @Override
@@ -13,7 +20,6 @@ public class MainPage extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_page);
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -34,5 +40,16 @@ public class MainPage extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-    //TODO add transition to CreateAccountPage activity
+   /**
+    * Function: createAccount
+    * This function defines what happens when the user taps on the
+    * Create Account button in our main menu.
+    *
+    * @param view The View object from which this method was called
+    */
+    public void createAccount(View view){
+        //We will transition to this new intent
+        Intent intent = new Intent(this, CreateAccountPage.class);
+        startActivity(intent);
+    }
 }

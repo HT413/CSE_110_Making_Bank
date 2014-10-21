@@ -15,7 +15,7 @@
       android:textAppearance="?android:attr/textAppearanceLarge"
       android:text="@string/main_menu_title"
       android:textColor="@color/BLUE"
-      android:textSize="40sp"
+      android:textSize="30dp"
       android:editable="false"
       android:id="@+id/mainMenuTitle"
       android:layout_alignParentTop="true"
@@ -23,17 +23,20 @@
       android:layout_alignRight="@+id/button_account_create"/>
 
    <!-- Create Account button on main page -->
-   <!-- TODO add response to this button -->
    <Button
         android:id="@+id/button_account_create"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/button_account_create"
-        android:textSize="30sp"
+        android:textSize="30dp"
         android:textColor="@color/BROWN"
         android:layout_marginTop="54dp"
         android:layout_alignParentRight="true"
-        android:layout_alignParentLeft="true"/>
+        android:layout_alignParentLeft="true"
+        android:onClick="createAccount"/>
+
+   <!-- REMEMBER to declare a new activity in the AndroidManifest.xml file
+      - for each new added activity (class) to the project! -->
 
    <!-- View Account button on main page -->
    <Button
@@ -41,7 +44,7 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:text="@string/button_account_view"
-      android:textSize="30sp"
+      android:textSize="30dp"
       android:textColor="@color/BROWN"
       android:layout_below="@+id/button_account_create"
       android:layout_alignParentLeft="true"
