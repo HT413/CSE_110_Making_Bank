@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    
+
+    <!-- Strings originating from Main page -->
     <string name="app_name">Making Bank</string>
     <string name="main_menu_title">EveryOneRich Bank</string>
     <string name="button_account_create">Create Account</string>
     <string name="button_account_view">View Account</string>
     <string name="action_settings">Settings</string>
-    
+
+    <!-- Strings originating from Create Account page -->
+    <string name="create_account_page_title">Create Bank Account</string>
+    <string name="string_first_name">First Name</string>
+    <string name="string_last_name">Last Name</string>
+    <string name="string_middle_initial">M.I.</string>
+
+    <!-- Color constants for string attributes-->
     <color name="WHITE">#FFFFFF</color>
     <color name="RED">#FF0000</color>
     <color name="GREEN">#00FF00</color>
@@ -15,6 +23,8 @@
     <color name="YELLOW">#FFFF00</color>
     <color name="CYAN">#00FFFF</color>
     <color name="BLACK">#000000</color>
+    <color name="GRAY">#444444</color>
     <color name="BROWN">#440000</color>
+    <color name="ORANGE">#FF8800</color>
 
 </resources>

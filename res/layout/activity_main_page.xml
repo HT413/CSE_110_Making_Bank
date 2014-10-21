@@ -8,37 +8,40 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="cse110.makingbank.MainPage" >
 
-   //Top item on main page
+   <!-- Title on main page -->
    <TextView
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:textAppearance="?android:attr/textAppearanceLarge"
       android:text="@string/main_menu_title"
       android:textColor="@color/BLUE"
-      android:textSize="80px"
-      android:id="@+id/textView1"
+      android:textSize="40sp"
+      android:editable="false"
+      android:id="@+id/mainMenuTitle"
       android:layout_alignParentTop="true"
       android:layout_alignParentLeft="true"
       android:layout_alignRight="@+id/button_account_create"/>
 
-   //First button on main page
+   <!-- Create Account button on main page -->
+   <!-- TODO add response to this button -->
    <Button
         android:id="@+id/button_account_create"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/button_account_create"
-        android:textSize="60px"
+        android:textSize="30sp"
         android:textColor="@color/BROWN"
         android:layout_marginTop="54dp"
         android:layout_alignParentRight="true"
         android:layout_alignParentLeft="true"/>
 
+   <!-- View Account button on main page -->
    <Button
       android:id="@+id/button_account_view"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:text="@string/button_account_view"
-      android:textSize="60px"
+      android:textSize="30sp"
       android:textColor="@color/BROWN"
       android:layout_below="@+id/button_account_create"
       android:layout_alignParentLeft="true"

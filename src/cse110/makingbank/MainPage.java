@@ -33,4 +33,6 @@ public class MainPage extends Activity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+    //TODO add transition to CreateAccountPage activity
 }
