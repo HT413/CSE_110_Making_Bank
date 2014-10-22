@@ -27,7 +27,14 @@ public class CreateAccountPage extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_account);
     }
-    
+
+    /**
+     * Method: submitName
+     * This method defines what happens when the button_submit_info
+     * button is pressed. User MUST have filled in all fields.
+     *
+     * @param button  The button that was pressed
+     */
     public void submitName(View button)
     {
     	final EditText firstNameField = (EditText) findViewById(R.id.EditTextFirstName);
@@ -35,10 +42,7 @@ public class CreateAccountPage extends Activity {
     	
     	String firstName = firstNameField.getText().toString();
     	String lastName = lastNameField.getText().toString();
-    }
 
-    /*
-     * TODO action when pressing submit button
-     * User must completely fill in all fields before sending information over to server
-     */
+        //TODO action when pressing submit button
+    }
 }

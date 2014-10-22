@@ -12,11 +12,11 @@
     <string name="next">Next</string>
 
     <!-- Strings originating from Create Account page -->
-    <string name="create_account_page_title">Create Account</string>
-    <string name="create_account_page_desc">Enter information to create a bank account: </string>
+    <string name="create_account_page_title">Create Bank Account</string>
+    <string name="create_account_page_desc">Please truthfully enter your info</string>
     <string name="first_name">First Name</string>
     <string name="last_name">Last Name</string>
-    <string name="middle_initial">M.I.</string>
+    <string name="button_submit_info">Submit</string>
 
     <!-- Color constants for string attributes-->
     <color name="WHITE">#FFFFFF</color>
