@@ -2,6 +2,8 @@ package cse110.makingbank;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
 
 /**
  * Class: CreateAccountPage.java
@@ -24,6 +26,15 @@ public class CreateAccountPage extends Activity {
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_account);
+    }
+    
+    public void submitName(View button)
+    {
+    	final EditText firstNameField = (EditText) findViewById(R.id.EditTextFirstName);
+    	final EditText lastNameField = (EditText) findViewById(R.id.EditTextLastName);
+    	
+    	String firstName = firstNameField.getText().toString();
+    	String lastName = lastNameField.getText().toString();
     }
 
     /*

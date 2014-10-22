@@ -13,11 +13,15 @@ public final class R {
     public static final class color {
         public static final int BLACK=0x7f060007;
         public static final int BLUE=0x7f060003;
-        public static final int BROWN=0x7f060008;
+        public static final int BROWN=0x7f060009;
         public static final int CYAN=0x7f060006;
+        public static final int GRAY=0x7f060008;
         public static final int GREEN=0x7f060002;
         public static final int MAGENTA=0x7f060004;
+        public static final int ORANGE=0x7f06000a;
         public static final int RED=0x7f060001;
+        /**  Color constants for string attributes
+         */
         public static final int WHITE=0x7f060000;
         public static final int YELLOW=0x7f060005;
     }
@@ -36,23 +40,41 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int action_settings=0x7f090003;
-        public static final int button_account_create=0x7f090001;
-        public static final int button_account_view=0x7f090002;
-        public static final int textView1=0x7f090000;
+        public static final int EditTextFirstName=0x7f090002;
+        public static final int EditTextLastName=0x7f090003;
+        public static final int action_settings=0x7f090008;
+        public static final int button_account_create=0x7f090006;
+        public static final int button_account_view=0x7f090007;
+        public static final int createAccountPageTitle=0x7f090001;
+        public static final int mainMenuTitle=0x7f090005;
+        public static final int name_submit=0x7f090004;
+        public static final int scrollviewCreateAccount=0x7f090000;
     }
     public static final class layout {
-        public static final int activity_main_page=0x7f030000;
+        public static final int activity_create_account=0x7f030000;
+        public static final int activity_main_page=0x7f030001;
     }
     public static final class menu {
         public static final int main_page=0x7f080000;
     }
     public static final class string {
         public static final int action_settings=0x7f050004;
+        /**  Strings originating from Main page 
+         */
         public static final int app_name=0x7f050000;
         public static final int button_account_create=0x7f050002;
         public static final int button_account_view=0x7f050003;
+        public static final int create_account_page_desc=0x7f050007;
+        /**  Strings originating from Create Account page 
+         */
+        public static final int create_account_page_title=0x7f050006;
+        public static final int first_name=0x7f050008;
+        public static final int last_name=0x7f050009;
         public static final int main_menu_title=0x7f050001;
+        public static final int middle_initial=0x7f05000a;
+        /**  Strings used for creating buttons 
+         */
+        public static final int next=0x7f050005;
     }
     public static final class style {
         /** 
