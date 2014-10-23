@@ -18,8 +18,39 @@
         android:src="@drawable/placeholder"
         android:id="@+id/imageView3"/>
 
-    <!-- TODO add a text field prompting for username and password -->
-    <!-- TODO add 2 buttons saying "Sign In" and "Sign Up"
-       - "Sign up" button should open new activity, i.e. SignUpPage -->
+    <!-- Ask for user's username -->
+    <EditText
+        android:id="@+id/EditTextUserName"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:hint="@string/string_username" />
+
+    <!-- Ask for user's password -->
+    <EditText
+        android:id="@+id/EditTextPassword"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:inputType="textPassword"
+        android:hint="@string/string_password" />
+
+    <!-- Submit button -->
+    <Button
+        android:id="@+id/button_signIn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="submitLogin"
+        android:text="@string/button_login"
+        android:textSize="24sp"
+        android:textColor="@color/BROWN"/>
+
+    <!-- Submit button -->
+    <Button
+        android:id="@+id/button_signUp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="goRegister"
+        android:text="@string/button_register"
+        android:textSize="24sp"
+        android:textColor="@color/BROWN"/>
 
 </LinearLayout>

@@ -2,13 +2,50 @@
 
 <!-- XML file for Sign Up page -->
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent">
 
-<!-- TODO prompt user to input a username, password and email -->
-<!-- TODO add a button to complete sign up
-   - If sign up successful, go back to login page -->
+    <!-- Replace this image with something nicer later on -->
+    <ImageView
+        android:contentDescription="login_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/placeholder"
+        android:id="@+id/imageView3"/>
+
+    <!-- Ask for user's username -->
+    <EditText
+        android:id="@+id/EditTextUserNameR"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:hint="@string/string_username" />
+
+    <!-- Ask for user's password -->
+    <EditText
+        android:id="@+id/EditTextPasswordR"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:inputType="textPassword"
+        android:hint="@string/string_password" />
+
+    <!-- Ask for user's email -->
+    <EditText
+        android:id="@+id/EditTextEmailR"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:hint="@string/signup_email" />
+
+    <!-- Submit button -->
+    <Button
+        android:id="@+id/button_completeSignUp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="submitSignUp"
+        android:text="@string/button_complete_register"
+        android:textSize="24sp"
+        android:textColor="@color/BROWN"/>
 
 </LinearLayout>

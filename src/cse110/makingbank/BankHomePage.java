@@ -1,28 +1,55 @@
 package cse110.makingbank;
 
-
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
 
 /**
- * NOTE ABOUT THIS PAGE
+ * Class: MainPage
  *
- * This page is to be swapped with the current MainPage.java after logging in is implemented.
- * For the time being, this is a placeholder page to implement a logging in function.
+ * This is the home page for all events after a successful log in.
  */
 public class BankHomePage extends Activity {
 
-
-    /**
-     * Method: onCreate
-     * This method defines what happens when the object is created.
-     * Brings up the options for account creation.
-     *
-     * @param savedInstanceState   a saved instance of the object
-     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_log_in);
+        setContentView(R.layout.activity_main_page);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main_page, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml
+        int id = item.getItemId();
+        if (id == R.id.action_settings) {
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    /**
+     * Function: createAccount
+     * This function defines what happens when the user taps on the
+     * Create Account button in our main menu.
+     *
+     * @param view The View object from which this method was called
+     */
+    public void createAccount(View view){
+        //We will transition to this new intent
+        Intent intent = new Intent(this, CreateAccountPage.class);
+        startActivity(intent);
     }
 }

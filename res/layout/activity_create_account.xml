@@ -39,7 +39,7 @@
 	    android:layout_height="wrap_content"
 	    android:layout_width="fill_parent"
 	    android:hint="@string/first_name" />
-	
+
     <!-- Ask for user's last name -->
 	<EditText 
 	    android:id="@+id/EditTextLastName"
@@ -47,10 +47,43 @@
 	    android:layout_width="fill_parent"
 	    android:hint="@string/last_name" />
 
-    <!-- TODO add a field to enter the user Address
-       - Follow standard U.S. postal address prompts where
-       - fields are Address Line 1, Address Line 2,
-       - City, State, and P.O. Box number -->  
+
+    <!--  Prompt user to choose account type -->
+    <TextView
+        android:id="@+id/createAccountAddressDesc"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textSize="20sp"
+        android:textColor="@color/BLACK"
+        android:hint="@string/string_address" />
+
+    <!-- Ask for user's address line 1 -->
+    <EditText
+        android:id="@+id/EditTextAddress1"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:hint="@string/string_address_line" />
+
+    <!-- Ask for user's city-->
+    <EditText
+        android:id="@+id/EditTextCity"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:hint="@string/string_current_city" />
+
+    <!-- A dropbox to select the state -->
+    <Spinner
+        android:id="@+id/SelectCurrentState"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"/>
+
+    <!-- Ask for user's P.O. number -->
+    <EditText
+        android:id="@+id/EditTextBoxNumber"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:hint="@string/string_box_number" />
        
     <!--  Prompt user to choose account type -->
     <TextView 
@@ -60,7 +93,7 @@
         android:layout_marginTop="10dp"
         android:textSize="20sp"
         android:textColor="@color/BLACK"
-        android:hint="@string/signup_account_type" />
+        android:hint="@string/string_account_type" />
     
     <!-- A dropbox to select the account type. Either
        - a checking or savings account -->
@@ -74,7 +107,7 @@
         android:id="@+id/button_submit_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="submitName"
+        android:onClick="submitInfo"
         android:text="@string/button_submit_info"
         android:textSize="24sp"
         android:textColor="@color/BROWN"/>

@@ -13,7 +13,6 @@
         <!-- User is to be asked for simply a username, password and email -->
     <string name="signup_email">Email address</string>
     <string name="button_complete_register">Register!</string>
-    <string name="signup_account_type">Account type</string>
 
     <!-- Strings originating from Main page -->
     <string name="app_name">Making Bank</string>
@@ -30,7 +29,29 @@
     <string name="create_account_page_desc">Please truthfully enter your info</string>
     <string name="first_name">First Name</string>
     <string name="last_name">Last Name</string>
+    <string name="string_address">Current Address</string>
+    <string name="string_address_line">Address</string>
+    <string name="string_current_city">City</string>
+    <string name="string_box_number">P.O.</string>
     <string name="button_submit_info">Submit</string>
+    <string name="string_account_type">Account type</string>
+
+    <!-- MISCELLANEOUS STRINGS AND VALUES -->
+
+    <!-- Array for account creation types -->
+    <string-array name="account_creation_account_types">
+        <item>Select</item>
+        <item>Checking</item>
+        <item>Savings</item>
+    </string-array>
+
+    <!-- Array listing the 50 states of the U.S. -->
+    <string-array name="account_creation_states">
+        <item>State</item>
+        <item>CA</item>
+        <item>Not CA</item>
+        <!-- TODO update this in alphabetical order please -->
+    </string-array>
 
     <!-- Color constants for string attributes-->
     <color name="WHITE">#FFFFFF</color>
@@ -44,11 +65,5 @@
     <color name="GRAY">#444444</color>
     <color name="BROWN">#440000</color>
     <color name="ORANGE">#FF8800</color>
-    
-    <!-- Array for account creation types -->
-    <string-array name="account_creation_account_types">
-        <item>Checking</item>
-        <item>Savings</item>
-    </string-array>
 
 </resources>
