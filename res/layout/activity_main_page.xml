@@ -53,6 +53,7 @@
       android:layout_below="@+id/button_account_create"
       android:layout_alignParentLeft="true"
       android:layout_marginTop="40dp"
+      android:onClick="goViewAccount"
       android:layout_alignParentRight="true"/>
 
 </RelativeLayout>

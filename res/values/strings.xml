@@ -20,6 +20,7 @@
     <string name="button_account_create">Create Account</string>
     <string name="button_account_view">View Account</string>
     <string name="action_settings">Settings</string>
+    <string name="view_account_page_title">View Bank Accounts</string>
     
     <!-- Strings used for creating buttons -->
     <string name="next">Next</string>

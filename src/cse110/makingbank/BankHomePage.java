@@ -41,6 +41,16 @@ public class BankHomePage extends Activity {
     }
 
     /**
+     * Function: goViewAccount
+     * This function switches the activity to the view account activity
+     * 
+     * @param view The View object from which this method was called
+     */
+    public void goViewAccount(View view) {
+        Intent intent = new Intent(this, ViewAccountPage.class);
+        startActivity(intent);
+    }
+    /**
      * Function: createAccount
      * This function defines what happens when the user taps on the
      * Create Account button in our main menu.
