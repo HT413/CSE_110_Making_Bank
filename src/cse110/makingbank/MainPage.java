@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ScrollView;
+import android.widget.TextView;
 
 import com.parse.*;
 
@@ -12,10 +14,15 @@ import com.parse.*;
  * Class: MainPage
  *
  * This is the first page to be called whenever the application is launched.
- * TODO: Add login method later on
  */
 public class MainPage extends Activity {
 
+    /**
+     * Method onCreate
+     * The first method to be called when this object is created.
+     *
+     * @param savedInstanceState a saved instance of the object
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Parse.initialize(this, "eUnkK8i47gQC0hsPlTuuzFOge4ASo1sw5AokYoE4",
@@ -44,8 +51,9 @@ public class MainPage extends Activity {
             public void done(ParseUser user, ParseException e) {
                 if (user != null && e == null) { // No exception, user can log in normally
                     completeLogin();
-                } else {
-                    // TODO Logging in failed. Look at the ParseException to see what happened.
+                } else { // Login failed
+                    TextView pageNotice = (TextView) findViewById(R.id.loginPagePrompt);
+                    pageNotice.setText ("Invalid username or password.");
                 }
             }
         });
@@ -80,9 +88,9 @@ public class MainPage extends Activity {
      * @param view The View object from which this method was called
      */
     public void submitSignUp(View view){
-        final EditText usernameField = (EditText) findViewById(R.id.EditTextUserNameR);
-        final EditText passwordField = (EditText) findViewById(R.id.EditTextPasswordR);
-        final EditText emailField = (EditText) findViewById(R.id.EditTextEmailR);
+        EditText usernameField = (EditText) findViewById(R.id.EditTextUserNameR);
+        EditText passwordField = (EditText) findViewById(R.id.EditTextPasswordR);
+        EditText emailField = (EditText) findViewById(R.id.EditTextEmailR);
 
         // Get the inputs from each field
         String username = usernameField.getText().toString();
@@ -100,16 +108,17 @@ public class MainPage extends Activity {
                 public void done(ParseException e) {
                     if (e == null) { // No exception, we can proceed normally
                         setContentView(R.layout.activity_log_in);
-                    } else {
-                        // TODO Sign up didn't succeed. Look at the ParseException
-                        // to figure out what went wrong
+                    } else { // Invalid username throws error
+                        TextView pageNotice = (TextView) findViewById(R.id.registerPagePrompt);
+                        pageNotice.setText ("Username already taken!");
                     }
                 }
             });
         }
         // Not all fields complete, give an error message until the user fills in everything
         else{
-            //TODO give error notice
+            TextView pageNotice = (TextView) findViewById(R.id.registerPagePrompt);
+            pageNotice.setText ("One or more fields are missing.");
         }
     }
 }

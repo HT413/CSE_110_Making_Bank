@@ -6,7 +6,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ScrollView;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.parse.*;
 
@@ -100,9 +102,12 @@ public class CreateAccountPage extends Activity{
             Intent intent = new Intent(this, BankHomePage.class);
             startActivity(intent);
         }
-        //TODO throw error and tell user to fill in all fields
+        //Throw error and tell user to fill in all fields
         else{
-
+            TextView pageNotice = (TextView) findViewById(R.id.createAccountPageDesc);
+            pageNotice.setText ("One or more fields are missing.");
+            ScrollView mainView = (ScrollView) findViewById(R.id.scrollviewCreateAccount);
+            mainView.fullScroll(ScrollView.FOCUS_UP);
         }
     }
 }
