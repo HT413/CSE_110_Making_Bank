@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- NOTE: The contents of this page is to be swapped with activity_main_page.xml
+   - when completed -->
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+
+    <!-- Replace this image with something nicer later on -->
+    <ImageView
+        android:contentDescription="login_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/placeholder"
+        android:id="@+id/imageView3"/>
+
+    <!-- TODO add a text field prompting for username and password -->
+    <!-- TODO add 2 buttons saying "Sign In" and "Sign Up"
+       - "Sign up" button should open new activity, i.e. SignUpPage -->
+
+</LinearLayout>

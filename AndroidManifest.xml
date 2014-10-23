@@ -30,6 +30,14 @@
             android:name=".CreateAccountPage"
             android:label="@string/create_account_page_title">
         </activity>
+        <activity
+            android:name=".BankHomePage"
+            android:label="@string/login_page_title">
+        </activity>
+        <activity
+            android:name=".SignUpPage"
+            android:label="@string/signup_page_title">
+        </activity>
     </application>
 
 </manifest>

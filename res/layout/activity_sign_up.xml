@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- XML file for Sign Up page -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+<!-- TODO prompt user to input a username, password and email -->
+<!-- TODO add a button to complete sign up
+   - If sign up successful, go back to login page -->
+
+</LinearLayout>
