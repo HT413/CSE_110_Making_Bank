@@ -50,9 +50,24 @@
     <!-- TODO add a field to enter the user Address
        - Follow standard U.S. postal address prompts where
        - fields are Address Line 1, Address Line 2,
-       - City, State, and P.O. Box number -->
-    <!-- TODO add a dropbox to select the account type
-       - This is either a checking or savings account -->
+       - City, State, and P.O. Box number -->  
+       
+    <!--  Prompt user to choose account type -->
+    <TextView 
+        android:id="@+id/createAccountAccTypeDesc"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textSize="20sp"
+        android:textColor="@color/BLACK"
+        android:hint="@string/signup_account_type" />
+    
+    <!-- A dropbox to select the account type. Either
+       - a checking or savings account -->
+    <Spinner 
+        android:id="@+id/SelectAccountType"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"/>
 
     <!-- Submit button -->
     <Button

@@ -13,6 +13,7 @@
         <!-- User is to be asked for simply a username, password and email -->
     <string name="signup_email">Email address</string>
     <string name="button_complete_register">Register!</string>
+    <string name="signup_account_type">Account type</string>
 
     <!-- Strings originating from Main page -->
     <string name="app_name">Making Bank</string>
@@ -43,5 +44,11 @@
     <color name="GRAY">#444444</color>
     <color name="BROWN">#440000</color>
     <color name="ORANGE">#FF8800</color>
+    
+    <!-- Array for account creation types -->
+    <string-array name="account_creation_account_types">
+        <item>Checking</item>
+        <item>Savings</item>
+    </string-array>
 
 </resources>

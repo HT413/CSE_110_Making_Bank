@@ -3,7 +3,11 @@ package cse110.makingbank;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 /**
  * Class: CreateAccountPage.java
@@ -13,8 +17,11 @@ import android.widget.EditText;
  * Date: October 21, 2014
  */
 
-public class CreateAccountPage extends Activity {
+public class CreateAccountPage extends Activity implements OnItemSelectedListener{
 
+	private Spinner accountTypeSpinner;
+	String accountType;
+	
     /**
      * Method: onCreate
      * This method defines what happens when the object is created.
@@ -26,6 +33,16 @@ public class CreateAccountPage extends Activity {
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_account);
+        
+        
+        // Set up spinner
+        accountTypeSpinner = (Spinner) findViewById(R.id.SelectAccountType);
+    
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+             R.array.account_creation_account_types, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        
+        accountTypeSpinner.setAdapter(adapter);
     }
 
     /**
@@ -45,4 +62,22 @@ public class CreateAccountPage extends Activity {
 
         //TODO action when pressing submit button
     }
+
+   /**
+    * Method: onItemSelected
+    * This method defines what happens when an option from the spinner drop down menu 
+    * is selected.
+    */
+	public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2,
+			long arg3) {
+		accountType = accountTypeSpinner.getSelectedItem().toString();
+		
+	}
+
+	@Override
+	public void onNothingSelected(AdapterView<?> arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
