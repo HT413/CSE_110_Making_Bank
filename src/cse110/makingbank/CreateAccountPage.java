@@ -70,18 +70,33 @@ public class CreateAccountPage extends Activity{
         final EditText cityField = (EditText) findViewById(R.id.EditTextCity);
         final EditText POField = (EditText) findViewById(R.id.EditTextBoxNumber);
 
+        boolean validPO = true;
+        int PONumber = -1;
+
         // Get text from all fields
     	String firstName = firstNameField.getText().toString();
     	String lastName = lastNameField.getText().toString();
         String address = addressField.getText().toString();
         String city = cityField.getText().toString();
-        String PONumber = POField.getText().toString();
+        String PO = POField.getText().toString();
+        for (int i = 0; i < PO.length(); i++){
+            if (!(PO.charAt(i) >= 0 && PO.charAt(i) <= 9)){
+                TextView pageNotice = (TextView) findViewById(R.id.createAccountPageDesc);
+                pageNotice.setText ("One or more fields are invalid.");
+                ScrollView mainView = (ScrollView) findViewById(R.id.scrollviewCreateAccount);
+                mainView.fullScroll(ScrollView.FOCUS_UP);
+                validPO = false;
+                break;
+            }
+        }
+        if (validPO)
+            PONumber = Integer.parseInt(POField.getText().toString());
         String accountType = accountTypeSpinner.getSelectedItem().toString();
         String currentState = stateSpinner.getSelectedItem().toString();
 
         //All fields must be filled!
         if (!accountType.equals("Select") && firstName != null && lastName != null && city != null
-            && !currentState.equals("State") && address != null && PONumber != null){
+            && !currentState.equals("State") && address != null && PONumber != -1){
             ParseUser currentUser = ParseUser.getCurrentUser(); // Get current user
             String username = currentUser.getUsername();
             String email = currentUser.getEmail();
