@@ -89,6 +89,7 @@ public class CreateAccountPage extends Activity{
             ParseObject bankAccount = new ParseObject("BankAccount");
             bankAccount.put("user", username); // Object holds username
             bankAccount.put("email", email); // Object holds user email
+            bankAccount.put("balance", 0); // Start out with zero balance
             bankAccount.put("firstName", firstName); // Object holds first name
             bankAccount.put("lastName", lastName); // Object holds last name
             bankAccount.put("address1", address); // Object holds address
