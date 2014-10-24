@@ -57,6 +57,20 @@
         android:layout_width="fill_parent"
         android:hint="@string/signup_email" />
 
+    <!-- Ask for user's preferred security question -->
+    <EditText
+        android:id="@+id/EditTextSecurityQuestion"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:hint="@string/signup_security_question"/>
+
+    <!-- Ask for user's security question's answer -->
+    <EditText
+        android:id="@+id/EditTextAnswerR"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:hint="@string/signup_security_answer" />
+
     <!-- Submit button -->
     <Button
         android:id="@+id/button_completeSignUp"

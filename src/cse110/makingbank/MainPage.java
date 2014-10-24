@@ -4,7 +4,9 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.parse.*;
@@ -90,18 +92,25 @@ public class MainPage extends Activity {
         EditText usernameField = (EditText) findViewById(R.id.EditTextUserNameR);
         EditText passwordField = (EditText) findViewById(R.id.EditTextPasswordR);
         EditText emailField = (EditText) findViewById(R.id.EditTextEmailR);
+        EditText securityField = (EditText) findViewById(R.id.EditTextAnswerR);
+        EditText securityQuestionField = (EditText) findViewById(R.id.EditTextSecurityQuestion);
 
         // Get the inputs from each field
         String username = usernameField.getText().toString();
         String password = passwordField.getText().toString();
         String email = emailField.getText().toString();
+        String answer = securityField.getText().toString();
+        String question = securityQuestionField.getText().toString();
 
         // Complete the registration if the user filled in all fields
-        if (username != null && password != null && email != null){
+        if (username != null && password != null && email != null && answer != null
+            && question != null){
             ParseUser user = new ParseUser();
             user.setUsername(username);
             user.setPassword(password);
             user.setEmail(email);
+            user.put ("securityQuestion", question);
+            user.put ("questionAnswer", answer);
             // Complete the registration and go back to the login screen
             user.signUpInBackground(new SignUpCallback() {
                 public void done(ParseException e) {
@@ -109,7 +118,16 @@ public class MainPage extends Activity {
                         setContentView(R.layout.activity_log_in);
                     } else { // Invalid username throws error
                         TextView pageNotice = (TextView) findViewById(R.id.registerPagePrompt);
-                        pageNotice.setText ("Username or email already taken!");
+                        if (e.getCode() == ParseException.USERNAME_TAKEN)
+                            pageNotice.setText ("Username already taken!");
+                        else if (e.getCode() == ParseException.INVALID_EMAIL_ADDRESS)
+                            pageNotice.setText ("Invalid email!");
+                        else if (e.getCode() == ParseException.EMAIL_TAKEN)
+                            pageNotice.setText ("Email already taken!");
+                        else if (e.getCode() == ParseException.CONNECTION_FAILED)
+                            pageNotice.setText ("Failed to connect to server!");
+                        else
+                            pageNotice.setText ("Something went wrong and we don't know why!");
                     }
                 }
             });

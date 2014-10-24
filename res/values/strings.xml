@@ -14,6 +14,8 @@
     <string name="signup_page_prompt">Please fill in all fields</string>
         <!-- User is to be asked for simply a username, password and email -->
     <string name="signup_email">Email address</string>
+    <string name="signup_security_question">Custom security question</string>
+    <string name="signup_security_answer">Answer</string>
     <string name="button_complete_register">Register!</string>
 
     <!-- Strings originating from Main page -->
