@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.parse.*;
@@ -110,7 +109,7 @@ public class MainPage extends Activity {
                         setContentView(R.layout.activity_log_in);
                     } else { // Invalid username throws error
                         TextView pageNotice = (TextView) findViewById(R.id.registerPagePrompt);
-                        pageNotice.setText ("Username already taken!");
+                        pageNotice.setText ("Username or email already taken!");
                     }
                 }
             });
