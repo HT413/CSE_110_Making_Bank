@@ -7,7 +7,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
+    android:layout_height="fill_parent"
+    android:background="@color/PURPLE">
 
 
     <!-- Replace this image with something nicer later on -->
@@ -26,6 +27,7 @@
         android:text="@string/login_page_prompt"
         android:textSize="30sp"
         android:textColor="@color/RED"
+        
         android:id="@+id/loginPagePrompt" />
 
     <!-- Ask for user's username -->
@@ -33,6 +35,7 @@
         android:id="@+id/EditTextUserName"
         android:layout_height="wrap_content"
         android:layout_width="fill_parent"
+        android:background="@color/WHITE"
         android:hint="@string/string_username" />
 
     <!-- Ask for user's password -->
@@ -41,6 +44,8 @@
         android:layout_height="wrap_content"
         android:layout_width="fill_parent"
         android:inputType="textPassword"
+        android:background="@color/WHITE"
+        android:layout_marginTop="10dp"
         android:hint="@string/string_password" />
 
     <!-- Submit button -->
@@ -51,6 +56,7 @@
         android:onClick="submitLogin"
         android:text="@string/button_login"
         android:textSize="24sp"
+        android:layout_marginTop="10dp"
         android:textColor="@color/BROWN"/>
 
     <!-- Submit button -->
@@ -61,6 +67,7 @@
         android:onClick="goRegister"
         android:text="@string/button_register"
         android:textSize="24sp"
+        android:layout_marginTop="10dp"
         android:textColor="@color/BROWN"/>
 
 </LinearLayout>

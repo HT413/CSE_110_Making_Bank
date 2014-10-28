@@ -10,6 +10,7 @@
             android:paddingLeft="@dimen/activity_horizontal_margin"
             android:paddingRight="@dimen/activity_horizontal_margin"
             android:paddingTop="@dimen/activity_vertical_margin"
+            android:background="@color/PURPLE"
             android:scrollbars="vertical" >
 
     <LinearLayout
@@ -40,6 +41,8 @@
         android:id="@+id/EditTextUserNameR"
         android:layout_height="wrap_content"
         android:layout_width="fill_parent"
+        android:background="@color/WHITE"
+        android:layout_marginTop="10dp"
         android:hint="@string/string_username" />
 
     <!-- Ask for user's password -->
@@ -48,6 +51,8 @@
         android:layout_height="wrap_content"
         android:layout_width="fill_parent"
         android:inputType="textPassword"
+        android:background="@color/WHITE"
+        android:layout_marginTop="10dp"
         android:hint="@string/string_password" />
 
     <!-- Ask for user's email -->
@@ -55,6 +60,8 @@
         android:id="@+id/EditTextEmailR"
         android:layout_height="wrap_content"
         android:layout_width="fill_parent"
+        android:background="@color/WHITE"
+        android:layout_marginTop="10dp"
         android:hint="@string/signup_email" />
 
     <!-- Ask for user's preferred security question -->
@@ -62,6 +69,8 @@
         android:id="@+id/EditTextSecurityQuestion"
         android:layout_height="wrap_content"
         android:layout_width="fill_parent"
+        android:background="@color/WHITE"
+        android:layout_marginTop="10dp"
         android:hint="@string/signup_security_question"/>
 
     <!-- Ask for user's security question's answer -->
@@ -69,6 +78,8 @@
         android:id="@+id/EditTextAnswerR"
         android:layout_height="wrap_content"
         android:layout_width="fill_parent"
+        android:background="@color/WHITE"
+        android:layout_marginTop="10dp"
         android:hint="@string/signup_security_answer" />
 
     <!-- Submit button -->
@@ -79,6 +90,7 @@
         android:onClick="submitSignUp"
         android:text="@string/button_complete_register"
         android:textSize="24sp"
+        android:layout_marginTop="20dp"
         android:textColor="@color/BROWN"/>
 
     </LinearLayout>

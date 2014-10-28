@@ -7,11 +7,13 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@color/PURPLE"
     android:scrollbars="vertical" >
 
 	<LinearLayout
 	    android:layout_width="fill_parent"
 	    android:layout_height="wrap_content"
+	    android:background="@color/PURPLE"
 	    android:orientation="vertical" >
 		
         <!-- Title for account creation page -->
@@ -22,6 +24,7 @@
             android:text="@string/create_account_page_title"
             android:textSize="30sp"
             android:textColor="@color/BLUE"
+            android:background="@color/WHITE"
             android:id="@+id/createAccountPageTitle" />
 
         <!-- Prompt the user to enter their information -->
@@ -38,6 +41,7 @@
             android:id="@+id/EditTextFirstName"
             android:layout_height="wrap_content"
             android:layout_width="fill_parent"
+            android:background="@color/WHITE"
             android:hint="@string/first_name" />
 
         <!-- Ask for user's last name -->
@@ -45,6 +49,8 @@
             android:id="@+id/EditTextLastName"
             android:layout_height="wrap_content"
             android:layout_width="fill_parent"
+            android:background="@color/WHITE"
+            android:layout_marginTop="10dp"
             android:hint="@string/last_name" />
 
 
@@ -63,6 +69,8 @@
             android:id="@+id/EditTextAddress1"
             android:layout_height="wrap_content"
             android:layout_width="fill_parent"
+            android:layout_marginTop="10dp"
+            android:background="@color/WHITE"
             android:hint="@string/string_address_line" />
 
         <!-- Ask for user's city-->
@@ -70,19 +78,25 @@
             android:id="@+id/EditTextCity"
             android:layout_height="wrap_content"
             android:layout_width="fill_parent"
+            android:layout_marginTop="10dp"
+            android:background="@color/WHITE"
             android:hint="@string/string_current_city" />
 
         <!-- A dropbox to select the state -->
         <Spinner
             android:id="@+id/SelectCurrentState"
             android:layout_height="wrap_content"
-            android:layout_width="fill_parent"/>
+            android:layout_width="fill_parent"
+            android:layout_marginTop="10dp"
+            android:background="@color/WHITE"/>
 
         <!-- Ask for user's P.O. number -->
         <EditText
             android:id="@+id/EditTextBoxNumber"
             android:layout_height="wrap_content"
             android:layout_width="fill_parent"
+            android:background="@color/WHITE"
+            android:layout_marginTop="10dp"
             android:hint="@string/string_box_number" />
 
         <!--  Prompt user to choose account type -->
@@ -100,7 +114,9 @@
         <Spinner
             android:id="@+id/SelectAccountType"
             android:layout_height="wrap_content"
-            android:layout_width="fill_parent"/>
+            android:layout_width="fill_parent"
+            android:layout_marginTop="10dp"
+            android:background="@color/WHITE"/>
 
         <!-- Submit button -->
         <Button
@@ -110,6 +126,7 @@
             android:onClick="submitInfo"
             android:text="@string/button_submit_info"
             android:textSize="24sp"
+            android:layout_marginTop="20dp"
             android:textColor="@color/BROWN"/>
 
     </LinearLayout>

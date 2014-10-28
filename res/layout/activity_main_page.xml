@@ -10,6 +10,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@color/PURPLE"
     tools:context="cse110.makingbank.MainPage" >
 
    <!-- Title on main page -->
@@ -24,6 +25,7 @@
       android:id="@+id/mainMenuTitle"
       android:layout_alignParentTop="true"
       android:layout_alignParentLeft="true"
+      android:background="@color/WHITE"
       android:layout_alignRight="@+id/button_account_create"/>
 
    <!-- Create Account button on main page -->
