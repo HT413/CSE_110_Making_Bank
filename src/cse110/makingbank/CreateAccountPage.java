@@ -101,29 +101,31 @@ public class CreateAccountPage extends Activity{
             String username = currentUser.getUsername();
             String email = currentUser.getEmail();
             // Create a new Parse object of type BankAccount
-            ParseObject bankAccount = new ParseObject("BankAccount");
+            ParseObject bankAccount = new ParseObject("bankAccount");
             bankAccount.put("user", username); // Object holds username
             bankAccount.put("email", email); // Object holds user email
             bankAccount.put("balance", 0); // Start out with zero balance
             bankAccount.put("firstName", firstName); // Object holds first name
             bankAccount.put("lastName", lastName); // Object holds last name
-            bankAccount.put("address1", address); // Object holds address
+            bankAccount.put("address", address); // Object holds address
             bankAccount.put("city", city); // Object holds current city
             bankAccount.put("state", currentState); // Object holds current state
-            bankAccount.put("POBox", PONumber); // Object holds P.O. number
+            bankAccount.put("poBox", PONumber); // Object holds P.O. number
             bankAccount.put("accountType", accountType); // Finally, record the account type
             // Save this info & send to Parse
-            try{
-            	bankAccount.saveInBackground();
-            	// Now go back to the main page
-            	Intent intent = new Intent(this, BankHomePage.class);
-            	startActivity(intent);
-            } catch (Exception e){
-            	TextView pageNotice = (TextView) findViewById(R.id.createAccountPageDesc);
-            	pageNotice.setText ("Some error occured!");
-            	ScrollView mainView = (ScrollView) findViewById(R.id.scrollviewCreateAccount);
-            	mainView.fullScroll(ScrollView.FOCUS_UP);
-            }
+            bankAccount.saveInBackground(new SaveCallback(){
+                public void done (ParseException e){
+                    if (e == null){ // No error was thrown
+                        goHome(); // Go back to the main page
+                    }
+                    else{
+                        TextView pageNotice = (TextView) findViewById(R.id.createAccountPageDesc);
+                        pageNotice.setText ("Some error occured!");
+                        ScrollView mainView = (ScrollView) findViewById(R.id.scrollviewCreateAccount);
+                        mainView.fullScroll(ScrollView.FOCUS_UP);
+                    }
+                }
+            });
         }
         //Throw error and tell user to fill in all fields
         else{
@@ -132,5 +134,11 @@ public class CreateAccountPage extends Activity{
             ScrollView mainView = (ScrollView) findViewById(R.id.scrollviewCreateAccount);
             mainView.fullScroll(ScrollView.FOCUS_UP);
         }
+    }
+
+    private void goHome(){
+        // Now go back to the main page
+        Intent intent = new Intent(this, BankHomePage.class);
+        startActivity(intent);
     }
 }
