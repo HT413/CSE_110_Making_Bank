@@ -50,7 +50,7 @@
         <item>Savings</item>
     </string-array>
 
-    <!-- Array listing the 50 states of the U.S. -->
+    <!-- Array listing the states of the U.S. and territories -->
     <string-array name="account_creation_states">
         <item>State</item>
         <item>Alabama</item>
@@ -103,6 +103,10 @@
         <item>West Virginia</item>
         <item>Wisconsin</item>
         <item>Wyoming</item>
+        <item>Guam</item>
+        <item>Mariana Islands</item>
+        <item>Puerto Rico</item>
+        <item>Virgin Islands</item>
         
     </string-array>
 

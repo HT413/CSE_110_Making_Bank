@@ -80,9 +80,9 @@ public class CreateAccountPage extends Activity{
         String city = cityField.getText().toString();
         String PO = POField.getText().toString();
         for (int i = 0; i < PO.length(); i++){
-            if (!(PO.charAt(i) >= 0 && PO.charAt(i) <= 9)){
+            if (!(PO.charAt(i) >= '0' && PO.charAt(i) <= '9')){
                 TextView pageNotice = (TextView) findViewById(R.id.createAccountPageDesc);
-                pageNotice.setText ("One or more fields are invalid.");
+                pageNotice.setText ("Invalid PO box format.");
                 ScrollView mainView = (ScrollView) findViewById(R.id.scrollviewCreateAccount);
                 mainView.fullScroll(ScrollView.FOCUS_UP);
                 validPO = false;
@@ -113,10 +113,17 @@ public class CreateAccountPage extends Activity{
             bankAccount.put("POBox", PONumber); // Object holds P.O. number
             bankAccount.put("accountType", accountType); // Finally, record the account type
             // Save this info & send to Parse
-            bankAccount.saveInBackground();
-            // Now go back to the main page
-            Intent intent = new Intent(this, BankHomePage.class);
-            startActivity(intent);
+            try{
+            	bankAccount.saveInBackground();
+            	// Now go back to the main page
+            	Intent intent = new Intent(this, BankHomePage.class);
+            	startActivity(intent);
+            } catch (Exception e){
+            	TextView pageNotice = (TextView) findViewById(R.id.createAccountPageDesc);
+            	pageNotice.setText ("Some error occured!");
+            	ScrollView mainView = (ScrollView) findViewById(R.id.scrollviewCreateAccount);
+            	mainView.fullScroll(ScrollView.FOCUS_UP);
+            }
         }
         //Throw error and tell user to fill in all fields
         else{
