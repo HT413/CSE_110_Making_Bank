@@ -102,8 +102,8 @@ public class MainPage extends Activity {
         String question = securityQuestionField.getText().toString();
 
         // Complete the registration if the user filled in all fields
-        if (username != null && password != null && email != null && answer != null
-            && question != null){
+        if (!username.equals("") && !password.equals("") && !email.equals("")
+            && !answer.equals("") && !question.equals("")){
             ParseUser user = new ParseUser();
             user.setUsername(username);
             user.setPassword(password);
