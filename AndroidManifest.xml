@@ -38,6 +38,10 @@
             android:name=".ViewAccountPage"
             android:label="@string/view_account_page_title" >
         </activity>
+        <activity
+            android:name=".ViewTransactions"
+            android:label="@string/view_transactions_title">
+        </activity>
     </application>
 
 </manifest>

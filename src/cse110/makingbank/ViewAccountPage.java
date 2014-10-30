@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.TableLayout.LayoutParams;
 
 /**
  * Class: ViewAccountPage
@@ -24,14 +25,13 @@ import android.widget.TextView;
 
 public class ViewAccountPage extends Activity{
 
-	protected List<ParseObject> accountList = null;
-
 	/**
 	 * @param savedInstanceState
 	 */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // open loading page
         setContentView(R.layout.activity_view_account);
         
         // retrieve the user info for the account
@@ -39,35 +39,51 @@ public class ViewAccountPage extends Activity{
         String username = current.getUsername();
         
         // find the bank accounts
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("BankAccount");
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("bankAccount");
         query.whereEqualTo("user", username); // base it on username
         query.findInBackground( new FindCallback<ParseObject>() {
+        	// store the bank accounts in to a list
         	public void done(List<ParseObject> al, ParseException e) 
         	{
+        		// create a layout to place them in
+                LinearLayout l = new LinearLayout(ViewAccountPage.this);
+                l.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
+                l.setOrientation(LinearLayout.VERTICAL);
         		// if we found accounts
         		if ( e == null )
         		{
-        			// store the list into the class
-        			ViewAccountPage.this.accountList = al;
+        			// add the layouts to the view
+                    for ( int i = 0; i < al.size(); i++ )
+                    {
+            	        ParseObject account = al.get(i);
+                        // make them a button so that we can view in more detail
+                        Button b = new Button(ViewAccountPage.this);
+                        String bText = account.getString("accountType")+ " account.      " + "Bal: $"+account.getDouble("balance");
+                        b.setText(bText);
+                        b.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+                        // make it so if u click them then it shows transaction history
+                        b.setOnClickListener( new View.OnClickListener() {
+                        	public void onClick(View v)
+                        	{
+                        		Intent intent = new Intent(ViewAccountPage.this, ViewTransactions.class);
+                        		ViewAccountPage.this.startActivity(intent);
+                        	}
+                        });
+                        l.addView(b);
+                    }
         		}
-        		else
+        		else // if no accounts
         		{
-        			//user has no bank accounts
+        			// display to the user that he has no accounts
+        			TextView poor = new TextView(ViewAccountPage.this);
+                    poor.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+                    poor.setText("You have no accounts");
         		}
+                ViewAccountPage.this.setContentView(l);
         	}
         } );
-        
-        LinearLayout l = new LinearLayout(this);
+
         // display the bank accounts
-        for ( int i = 0; i < accountList.size(); i++ )
-        {
-        	ParseObject account = accountList.remove(i);
-        	// make them a button so that we can view in more detail
-        	TextView b = new TextView(this);
-        	String bText = "Account Type:" + account.getString("accountType") + "\tBal: 0";
-        	b.setText(bText);
-        	l.addView(b);
-        }
-        setContentView(l);
+        // if no accounts found
     }
 }

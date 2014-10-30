@@ -13,7 +13,7 @@ public final class R {
  Array for account creation types 
          */
         public static final int account_creation_account_types=0x7f060000;
-        /**  Array listing the 50 states of the U.S. 
+        /**  Array listing the states of the U.S. and territories 
          */
         public static final int account_creation_states=0x7f060001;
     }
@@ -66,7 +66,7 @@ public final class R {
         public static final int EditTextUserNameR=0x7f0a0017;
         public static final int SelectAccountType=0x7f0a000b;
         public static final int SelectCurrentState=0x7f0a0008;
-        public static final int action_settings=0x7f0a001d;
+        public static final int action_settings=0x7f0a001f;
         public static final int button_account_create=0x7f0a0014;
         public static final int button_account_view=0x7f0a0015;
         public static final int button_completeSignUp=0x7f0a001c;
@@ -80,6 +80,8 @@ public final class R {
         public static final int imageView3=0x7f0a000d;
         public static final int loginPagePrompt=0x7f0a000e;
         public static final int mainMenuTitle=0x7f0a0013;
+        public static final int progressBar1=0x7f0a001d;
+        public static final int progressBar2=0x7f0a001e;
         public static final int registerPagePrompt=0x7f0a0016;
         public static final int scrollviewCreateAccount=0x7f0a0000;
     }
@@ -89,6 +91,7 @@ public final class R {
         public static final int activity_main_page=0x7f030002;
         public static final int activity_sign_up=0x7f030003;
         public static final int activity_view_account=0x7f030004;
+        public static final int activity_view_transactions=0x7f030005;
     }
     public static final class menu {
         public static final int main_page=0x7f090000;
@@ -103,13 +106,13 @@ public final class R {
         public static final int button_complete_register=0x7f05000b;
         public static final int button_login=0x7f050004;
         public static final int button_register=0x7f050005;
-        public static final int button_submit_info=0x7f05001b;
-        public static final int create_account_page_desc=0x7f050014;
+        public static final int button_submit_info=0x7f05001c;
+        public static final int create_account_page_desc=0x7f050015;
         /**  Strings originating from Create Account page 
          */
-        public static final int create_account_page_title=0x7f050013;
-        public static final int first_name=0x7f050015;
-        public static final int last_name=0x7f050016;
+        public static final int create_account_page_title=0x7f050014;
+        public static final int first_name=0x7f050016;
+        public static final int last_name=0x7f050017;
         public static final int login_page_prompt=0x7f050001;
         /**  Strings originating from the login page 
          */
@@ -117,7 +120,7 @@ public final class R {
         public static final int main_menu_title=0x7f05000d;
         /**  Strings used for creating buttons 
          */
-        public static final int next=0x7f050012;
+        public static final int next=0x7f050013;
         /**  User is to be asked for simply a username, password and email 
          */
         public static final int signup_email=0x7f050008;
@@ -127,14 +130,15 @@ public final class R {
         public static final int signup_page_title=0x7f050006;
         public static final int signup_security_answer=0x7f05000a;
         public static final int signup_security_question=0x7f050009;
-        public static final int string_account_type=0x7f05001c;
-        public static final int string_address=0x7f050017;
-        public static final int string_address_line=0x7f050018;
-        public static final int string_box_number=0x7f05001a;
-        public static final int string_current_city=0x7f050019;
+        public static final int string_account_type=0x7f05001d;
+        public static final int string_address=0x7f050018;
+        public static final int string_address_line=0x7f050019;
+        public static final int string_box_number=0x7f05001b;
+        public static final int string_current_city=0x7f05001a;
         public static final int string_password=0x7f050003;
         public static final int string_username=0x7f050002;
         public static final int view_account_page_title=0x7f050011;
+        public static final int view_transactions_title=0x7f050012;
     }
     public static final class style {
         /** 
