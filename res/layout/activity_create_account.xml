@@ -31,8 +31,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/create_account_page_desc"
-            android:textSize="18sp"
-            android:textColor="@color/RED"
+            android:textSize="20sp"
+            android:textColor="@color/TGRAY"
             android:id="@+id/createAccountPageDesc"/>
 
         <!-- Ask for user's first name -->

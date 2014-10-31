@@ -6,6 +6,7 @@ import com.parse.*;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -45,10 +46,13 @@ public class ViewAccountPage extends Activity{
         	// store the bank accounts in to a list
         	public void done(List<ParseObject> al, ParseException e) 
         	{
+        		String purple = "#CCCCFF";
+
         		// create a layout to place them in
                 LinearLayout l = new LinearLayout(ViewAccountPage.this);
                 l.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
                 l.setOrientation(LinearLayout.VERTICAL);
+                l.setBackgroundColor(Color.parseColor(purple));
         		// if we found accounts
         		if ( e == null )
         		{
@@ -58,9 +62,14 @@ public class ViewAccountPage extends Activity{
             	        ParseObject account = al.get(i);
                         // make them a button so that we can view in more detail
                         Button b = new Button(ViewAccountPage.this);
-                        String bText = account.getString("accountType")+ " account.      " + "Bal: $"+account.getDouble("balance");
+                        String bText = account.getString("accountType")+ " account      " + "Bal: $"+account.getDouble("balance");
                         b.setText(bText);
-                        b.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+                        b.setBackgroundResource(R.drawable.button_round_corners);
+                        
+                        LinearLayout.LayoutParams params = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+                        params.setMargins(50, 50, 50, 0);
+                        b.setLayoutParams(params);
+
                         // make it so if u click them then it shows transaction history
                         b.setOnClickListener( new View.OnClickListener() {
                         	public void onClick(View v)

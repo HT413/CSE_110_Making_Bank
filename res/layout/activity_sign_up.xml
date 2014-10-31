@@ -33,7 +33,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/signup_page_prompt"
         android:textSize="24sp"
-        android:textColor="@color/RED"
+        android:textColor="@color/BLUE"
         android:id="@+id/registerPagePrompt" />
 
     <!-- Ask for user's username -->

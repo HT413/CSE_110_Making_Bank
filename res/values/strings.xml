@@ -32,7 +32,7 @@
 
     <!-- Strings originating from Create Account page -->
     <string name="create_account_page_title">Create Bank Account</string>
-    <string name="create_account_page_desc">Please truthfully enter your info</string>
+    <string name="create_account_page_desc">Please enter your info</string>
     <string name="first_name">First Name</string>
     <string name="last_name">Last Name</string>
     <string name="string_address">Current Address</string>
@@ -124,5 +124,7 @@
     <color name="BROWN">#440000</color>
     <color name="ORANGE">#FF8800</color>
     <color name="PURPLE">#CCCCFF</color>
+    <color name="DGRAY">#B7B7D6</color>
+    <color name="TGRAY">#888888</color>
 
 </resources>

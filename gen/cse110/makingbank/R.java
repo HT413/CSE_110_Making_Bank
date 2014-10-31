@@ -24,12 +24,14 @@ public final class R {
         public static final int BLUE=0x7f070003;
         public static final int BROWN=0x7f070009;
         public static final int CYAN=0x7f070006;
+        public static final int DGRAY=0x7f07000c;
         public static final int GRAY=0x7f070008;
         public static final int GREEN=0x7f070002;
         public static final int MAGENTA=0x7f070004;
         public static final int ORANGE=0x7f07000a;
         public static final int PURPLE=0x7f07000b;
         public static final int RED=0x7f070001;
+        public static final int TGRAY=0x7f07000d;
         /**  Color constants for string attributes
          */
         public static final int WHITE=0x7f070000;
@@ -47,9 +49,10 @@ public final class R {
         public static final int activity_vertical_margin=0x7f040001;
     }
     public static final class drawable {
-        public static final int ic_launcher=0x7f020000;
-        public static final int placeholder=0x7f020001;
-        public static final int round_corners=0x7f020002;
+        public static final int button_round_corners=0x7f020000;
+        public static final int ic_launcher=0x7f020001;
+        public static final int placeholder=0x7f020002;
+        public static final int round_corners=0x7f020003;
     }
     public static final class id {
         public static final int EditTextAddress1=0x7f0a0006;

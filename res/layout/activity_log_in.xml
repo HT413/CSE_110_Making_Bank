@@ -30,7 +30,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/login_page_prompt"
         android:textSize="24sp"
-        android:textColor="@color/RED"
+        android:textColor="@color/BLUE"
         android:id="@+id/loginPagePrompt" />
 
     <!-- Ask for user's username -->

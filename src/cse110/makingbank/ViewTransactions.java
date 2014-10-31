@@ -1,6 +1,7 @@
 package cse110.makingbank;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout;
@@ -22,6 +23,9 @@ public class ViewTransactions extends Activity {
         transList.setText("No Transactions");
         trans.addView(transList);
         setContentView(trans);
-		
+        
+        String purple = "#CCCCFF";
+        
+        trans.setBackgroundColor(Color.parseColor(purple));
 	}
 }
