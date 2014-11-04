@@ -11,7 +11,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:background="@color/PURPLE"
-    tools:context="cse110.makingbank.MainPage" >
+    tools:context="cse110.makingbank.MakingBank" >
 
    <!-- Title on main page -->
    <TextView
@@ -41,9 +41,6 @@
         android:layout_alignParentLeft="true"
         android:onClick="createAccount"/>
 
-   <!-- REMEMBER to declare a new activity in the AndroidManifest.xml file
-      - for each new added activity (class) to the project! -->
-
    <!-- View Account button on main page -->
    <Button
       android:id="@+id/button_account_view"
@@ -52,10 +49,28 @@
       android:text="@string/button_account_view"
       android:textSize="30sp"
       android:textColor="@color/BROWN"
-      android:layout_below="@+id/button_account_create"
-      android:layout_alignParentLeft="true"
       android:layout_marginTop="40dp"
       android:onClick="goViewAccount"
-      android:layout_alignParentRight="true"/>
+      android:layout_below="@+id/button_account_create"
+      android:layout_alignParentLeft="true"
+      android:layout_alignParentStart="true"
+      android:layout_alignRight="@+id/button_account_create"
+      android:layout_alignEnd="@+id/button_account_create"/>
+
+    <!-- View Account button on main page -->
+    <Button
+        android:id="@+id/button_logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_logout"
+        android:textSize="30sp"
+        android:textColor="@color/BROWN"
+        android:layout_marginTop="40dp"
+        android:onClick="accountLogout"
+        android:layout_below="@+id/button_account_view"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/button_account_create"
+        android:layout_alignEnd="@+id/button_account_create"/>
 
 </RelativeLayout>

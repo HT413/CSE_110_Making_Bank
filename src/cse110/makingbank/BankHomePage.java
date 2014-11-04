@@ -6,7 +6,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
+
+import com.parse.ParseUser;
 
 /**
  * Class: MainPage
@@ -19,7 +20,17 @@ public class BankHomePage extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_page);
+        // Hide action bar
+        try {
+            getActionBar().hide();
+        }catch (Exception e){}
     }
+
+    /**
+     * Nullify the back button for this page
+     */
+    @Override
+    public void onBackPressed(){}
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -34,10 +45,7 @@ public class BankHomePage extends Activity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
+        return id == R.id.action_settings || super.onOptionsItemSelected(item);
     }
 
     /**
@@ -60,6 +68,16 @@ public class BankHomePage extends Activity {
     public void createAccount(View view){
         //We will transition to this new intent
         Intent intent = new Intent(this, CreateAccountPage.class);
+        startActivity(intent);
+    }
+
+    /**
+     * Method accountLogout
+     * Log out when the user presses the logout button
+     */
+    public void accountLogout(View view){
+        ParseUser.logOut(); // Log out and go back to login page
+        Intent intent = new Intent(this, LoginPage.class);
         startActivity(intent);
     }
 }

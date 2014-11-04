@@ -5,8 +5,8 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="16"
-        android:targetSdkVersion="16" />
+        android:minSdkVersion="14"
+        android:targetSdkVersion="21" />
 
     <!-- This app requires permission to access the Internet -->
     <uses-permission android:name="android.permission.INTERNET" />
@@ -14,33 +14,27 @@
 
     <application
         android:allowBackup="true"
+        android:name=".MakingBank"
         android:icon="@drawable/ic_launcher"
-        android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".MainPage"
-            android:label="@string/app_name" >
+            android:name=".LoginPage">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
+                <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".CreateAccountPage"
-            android:label="@string/create_account_page_title">
+            android:name=".CreateAccountPage">
         </activity>
         <activity
-            android:name=".BankHomePage"
-            android:label="@string/app_name">
+            android:name=".BankHomePage">
         </activity>
         <activity
-            android:name=".ViewAccountPage"
-            android:label="@string/view_account_page_title" >
+            android:name=".ViewAccountPage">
         </activity>
         <activity
-            android:name=".ViewTransactions"
-            android:label="@string/view_transactions_title">
+            android:name=".ViewTransactions">
         </activity>
     </application>
 

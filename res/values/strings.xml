@@ -2,12 +2,13 @@
 <resources>
 
     <!-- Strings originating from the login page -->
-    <string name="login_page_title">Log In</string>
     <string name="login_page_prompt">Please log in to use app</string>
     <string name="string_username">Username</string>
     <string name="string_password">Password</string>
     <string name="button_login">Sign In</string>
     <string name="button_register">Sign Up</string>
+    <string name="str_main1">Welcome to EveryoneRichBank!</string>
+    <string name="str_main2">Please tap anywhere to begin.</string>
 
     <!-- Strings originating from the sign up page -->
     <string name="signup_page_title">Register Account</string>
@@ -26,6 +27,7 @@
     <string name="action_settings">Settings</string>
     <string name="view_account_page_title">View Bank Accounts</string>
     <string name="view_transactions_title">Transactions</string>
+    <string name="button_logout">Log Out</string>
     
     <!-- Strings used for creating buttons -->
     <string name="next">Next</string>
@@ -41,6 +43,13 @@
     <string name="string_box_number">P.O.</string>
     <string name="button_submit_info">Submit</string>
     <string name="string_account_type">Account type</string>
+
+    <!-- Strings originating from account transactions page -->
+    <string name="string_debit">Debit Account</string>
+    <string name="string_credit">Credit Account</string>
+    <string name="string_transfer">Transfer Money</string>
+    <string name="string_close">Close Account</string>
+    <string name="string_trans_history">Transaction History</string>
 
     <!-- MISCELLANEOUS STRINGS AND VALUES -->
 

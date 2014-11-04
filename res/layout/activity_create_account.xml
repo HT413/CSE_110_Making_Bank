@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/scrollviewCreateAccount"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
@@ -96,6 +97,7 @@
         <!-- Ask for user's P.O. number -->
         <EditText
             android:id="@+id/EditTextBoxNumber"
+            android:inputType="number"
             android:layout_height="wrap_content"
             android:layout_width="fill_parent"
             android:background="@drawable/round_corners"

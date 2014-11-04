@@ -14,7 +14,7 @@ import com.parse.*;
  *
  * This is the first page to be called whenever the application is launched.
  */
-public class MainPage extends Activity {
+public class LoginPage extends Activity {
 
     /**
      * Method onCreate
@@ -25,10 +25,11 @@ public class MainPage extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Parse.enableLocalDatastore(this);
-        Parse.initialize(this, "eUnkK8i47gQC0hsPlTuuzFOge4ASo1sw5AokYoE4",
-                "Csx3JZmQdTWWc1EgVQhRZJdxWPUsImUKhOFClM1K"); //App ID for online storage
         setContentView(R.layout.activity_log_in);
+        // Hide action bar
+        try {
+            getActionBar().hide();
+        }catch (Exception e){}
     }
 
     /**
@@ -57,6 +58,14 @@ public class MainPage extends Activity {
                 }
             }
         });
+    }
+
+    /**
+     * Go back to login screen if back button pressed
+     */
+    @Override
+    public void onBackPressed(){
+        setContentView(R.layout.activity_log_in);
     }
 
     /**
@@ -103,13 +112,14 @@ public class MainPage extends Activity {
 
         // Complete the registration if the user filled in all fields
         if (!username.equals("") && !password.equals("") && !email.equals("")
-            && !answer.equals("") && !question.equals("")){
+                && !answer.equals("") && !question.equals("")){
             ParseUser user = new ParseUser();
             user.setUsername(username);
             user.setPassword(password);
             user.setEmail(email);
             user.put ("securityQuestion", question);
             user.put ("questionAnswer", answer);
+            user.put ("bankAccounts", 0);
             // Complete the registration and go back to the login screen
             user.signUpInBackground(new SignUpCallback() {
                 public void done(ParseException e) {

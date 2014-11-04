@@ -1,31 +1,39 @@
 package cse110.makingbank;
 
 import android.app.Activity;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.view.View;
 
 public class ViewTransactions extends Activity {
-	
+
+    /**
+     * Method onCreate
+     * Create the ViewTransactions page
+     */
 	@Override
 	public void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_view_transactions);
-		
-        LinearLayout trans = new LinearLayout(this);
-        trans.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
-        trans.setOrientation(LinearLayout.VERTICAL);
-        TextView transList = new TextView(this);
-        transList.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
-        transList.setText("No Transactions");
-        trans.addView(transList);
-        setContentView(trans);
-        
-        String purple = "#CCCCFF";
-        
-        trans.setBackgroundColor(Color.parseColor(purple));
+        // Hide action bar
+        try {
+            getActionBar().hide();
+        }catch (Exception e){}
 	}
+
+    /**
+     * Method accountAddMoney
+     * Change layout to credit the account
+     */
+    public void accountAddMoney (View view){
+
+    }
+
+    /**
+     * Method accountDeductMoney
+     * Change layout to debit the account
+     */
+    public void accountDeductMoney(View view){
+
+    }
 }
