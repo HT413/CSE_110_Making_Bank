@@ -60,11 +60,12 @@ public class ViewAccountPage extends Activity{
                 // if we found accounts
                 if ( e == null && al.size() != 0 ) {
                     // add the layouts to the view
-                    for (ParseObject account : al) {
+                    for (int i = 0; i < al.size(); i++) {
+                        ParseObject account = al.get(i);
                         // make them a button so that we can view in more detail
                         Button b = new Button(ViewAccountPage.this);
-                        String bText = account.getString("accountType") + " account " +
-                                                          account.get("nickname");
+                        final String nickname = account.getString("nickname");
+                        String bText = account.getString("accountType") + " account " + nickname;
                         b.setText(bText);
                         b.setBackgroundResource(R.drawable.button_round_corners);
                         b.setLayoutParams(params);
@@ -73,7 +74,8 @@ public class ViewAccountPage extends Activity{
                         b.setOnClickListener(new View.OnClickListener() {
                             public void onClick(View v) {
                                 Intent intent = new Intent(ViewAccountPage.this,
-                                        ViewTransactions.class);
+                                        AccountOptions.class);
+                                intent.putExtra("accountName", nickname);
                                 ViewAccountPage.this.startActivity(intent);
                             }
                         });
@@ -86,7 +88,10 @@ public class ViewAccountPage extends Activity{
                     TextView poor = new TextView(ViewAccountPage.this);
                     poor.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT,
                             LayoutParams.WRAP_CONTENT));
+                    poor.setX(20);
+                    poor.setY(20);
                     poor.setText("You have no accounts");
+                    l.addView(poor);
                 }
                 ViewAccountPage.this.setContentView(l);
                }

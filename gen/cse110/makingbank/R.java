@@ -94,7 +94,7 @@ public final class R {
         public static final int activity_main_page=0x7f030002;
         public static final int activity_sign_up=0x7f030003;
         public static final int activity_view_account=0x7f030004;
-        public static final int activity_view_transactions=0x7f030005;
+        public static final int activity_account_actions =0x7f030005;
     }
     public static final class menu {
         public static final int main_page=0x7f090000;

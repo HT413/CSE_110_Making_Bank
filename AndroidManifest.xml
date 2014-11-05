@@ -34,7 +34,7 @@
             android:name=".ViewAccountPage">
         </activity>
         <activity
-            android:name=".ViewTransactions">
+            android:name=".AccountOptions">
         </activity>
     </application>
 

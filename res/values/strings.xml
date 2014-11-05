@@ -44,12 +44,16 @@
     <string name="button_submit_info">Submit</string>
     <string name="string_account_type">Account type</string>
 
-    <!-- Strings originating from account transactions page -->
+    <!-- Strings originating from account options page -->
+    <string name="account_actions_title">Info for account</string>
     <string name="string_debit">Debit Account</string>
     <string name="string_credit">Credit Account</string>
     <string name="string_transfer">Transfer Money</string>
     <string name="string_close">Close Account</string>
     <string name="string_trans_history">Transaction History</string>
+    <string name="string_current_balance">Current Balance: $</string>
+    <string name="string_view_statement">View Statement</string>
+    <string name="string_rename_account">Rename Account</string>
 
     <!-- MISCELLANEOUS STRINGS AND VALUES -->
 
