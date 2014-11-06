@@ -90,6 +90,7 @@ public class AccountOptions extends Activity {
                     else{
                         // Close the account
                         account.deleteInBackground();
+                        onBackPressed();
                     }
                 }
                 else{

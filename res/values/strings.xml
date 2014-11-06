@@ -40,7 +40,7 @@
     <string name="string_address">Current Address</string>
     <string name="string_address_line">Address</string>
     <string name="string_current_city">City</string>
-    <string name="string_box_number">P.O.</string>
+    <string name="string_box_number">Zip code</string>
     <string name="button_submit_info">Submit</string>
     <string name="string_account_type">Account type</string>
     <string name="string_phone">Phone Number</string>

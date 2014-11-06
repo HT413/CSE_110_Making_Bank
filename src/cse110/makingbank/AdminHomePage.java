@@ -132,7 +132,7 @@ public class AdminHomePage extends Activity {
                                             .setText("INSUFFICIENT FUNDS");
                                 else{
                                     // Round to nearest 2 decimal places
-                                    double balanceAfter = round(balanceBefore + transactionAmount, 2);
+                                    double balanceAfter = round(balanceBefore - transactionAmount, 2);
                                     account.put("balance", balanceAfter); // Apply new balance
                                     account.saveInBackground(); // Update account
                                     logTransaction(balanceBefore, round(transactionAmount, 2),

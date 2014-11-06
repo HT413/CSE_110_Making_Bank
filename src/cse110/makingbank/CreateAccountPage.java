@@ -90,6 +90,8 @@ public class CreateAccountPage extends Activity{
             String phoneNum = phoneField.getText().toString();
 
             // Check if PO box is valid or not
+            if (PO.equals(""))
+                validPO = false;
             for (int i = 0; i < PO.length(); i++) {
                 if (!(PO.charAt(i) >= '0' && PO.charAt(i) <= '9')) {
                     validPO = false;
@@ -97,7 +99,7 @@ public class CreateAccountPage extends Activity{
                 }
             }
             if (validPO) {
-                PONumber = Integer.parseInt(POField.getText().toString());
+                PONumber = Integer.parseInt(PO);
                 if (!(PONumber >= 10000 && PONumber <= 99999)) // Check if valid PO box number
                     PONumber = -1;
             }
@@ -179,7 +181,7 @@ public class CreateAccountPage extends Activity{
             //Throw error and tell user to fill in all fields
             else {
                 TextView pageNotice = (TextView) findViewById(R.id.createAccountPageDesc);
-                pageNotice.setText("One or more fields are missing.");
+                pageNotice.setText("One or more fields are invalid.");
                 if (!validPO){
                     POField.setText("");
                     POField.setHint("Invalid PO Box!");

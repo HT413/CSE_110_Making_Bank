@@ -50,8 +50,13 @@ public class LoginPage extends Activity {
         // Now log in
         ParseUser.logInInBackground(username, password, new LogInCallback() {
             public void done(ParseUser user, ParseException e) {
-                if (user != null && e == null) { // No exception, user can log in normally
-                    completeLogin();
+                if (user != null && e == null) { // No exception, user can log in normaly
+                    if (ParseUser.getCurrentUser().getBoolean("emailVerified"))
+                        completeLogin();
+                    else{
+                        TextView pageNotice = (TextView) findViewById(R.id.loginPagePrompt);
+                        pageNotice.setText ("Email not verified!");
+                    }
                 } else { // Login failed
                     TextView pageNotice = (TextView) findViewById(R.id.loginPagePrompt);
                     pageNotice.setText ("Invalid username or password.");
@@ -119,13 +124,13 @@ public class LoginPage extends Activity {
             user.setEmail(email);
             user.put ("securityQuestion", question);
             user.put ("questionAnswer", answer);
-            user.put ("bankAccounts", 0);
+            user.put ("numAccounts", 0);
             user.put ("isAdmin", false);
             // Complete the registration and go back to the login screen
             user.signUpInBackground(new SignUpCallback() {
                 public void done(ParseException e) {
                     if (e == null) { // No exception, we can proceed normally
-                        setContentView(R.layout.activity_log_in);
+                            setContentView(R.layout.activity_log_in);
                     } else { // Invalid username throws error
                         TextView pageNotice = (TextView) findViewById(R.id.registerPagePrompt);
                         if (e.getCode() == ParseException.USERNAME_TAKEN)
