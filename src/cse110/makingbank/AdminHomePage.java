@@ -82,6 +82,8 @@ public class AdminHomePage extends Activity {
             final EditText transactionAmtField = (EditText) findViewById(R.id.transactionAmountField);
 
             final String accountNumber = accountNumField.getText().toString();
+            if (transactionAmtField.getText().toString().equals(""))
+                transactionAmtField.setText("-1");
             final Double transactionAmount = Double.parseDouble(transactionAmtField.getText().toString());
             final String transactionType = transactionTypeSpinner.getSelectedItem().toString();
 
@@ -93,17 +95,19 @@ public class AdminHomePage extends Activity {
                 valid = false;
             }
             if (transactionAmount <= 0.0) {
-                ((TextView) findViewById(R.id.transactionAmountPrompt)).setText("MUST BE POSITIVE");
+                ((TextView) findViewById(R.id.transactionAmountPrompt)).setText("MUST BE POSITIVE NUMBER");
+                transactionAmtField.setText("");
                 valid = false;
             }
             // Valid operations, now continue on
             if (valid){
                 // find the bank account with specified account Number
                 ParseQuery<ParseObject> query = ParseQuery.getQuery("bankAccount");
+                query.whereEqualTo("accountNumber", accountNumber);
                 query.findInBackground( new FindCallback<ParseObject>(){
                     // Store bank account in a list
                     public void done(List<ParseObject> aList, ParseException e) {
-                        if (aList.size() == 0){ // NO ACCOUNT FOUND!
+                        if (aList.size() == 0 || e != null){ // NO ACCOUNT FOUND!
                             accountNumField.setText("ACCOUNT DOES NOT EXIST");
                         }
                         else { // Account found, perform transaction on it if possible

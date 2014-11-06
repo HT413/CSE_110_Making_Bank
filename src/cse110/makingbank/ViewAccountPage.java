@@ -47,7 +47,7 @@ public class ViewAccountPage extends Activity{
         	// store the bank accounts in to a list
         	public void done(List<ParseObject> al, ParseException e) 
         	{
-                // create a layout to fetched accounts them in
+                // create a layout to put fetched accounts in
                 LinearLayout l = new LinearLayout(ViewAccountPage.this);
                 l.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT,
                         LayoutParams.MATCH_PARENT));

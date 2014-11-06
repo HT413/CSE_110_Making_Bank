@@ -53,6 +53,7 @@
     <string name="string_view_history">View History</string>
     <string name="string_current_balance">Current Balance: $</string>
     <string name="string_view_statement">View Statement</string>
+    <string name="string_home_menu">Home Menu</string>
 
     <!-- String originating from admin's home page -->
     <string name="string_find_account">Account Lookup</string>
@@ -66,8 +67,8 @@
     <!-- Array for account transaction type -->
     <string-array name="account_transaction_types">
         <item>Select</item>
-        <item>Debit</item>
         <item>Credit</item>
+        <item>Debit</item>
     </string-array>
 
     <!-- Array for account creation types -->
