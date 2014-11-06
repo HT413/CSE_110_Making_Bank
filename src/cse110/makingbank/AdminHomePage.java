@@ -15,6 +15,8 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.List;
 
 /**
@@ -116,10 +118,11 @@ public class AdminHomePage extends Activity {
                             ParseObject account = aList.get(0);
                             double balanceBefore = account.getDouble("balance");
                             if (transactionType.equals("Credit")){
-                                double balanceAfter = balanceBefore + transactionAmount;
+                                // Round to nearest 2 decimal places
+                                double balanceAfter = round(balanceBefore + transactionAmount, 2);
                                 account.put("balance", balanceAfter); // Apply new balance
                                 account.saveInBackground(); // Update account
-                                logTransaction(balanceBefore, transactionAmount,
+                                logTransaction(balanceBefore, round(transactionAmount, 2),
                                         balanceAfter, transactionType, accountNumber);
                             }
                             else if (transactionType.equals("Debit")){
@@ -128,10 +131,11 @@ public class AdminHomePage extends Activity {
                                     ((TextView) findViewById(R.id.transactionAmountPrompt))
                                             .setText("INSUFFICIENT FUNDS");
                                 else{
-                                    double balanceAfter = balanceBefore - transactionAmount;
+                                    // Round to nearest 2 decimal places
+                                    double balanceAfter = round(balanceBefore + transactionAmount, 2);
                                     account.put("balance", balanceAfter); // Apply new balance
                                     account.saveInBackground(); // Update account
-                                    logTransaction(balanceBefore, transactionAmount,
+                                    logTransaction(balanceBefore, round(transactionAmount, 2),
                                             balanceAfter, transactionType, accountNumber);
                                 }
                             }
@@ -157,5 +161,17 @@ public class AdminHomePage extends Activity {
         // Save the transaction.
         transaction.saveInBackground();
         onBackPressed(); // Go back to home page
+    }
+
+    /**
+     * Method round
+     * This will round any decimal number to the nearest 2 decimal digits
+     */
+    public static double round(double value, int places) {
+        if (places < 0) throw new IllegalArgumentException();
+
+        BigDecimal bd = new BigDecimal(value);
+        bd = bd.setScale(places, RoundingMode.FLOOR);
+        return bd.doubleValue();
     }
 }
