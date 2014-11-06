@@ -108,7 +108,8 @@ public class AdminHomePage extends Activity {
                     // Store bank account in a list
                     public void done(List<ParseObject> aList, ParseException e) {
                         if (aList.size() == 0 || e != null){ // NO ACCOUNT FOUND!
-                            accountNumField.setText("ACCOUNT DOES NOT EXIST");
+                            ((TextView) findViewById(R.id.accountNamePrompt)).
+                                    setText("ACCOUNT DOES NOT EXIST");
                         }
                         else { // Account found, perform transaction on it if possible
                             ParseObject account = aList.get(0);
