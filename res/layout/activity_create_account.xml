@@ -56,6 +56,28 @@
             android:hint="@string/last_name" />
 
 
+        <!--  Prompt user to enter phone number -->
+        <TextView
+            android:id="@+id/createAccountPhoneDesc"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="20sp"
+            android:textColor="@color/BLACK"
+            android:hint="@string/string_phone" />
+
+        <!-- Ask for user's phone number -->
+        <EditText
+            android:id="@+id/EditTextPhoneNumber"
+            android:inputType="phone"
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:layout_marginTop="10dp"
+            android:paddingLeft="10dp"
+            android:background="@drawable/round_corners"
+            android:hint="@string/phone_hint" />
+
+
         <!--  Prompt user to choose account type -->
         <TextView
             android:id="@+id/createAccountAddressDesc"

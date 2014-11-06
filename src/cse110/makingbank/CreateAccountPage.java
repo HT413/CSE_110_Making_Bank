@@ -12,6 +12,8 @@ import android.widget.TextView;
 
 import com.parse.*;
 
+import java.text.NumberFormat;
+
 /**
  * Class: CreateAccountPage.java
  * This is the class created after the user presses on the Create Account
@@ -73,8 +75,10 @@ public class CreateAccountPage extends Activity{
             final EditText addressField = (EditText) findViewById(R.id.EditTextAddress1);
             final EditText cityField = (EditText) findViewById(R.id.EditTextCity);
             final EditText POField = (EditText) findViewById(R.id.EditTextBoxNumber);
+            final EditText phoneField = (EditText) findViewById(R.id.EditTextPhoneNumber);
 
             boolean validPO = true;
+            boolean validPhone = true;
             int PONumber = -1;
 
             // Get text from all fields
@@ -83,42 +87,55 @@ public class CreateAccountPage extends Activity{
             String address = addressField.getText().toString();
             String city = cityField.getText().toString();
             String PO = POField.getText().toString();
+            String phoneNum = phoneField.getText().toString();
 
+            // Check if PO box is valid or not
             for (int i = 0; i < PO.length(); i++) {
                 if (!(PO.charAt(i) >= '0' && PO.charAt(i) <= '9')) {
-                    TextView pageNotice = (TextView) findViewById(R.id.createAccountPageDesc);
-                    pageNotice.setText("Invalid PO box format.");
-                    ScrollView mainView = (ScrollView) findViewById(R.id.scrollviewCreateAccount);
-                    mainView.fullScroll(ScrollView.FOCUS_UP);
                     validPO = false;
                     break;
                 }
             }
-            if (validPO)
+            if (validPO) {
                 PONumber = Integer.parseInt(POField.getText().toString());
+                if (!(PONumber >= 10000 && PONumber <= 99999)) // Check if valid PO box number
+                    PONumber = -1;
+            }
+
+            // Check if phone number is valid or not
+            if (!(phoneNum.length() == 12 && phoneNum.charAt(3) == '-' && phoneNum.charAt(7) == '-')){
+                validPhone = false;
+                phoneNum = "";
+            }
+
+
             String accountType = accountTypeSpinner.getSelectedItem().toString();
             String currentState = stateSpinner.getSelectedItem().toString();
 
             //All fields must be filled!
             if (!accountType.equals("Select") && !firstName.equals("") && !lastName.equals("")
                     && !city.equals("") && !currentState.equals("State") && !address.equals("")
-                    && PONumber != -1) {
+                    && PONumber != -1 && !phoneNum.equals("")) {
                 final ParseUser currentUser = ParseUser.getCurrentUser(); // Get current user
                 String username = currentUser.getUsername();
                 String email = currentUser.getEmail();
-                final int accountIndex = currentUser.getInt ("bankAccounts");
-                String name = username;
-                if (username.length() > 8)
-                    name = username.substring(0, 8);
+
+                // Assign a unique account number to the account
+                final int accountIndex = currentUser.getInt("numAccounts");
+                String name = "" + (username.toString().charAt(0) - ' ') +
+                    (username.toString().charAt(1) - ' ') +  accountIndex;
+                int accountRnd = generateRnd(10 - name.length());
+
                 // Create a new Parse object of type BankAccount
                 ParseObject bankAccount = new ParseObject("bankAccount");
-                bankAccount.put("nickname", name + accountIndex);
+                bankAccount.put("accountNumber", name + accountRnd);
                 bankAccount.put("user", username); // Object holds username
                 bankAccount.put("email", email); // Object holds user email
                 bankAccount.put("balance", 0); // Start out with zero balance
                 bankAccount.put("firstName", firstName); // Object holds first name
                 bankAccount.put("lastName", lastName); // Object holds last name
                 bankAccount.put("address", address); // Object holds address
+                bankAccount.put("phone", phoneNum); // Object holds phone number
                 bankAccount.put("city", city); // Object holds current city
                 bankAccount.put("state", currentState); // Object holds current state
                 bankAccount.put("poBox", PONumber); // Object holds P.O. number
@@ -127,8 +144,8 @@ public class CreateAccountPage extends Activity{
                 bankAccount.saveInBackground(new SaveCallback() {
                     public void done(ParseException e) {
                         if (e == null) { // No error was thrown
-                            currentUser.remove("bankAccounts"); // Update account index
-                            currentUser.put("bankAccounts", (accountIndex + 1));
+                            currentUser.put("numAccounts", accountIndex + 1);
+                            currentUser.saveInBackground(); // Save this new user info
                             goHome(); // Go back to the main page
                         } else { // Some error occured!
                             if (e.getCode() == ParseException.CONNECTION_FAILED){
@@ -163,10 +180,26 @@ public class CreateAccountPage extends Activity{
             else {
                 TextView pageNotice = (TextView) findViewById(R.id.createAccountPageDesc);
                 pageNotice.setText("One or more fields are missing.");
+                if (!validPO){
+                    POField.setText("");
+                    POField.setHint("Invalid PO Box!");
+                }
+                if (!validPhone) {
+                    phoneField.setText("");
+                    phoneField.setHint("Invalid Phone Number!");
+                }
                 ScrollView mainView = (ScrollView) findViewById(R.id.scrollviewCreateAccount);
                 mainView.fullScroll(ScrollView.FOCUS_UP);
             }
         }
+    }
+
+    private int generateRnd(int length){
+        NumberFormat fmt = NumberFormat.getInstance();
+        fmt.setMinimumIntegerDigits(length);
+        fmt.setMaximumIntegerDigits(length);
+        fmt.setGroupingUsed(false);
+        return ((int) Double.parseDouble(fmt.format(Math.random() * Math.pow(10, length))));
     }
 
     /**

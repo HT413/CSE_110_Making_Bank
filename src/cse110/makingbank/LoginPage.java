@@ -120,6 +120,7 @@ public class LoginPage extends Activity {
             user.put ("securityQuestion", question);
             user.put ("questionAnswer", answer);
             user.put ("bankAccounts", 0);
+            user.put ("isAdmin", false);
             // Complete the registration and go back to the login screen
             user.signUpInBackground(new SignUpCallback() {
                 public void done(ParseException e) {

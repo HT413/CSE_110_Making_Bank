@@ -1,0 +1,71 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingBottom="@dimen/activity_vertical_margin"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:paddingTop="@dimen/activity_vertical_margin"
+                android:background="@color/PURPLE"
+                tools:context="cse110.makingbank.MakingBank" >
+
+    <!-- Title on main page -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/main_menu_title"
+        android:textColor="@color/BLUE"
+        android:textSize="30sp"
+        android:id="@+id/adminMenuTitle"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"/>
+
+    <!-- Account Lookup button on main page -->
+    <Button
+        android:id="@+id/button_search_account"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/string_find_account"
+        android:textSize="30sp"
+        android:textColor="@color/BROWN"
+        android:layout_below="@+id/adminMenuTitle"
+        android:layout_marginTop="30dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
+
+    <!-- Perform Transaction button on main page -->
+    <Button
+        android:id="@+id/admin_transaction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/string_perform_transaction"
+        android:textSize="30sp"
+        android:textColor="@color/BROWN"
+        android:layout_marginTop="40dp"
+        android:onClick="doTransaction"
+        android:layout_below="@+id/button_search_account"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/button_search_account"
+        android:layout_alignEnd="@+id/button_search_account"/>
+
+    <!-- View Account button on main page -->
+    <Button
+        android:id="@+id/admin_logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_logout"
+        android:textSize="30sp"
+        android:textColor="@color/BROWN"
+        android:layout_marginTop="40dp"
+        android:onClick="accountLogout"
+        android:layout_below="@+id/admin_transaction"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/button_search_account"
+        android:layout_alignEnd="@+id/button_search_account"/>
+
+</RelativeLayout>

@@ -37,12 +37,12 @@ public class AccountOptions extends Activity {
         // Display the account balance
         // First, query for the account
         ParseQuery<ParseObject> query = ParseQuery.getQuery("bankAccount");
-        query.whereEqualTo("nickname", accountName);
+        query.whereEqualTo("accountNumber", accountName);
         query.findInBackground( new FindCallback<ParseObject>() {
             public void done(List<ParseObject> list, ParseException e){
                 if (list.size() > 0 && e == null){
                     TextView balance = (TextView) findViewById(R.id.currentBalance);
-                    balance.setText(balance.getText().toString() + " " + list.get(0).getInt("balance"));
+                    balance.setText(balance.getText().toString() + " " + list.get(0).getDouble("balance"));
                 }
                 else{
                     TextView balance = (TextView) findViewById(R.id.currentBalance);

@@ -3,8 +3,6 @@ package cse110.makingbank;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 
 import com.parse.ParseUser;
@@ -18,6 +16,13 @@ public class BankHomePage extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // Check if this is the admin. If yes, go to admin page
+        if (ParseUser.getCurrentUser().getUsername().equals("admin")){
+            Intent intent = new Intent (this, AdminHomePage.class);
+            startActivity(intent);
+        }
+
+        // Otherwise, load normal page
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_page);
         // Hide action bar
@@ -31,22 +36,6 @@ public class BankHomePage extends Activity {
      */
     @Override
     public void onBackPressed(){}
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main_page, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml
-        int id = item.getItemId();
-        return id == R.id.action_settings || super.onOptionsItemSelected(item);
-    }
 
     /**
      * Function: goViewAccount

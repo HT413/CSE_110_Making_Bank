@@ -36,31 +36,8 @@
         android:layout_alignParentStart="true"/>
 
     <!-- Credit Account button -->
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/string_credit"
-        android:id="@+id/buttonCreditAccount"
-        android:onClick="accountAddMoney"
-        android:layout_below="@+id/currentBalance"
-        android:layout_marginTop="20dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignRight="@+id/buttonTransferMoney"
-        android:layout_alignEnd="@+id/buttonTransferMoney"/>
 
     <!-- Debit Account button -->
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/string_debit"
-        android:id="@+id/buttonDebitAccount"
-        android:onClick="accountDeductMoney"
-        android:layout_alignTop="@+id/buttonCreditAccount"
-        android:layout_alignLeft="@+id/buttonViewStatement"
-        android:layout_alignStart="@+id/buttonViewStatement"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"/>
 
     <!-- Transfer money button -->
     <Button
@@ -68,12 +45,10 @@
         android:layout_height="wrap_content"
         android:text="@string/string_transfer"
         android:id="@+id/buttonTransferMoney"
-        android:layout_below="@+id/buttonCreditAccount"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="20dp"
-        android:layout_alignRight="@+id/buttonRenameAccount"
-        android:layout_alignEnd="@+id/buttonRenameAccount"/>
+        android:layout_below="@+id/currentBalance"/>
 
     <Button
         android:layout_width="wrap_content"
@@ -87,19 +62,21 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/string_rename_account"
-        android:id="@+id/buttonRenameAccount"
+        android:text="@string/string_view_history"
+        android:id="@+id/buttonViewHistory"
         android:layout_below="@+id/buttonTransferMoney"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="20dp"
+        android:layout_alignRight="@+id/buttonTransferMoney"
+        android:layout_alignEnd="@+id/buttonTransferMoney"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/string_close"
         android:id="@+id/buttonAccountClose"
-        android:layout_alignBottom="@+id/buttonRenameAccount"
+        android:layout_alignBottom="@+id/buttonViewHistory"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_alignLeft="@+id/buttonViewStatement"

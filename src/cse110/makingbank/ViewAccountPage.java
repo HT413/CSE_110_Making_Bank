@@ -6,6 +6,7 @@ import com.parse.*;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -64,7 +65,7 @@ public class ViewAccountPage extends Activity{
                         ParseObject account = al.get(i);
                         // make them a button so that we can view in more detail
                         Button b = new Button(ViewAccountPage.this);
-                        final String nickname = account.getString("nickname");
+                        final String nickname = account.getString("accountNumber");
                         String bText = account.getString("accountType") + " account " + nickname;
                         b.setText(bText);
                         b.setBackgroundResource(R.drawable.button_round_corners);
@@ -90,7 +91,9 @@ public class ViewAccountPage extends Activity{
                             LayoutParams.WRAP_CONTENT));
                     poor.setX(20);
                     poor.setY(20);
-                    poor.setText("You have no accounts");
+                    poor.setText("You have no accounts. Press the back button to return.");
+                    poor.setTextSize(30);
+                    poor.setTextColor(Color.RED);
                     l.addView(poor);
                 }
                 ViewAccountPage.this.setContentView(l);
