@@ -153,4 +153,13 @@ public class LoginPage extends Activity {
             pageNotice.setText ("One or more fields are missing.");
         }
     }
+
+    /**
+     * Method passwordReset
+     * User must enter their security question answer, then get sent a password reset email
+     */
+    public void passwordReset(View view){
+        Intent intent = new Intent (this, PasswordReset.class);
+        startActivity(intent);
+    }
 }

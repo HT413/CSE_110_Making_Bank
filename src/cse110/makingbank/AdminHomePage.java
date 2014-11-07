@@ -86,18 +86,21 @@ public class AdminHomePage extends Activity {
             final String accountNumber = accountNumField.getText().toString();
             if (transactionAmtField.getText().toString().equals(""))
                 transactionAmtField.setText("-1");
-            final Double transactionAmount = Double.parseDouble(transactionAmtField.getText().toString());
+            final double transactionAmount = round(Double.parseDouble
+                                                   (transactionAmtField.getText().toString()), 2);
             final String transactionType = transactionTypeSpinner.getSelectedItem().toString();
 
             boolean valid = true;
 
             // Check if valid operations were selected
             if (transactionType.equals("Select")) {
-                ((TextView) findViewById(R.id.transactionTypePrompt)).setText("SELECT TRANSACTION TYPE");
+                ((TextView) findViewById(R.id.transactionTypePrompt))
+                                         .setText("SELECT TRANSACTION TYPE");
                 valid = false;
             }
             if (transactionAmount <= 0.0) {
-                ((TextView) findViewById(R.id.transactionAmountPrompt)).setText("MUST BE POSITIVE NUMBER");
+                ((TextView) findViewById(R.id.transactionAmountPrompt))
+                                         .setText("MUST BE POSITIVE NUMBER");
                 transactionAmtField.setText("");
                 valid = false;
             }
@@ -171,7 +174,7 @@ public class AdminHomePage extends Activity {
         if (places < 0) throw new IllegalArgumentException();
 
         BigDecimal bd = new BigDecimal(value);
-        bd = bd.setScale(places, RoundingMode.FLOOR);
+        bd = bd.setScale(places, RoundingMode.HALF_DOWN);
         return bd.doubleValue();
     }
 }

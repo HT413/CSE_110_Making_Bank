@@ -54,7 +54,7 @@
         android:paddingLeft="10dp"
         android:hint="@string/string_password" />
 
-    <!-- Submit button -->
+    <!-- Login Button -->
     <Button
         android:id="@+id/button_signIn"
         android:layout_width="match_parent"
@@ -65,13 +65,24 @@
         android:layout_marginTop="10dp"
         android:textColor="@color/BROWN"/>
 
-    <!-- Submit button -->
+    <!-- Register Button -->
     <Button
         android:id="@+id/button_signUp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="goRegister"
         android:text="@string/button_register"
+        android:textSize="24sp"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/BROWN"/>
+
+    <!-- Forgot Password button -->
+    <Button
+        android:id="@+id/button_forgot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="passwordReset"
+        android:text="@string/button_I_forgot"
         android:textSize="24sp"
         android:layout_marginTop="10dp"
         android:textColor="@color/BROWN"/>

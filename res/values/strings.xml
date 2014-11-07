@@ -7,12 +7,16 @@
     <string name="string_password">Password</string>
     <string name="button_login">Sign In</string>
     <string name="button_register">Sign Up</string>
-    <string name="str_main1">Welcome to EveryoneRichBank!</string>
-    <string name="str_main2">Please tap anywhere to begin.</string>
+    <string name="button_I_forgot">Forgot Password?</string>
+
+    <!-- Strings for password reset -->
+    <string name="prompt_enter_username">Please enter your username</string>
+    <string name="page_title_reset">Password Reset Page</string>
 
     <!-- Strings originating from the sign up page -->
     <string name="signup_page_title">Register Account</string>
     <string name="signup_page_prompt">Please fill in all fields</string>
+
         <!-- User is to be asked for simply a username, password and email -->
     <string name="signup_email">Email address</string>
     <string name="signup_security_question">Custom security question</string>

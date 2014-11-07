@@ -42,6 +42,9 @@
         <activity
             android:name=".AccountOptions">
         </activity>
+        <activity
+            android:name=".PasswordReset">
+        </activity>
     </application>
 
 </manifest>
