@@ -37,6 +37,16 @@
         android:textColor="@color/BLUE"
         android:id="@+id/registerPagePrompt" />
 
+    <!-- Prompt for username -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/string_username"
+        android:textSize="20dp"
+        android:layout_marginTop="10dp"
+        android:id="@+id/usernamePrompt" />
+
     <!-- Ask for user's username -->
     <EditText
         android:id="@+id/EditTextUserNameR"
@@ -44,8 +54,17 @@
         android:layout_width="fill_parent"
         android:background="@drawable/round_corners"
         android:layout_marginTop="10dp"
-        android:paddingLeft="10dp"
         android:hint="@string/string_username" />
+
+    <!-- Prompt for password -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/string_password"
+        android:textSize="20dp"
+        android:layout_marginTop="10dp"
+        android:id="@+id/passwordPrompt" />
 
     <!-- Ask for user's password -->
     <EditText
@@ -55,8 +74,17 @@
         android:inputType="textPassword"
         android:background="@drawable/round_corners"
         android:layout_marginTop="10dp"
-        android:paddingLeft="10dp"
         android:hint="@string/string_password" />
+
+    <!-- Prompt for user email -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/signup_email"
+        android:textSize="20dp"
+        android:layout_marginTop="10dp"
+        android:id="@+id/emailPrompt" />
 
     <!-- Ask for user's email -->
     <EditText
@@ -66,8 +94,17 @@
         android:layout_width="fill_parent"
         android:background="@drawable/round_corners"
         android:layout_marginTop="10dp"
-        android:paddingLeft="10dp"
         android:hint="@string/signup_email" />
+
+    <!-- Prompt for user email -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/signup_security_question"
+        android:textSize="20dp"
+        android:layout_marginTop="10dp"
+        android:id="@+id/securityQuestionPrompt" />
 
     <!-- Ask for user's preferred security question -->
     <EditText
@@ -76,8 +113,17 @@
         android:layout_width="fill_parent"
         android:background="@drawable/round_corners"
         android:layout_marginTop="10dp"
-        android:paddingLeft="10dp"
         android:hint="@string/signup_security_question"/>
+
+    <!-- Prompt for user email -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/signup_security_answer"
+        android:textSize="20dp"
+        android:layout_marginTop="10dp"
+        android:id="@+id/securityAnswerPrompt" />
 
     <!-- Ask for user's security question's answer -->
     <EditText
@@ -86,7 +132,6 @@
         android:layout_width="fill_parent"
         android:background="@drawable/round_corners"
         android:layout_marginTop="10dp"
-        android:paddingLeft="10dp"
         android:hint="@string/signup_security_answer" />
 
     <!-- Submit button -->

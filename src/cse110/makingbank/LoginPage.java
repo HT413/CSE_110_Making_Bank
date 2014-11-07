@@ -51,7 +51,7 @@ public class LoginPage extends Activity {
         ParseUser.logInInBackground(username, password, new LogInCallback() {
             public void done(ParseUser user, ParseException e) {
                 if (user != null && e == null) { // No exception, user can log in normaly
-                    if (ParseUser.getCurrentUser().getBoolean("emailVerified"))
+                    if (user.getBoolean("emailVerified"))
                         completeLogin();
                     else{
                         TextView pageNotice = (TextView) findViewById(R.id.loginPagePrompt);
@@ -115,9 +115,13 @@ public class LoginPage extends Activity {
         String answer = securityField.getText().toString();
         String question = securityQuestionField.getText().toString();
 
+        boolean noError = true;
+        if (username.length() < 4)
+            noError = false;
+
         // Complete the registration if the user filled in all fields
         if (!username.equals("") && !password.equals("") && !email.equals("")
-                && !answer.equals("") && !question.equals("")){
+                && !answer.equals("") && !question.equals("") && noError){
             ParseUser user = new ParseUser();
             user.setUsername(username);
             user.setPassword(password);
@@ -150,7 +154,10 @@ public class LoginPage extends Activity {
         // Not all fields complete, give an error message until the user fills in everything
         else{
             TextView pageNotice = (TextView) findViewById(R.id.registerPagePrompt);
-            pageNotice.setText ("One or more fields are missing.");
+            pageNotice.setText ("Please double check all fields!");
+            if (username.length() < 4)
+                ((TextView) findViewById(R.id.usernamePrompt))
+                        .setText("MUST BE AT LEAST 4 CHARS LONG!");
         }
     }
 

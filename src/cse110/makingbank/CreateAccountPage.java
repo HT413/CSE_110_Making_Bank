@@ -125,8 +125,9 @@ public class CreateAccountPage extends Activity{
                 // Assign a unique account number to the account
                 final int accountIndex = currentUser.getInt("numAccounts");
                 String name = "" + (username.toString().charAt(0) - ' ') +
-                    (username.toString().charAt(1) - ' ') +  accountIndex;
-                int accountRnd = generateRnd(10 - name.length());
+                    (username.toString().charAt(1) - ' ') +  (username.toString().charAt(2) - ' ')
+                    +  accountIndex;
+                int accountRnd = generateRnd(11 - name.length());
 
                 // Create a new Parse object of type BankAccount
                 ParseObject bankAccount = new ParseObject("bankAccount");
@@ -140,7 +141,7 @@ public class CreateAccountPage extends Activity{
                 bankAccount.put("phone", phoneNum); // Object holds phone number
                 bankAccount.put("city", city); // Object holds current city
                 bankAccount.put("state", currentState); // Object holds current state
-                bankAccount.put("poBox", PONumber); // Object holds P.O. number
+                bankAccount.put("zipCode", PONumber); // Object holds P.O. number
                 bankAccount.put("accountType", accountType); // Finally, record the account type
                 // Save this info & send to Parse
                 bankAccount.saveInBackground(new SaveCallback() {
@@ -181,14 +182,13 @@ public class CreateAccountPage extends Activity{
             //Throw error and tell user to fill in all fields
             else {
                 TextView pageNotice = (TextView) findViewById(R.id.createAccountPageDesc);
-                pageNotice.setText("One or more fields are invalid.");
+                pageNotice.setText("Please double check all fields.");
                 if (!validPO){
-                    POField.setText("");
-                    POField.setHint("Invalid PO Box!");
+                    ((TextView) findViewById(R.id.zipCodePrompt)).setText("INVALID ZIP CODE");
                 }
                 if (!validPhone) {
-                    phoneField.setText("");
-                    phoneField.setHint("Invalid Phone Number!");
+                    ((TextView) findViewById(R.id.createAccountPhoneDesc))
+                            .setText("MUST BE XXX-YYY-ZZZ FORMAT!");
                 }
                 ScrollView mainView = (ScrollView) findViewById(R.id.scrollviewCreateAccount);
                 mainView.fullScroll(ScrollView.FOCUS_UP);

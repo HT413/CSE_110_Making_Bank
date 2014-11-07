@@ -32,8 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/create_account_page_desc"
-            android:textSize="20sp"
-            android:textColor="@color/TGRAY"
+            android:textSize="24dp"
             android:id="@+id/createAccountPageDesc"/>
 
         <!-- Ask for user's first name -->
@@ -62,9 +61,8 @@
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:layout_marginTop="10dp"
-            android:textSize="20sp"
-            android:textColor="@color/BLACK"
-            android:hint="@string/string_phone" />
+            android:textSize="24dp"
+            android:text="@string/string_phone" />
 
         <!-- Ask for user's phone number -->
         <EditText
@@ -84,9 +82,9 @@
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:layout_marginTop="10dp"
-            android:textSize="20sp"
+            android:textSize="24dp"
             android:textColor="@color/BLACK"
-            android:hint="@string/string_address" />
+            android:text="@string/string_address" />
 
         <!-- Ask for user's address line 1 -->
         <EditText
@@ -115,6 +113,16 @@
             android:layout_width="fill_parent"
             android:layout_marginTop="10dp"
             android:background="@drawable/round_corners"/>
+
+        <!-- Ask for user's Zip code -->
+        <TextView
+            android:id="@+id/zipCodePrompt"
+            android:text="@string/string_box_number"
+            android:textSize="24dp"
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:layout_marginTop="10dp"
+            android:paddingLeft="10dp"/>
 
         <!-- Ask for user's P.O. number -->
         <EditText
