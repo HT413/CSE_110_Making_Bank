@@ -32,13 +32,15 @@
     <string name="view_account_page_title">View Bank Accounts</string>
     <string name="view_transactions_title">Transactions</string>
     <string name="button_logout">Log Out</string>
+    <string name="button_my_info">Edit Info</string>
+    <string name="title_my_info">Edit Your Info</string>
     
     <!-- Strings used for creating buttons -->
     <string name="next">Next</string>
 
     <!-- Strings originating from Create Account page -->
     <string name="create_account_page_title">Create Bank Account</string>
-    <string name="create_account_page_desc">Please enter your info</string>
+    <string name="create_account_page_desc">Select an account type</string>
     <string name="first_name">First Name</string>
     <string name="last_name">Last Name</string>
     <string name="string_address">Current Address</string>
@@ -154,8 +156,7 @@
     <color name="GRAY">#444444</color>
     <color name="BROWN">#440000</color>
     <color name="ORANGE">#FF8800</color>
-    <color name="PURPLE">#CCCCFF</color>
-    <color name="DGRAY">#B7B7D6</color>
-    <color name="TGRAY">#888888</color>
+    <color name="BLUEGRAY">#CCCCFF</color>
+    <color name="LIGHTBLUE">#AAAADD</color>
 
 </resources>

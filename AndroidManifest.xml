@@ -45,6 +45,9 @@
         <activity
             android:name=".PasswordReset">
         </activity>
+        <activity
+            android:name=".MyInfo">
+        </activity>
     </application>
 
 </manifest>

@@ -16,11 +16,13 @@ import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
 public class AccountOptions extends Activity {
 
     private String accountNumber;
     private double currentBalance;
+    private ParseUser currentUser;
 
     /**
      * Method onCreate
@@ -35,6 +37,9 @@ public class AccountOptions extends Activity {
         try {
             getActionBar().hide();
         }catch (Exception e){}
+
+        // Get current user
+        currentUser = ParseUser.getCurrentUser();
 
         // Get the passed in data
         Bundle extras = getIntent().getExtras();
@@ -63,11 +68,12 @@ public class AccountOptions extends Activity {
 
     /**
      * Overridden method onBackPressed
-     * Send user back to this screen
+     * Send user back to view accounts page
      */
     @Override
     public void onBackPressed(){
-        backToHome(null);
+        Intent intent = new Intent(this, ViewAccountPage.class);
+        this.startActivity(intent);
     }
 
     /**
@@ -90,6 +96,11 @@ public class AccountOptions extends Activity {
                     else{
                         // Close the account
                         account.deleteInBackground();
+                        // Update the account index again
+                        int oldIndex = currentUser.getInt("numAccounts");
+                        currentUser.put("numAccounts", oldIndex - 1);
+                        currentUser.saveInBackground();
+                        // Now go back
                         onBackPressed();
                     }
                 }

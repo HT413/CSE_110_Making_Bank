@@ -6,7 +6,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="@color/PURPLE"
+    android:background="@color/BLUEGRAY"
     tools:context="cse110.makingbank.MakingBank" >
 
    <!-- Title on main page -->
@@ -24,18 +24,39 @@
       android:layout_alignParentLeft="true"
       android:layout_alignRight="@+id/button_account_create"/>
 
+   <!-- Edit info button -->
+   <Button
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:text="@string/button_my_info"
+       android:id="@+id/editInfoButton"
+       android:textSize="30sp"
+       android:background="@drawable/button_round_corners"
+       android:textColor="@color/BROWN"
+       android:layout_below="@+id/mainMenuTitle"
+       android:layout_marginTop="30dp"
+       android:layout_alignParentRight="true"
+       android:layout_alignParentEnd="true"
+       android:layout_alignParentLeft="true"
+       android:layout_alignParentStart="true"
+       android:onClick="goEditInfo"/>
+
    <!-- Create Account button on main page -->
    <Button
         android:id="@+id/button_account_create"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/button_account_create"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/button_round_corners"
         android:textSize="30sp"
         android:textColor="@color/BROWN"
-        android:layout_marginTop="54dp"
+        android:onClick="createAccount"
+        android:layout_below="@+id/editInfoButton"
         android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentLeft="true"
-        android:onClick="createAccount"/>
+        android:layout_alignParentStart="true"/>
 
    <!-- View Account button on main page -->
    <Button
@@ -44,8 +65,9 @@
       android:layout_height="wrap_content"
       android:text="@string/button_account_view"
       android:textSize="30sp"
+      android:background="@drawable/button_round_corners"
       android:textColor="@color/BROWN"
-      android:layout_marginTop="40dp"
+      android:layout_marginTop="30dp"
       android:onClick="goViewAccount"
       android:layout_below="@+id/button_account_create"
       android:layout_alignParentLeft="true"
@@ -61,7 +83,8 @@
         android:text="@string/button_logout"
         android:textSize="30sp"
         android:textColor="@color/BROWN"
-        android:layout_marginTop="40dp"
+        android:background="@drawable/button_round_corners"
+        android:layout_marginTop="30dp"
         android:onClick="accountLogout"
         android:layout_below="@+id/button_account_view"
         android:layout_alignParentLeft="true"

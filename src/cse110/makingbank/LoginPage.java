@@ -78,8 +78,14 @@ public class LoginPage extends Activity {
      * Defines what happens when the user successfully logs in.
      */
     private void completeLogin(){
-        Intent intent = new Intent(this, BankHomePage.class);
-        startActivity(intent);
+        if (ParseUser.getCurrentUser().getBoolean("givenInfo")) {
+            Intent intent = new Intent(this, BankHomePage.class);
+            startActivity(intent);
+        }
+        else{
+            Intent intent = new Intent(this, MyInfo.class);
+            startActivity(intent);
+        }
     }
 
     /**
@@ -154,10 +160,10 @@ public class LoginPage extends Activity {
         // Not all fields complete, give an error message until the user fills in everything
         else{
             TextView pageNotice = (TextView) findViewById(R.id.registerPagePrompt);
-            pageNotice.setText ("Please double check all fields!");
             if (username.length() < 4)
-                ((TextView) findViewById(R.id.usernamePrompt))
-                        .setText("MUST BE AT LEAST 4 CHARS LONG!");
+                ((TextView) findViewById(R.id.usernamePrompt)).setText("Must be at least" +
+                                                                       " 4 characters long!");
+            pageNotice.setText ("At least one field is invalid!");
         }
     }
 

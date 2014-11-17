@@ -11,7 +11,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="@color/PURPLE"
+    android:background="@color/BLUEGRAY"
     android:scrollbars="vertical" >
 
     <LinearLayout
@@ -44,7 +44,6 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/string_username"
         android:textSize="20dp"
-        android:layout_marginTop="10dp"
         android:id="@+id/usernamePrompt" />
 
     <!-- Ask for user's username -->
@@ -53,7 +52,7 @@
         android:layout_height="wrap_content"
         android:layout_width="fill_parent"
         android:background="@drawable/round_corners"
-        android:layout_marginTop="10dp"
+        android:paddingLeft="5dp"
         android:hint="@string/string_username" />
 
     <!-- Prompt for password -->
@@ -63,7 +62,6 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/string_password"
         android:textSize="20dp"
-        android:layout_marginTop="10dp"
         android:id="@+id/passwordPrompt" />
 
     <!-- Ask for user's password -->
@@ -73,8 +71,8 @@
         android:layout_width="fill_parent"
         android:inputType="textPassword"
         android:background="@drawable/round_corners"
-        android:layout_marginTop="10dp"
-        android:hint="@string/string_password" />
+        android:hint="@string/string_password"
+        android:paddingLeft="5dp"/>
 
     <!-- Prompt for user email -->
     <TextView
@@ -83,7 +81,6 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/signup_email"
         android:textSize="20dp"
-        android:layout_marginTop="10dp"
         android:id="@+id/emailPrompt" />
 
     <!-- Ask for user's email -->
@@ -93,17 +90,16 @@
         android:layout_height="wrap_content"
         android:layout_width="fill_parent"
         android:background="@drawable/round_corners"
-        android:layout_marginTop="10dp"
-        android:hint="@string/signup_email" />
+        android:hint="@string/signup_email"
+        android:paddingLeft="5dp" />
 
-    <!-- Prompt for user email -->
+    <!-- Prompt for security question -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/signup_security_question"
         android:textSize="20dp"
-        android:layout_marginTop="10dp"
         android:id="@+id/securityQuestionPrompt" />
 
     <!-- Ask for user's preferred security question -->
@@ -112,18 +108,8 @@
         android:layout_height="wrap_content"
         android:layout_width="fill_parent"
         android:background="@drawable/round_corners"
-        android:layout_marginTop="10dp"
-        android:hint="@string/signup_security_question"/>
-
-    <!-- Prompt for user email -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/signup_security_answer"
-        android:textSize="20dp"
-        android:layout_marginTop="10dp"
-        android:id="@+id/securityAnswerPrompt" />
+        android:hint="@string/signup_security_question"
+        android:paddingLeft="5dp"/>
 
     <!-- Ask for user's security question's answer -->
     <EditText
@@ -131,7 +117,8 @@
         android:layout_height="wrap_content"
         android:layout_width="fill_parent"
         android:background="@drawable/round_corners"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
+        android:paddingLeft="5dp"
         android:hint="@string/signup_security_answer" />
 
     <!-- Submit button -->
@@ -140,9 +127,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="submitSignUp"
+        android:background="@drawable/button_round_corners"
         android:text="@string/button_complete_register"
         android:textSize="24sp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:textColor="@color/BROWN"/>
 
     </LinearLayout>

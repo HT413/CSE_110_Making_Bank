@@ -69,4 +69,14 @@ public class BankHomePage extends Activity {
         Intent intent = new Intent(this, LoginPage.class);
         startActivity(intent);
     }
+
+    /**
+     * Method: changeInfo
+     * This function defines what happens when the user taps on the
+     * change info button in our main menu
+     */
+    public void goEditInfo(View view){
+        Intent intent = new Intent (this, MyInfo.class);
+        startActivity(intent);
+    }
 }

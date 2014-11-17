@@ -8,13 +8,13 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="@color/PURPLE"
+    android:background="@color/BLUEGRAY"
     android:scrollbars="vertical" >
 
 	<LinearLayout
 	    android:layout_width="fill_parent"
 	    android:layout_height="wrap_content"
-	    android:background="@color/PURPLE"
+	    android:background="@color/BLUEGRAY"
 	    android:orientation="vertical" >
 		
         <!-- Title for account creation page -->
@@ -35,106 +35,6 @@
             android:textSize="24dp"
             android:id="@+id/createAccountPageDesc"/>
 
-        <!-- Ask for user's first name -->
-        <EditText
-            android:id="@+id/EditTextFirstName"
-            android:layout_height="wrap_content"
-            android:layout_width="fill_parent"
-            android:paddingLeft="10dp"
-            android:background="@drawable/round_corners"
-            android:hint="@string/first_name" />
-
-        <!-- Ask for user's last name -->
-        <EditText
-            android:id="@+id/EditTextLastName"
-            android:layout_height="wrap_content"
-            android:layout_width="fill_parent"
-            android:paddingLeft="10dp"
-            android:background="@drawable/round_corners"
-            android:layout_marginTop="10dp"
-            android:hint="@string/last_name" />
-
-
-        <!--  Prompt user to enter phone number -->
-        <TextView
-            android:id="@+id/createAccountPhoneDesc"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:layout_marginTop="10dp"
-            android:textSize="24dp"
-            android:text="@string/string_phone" />
-
-        <!-- Ask for user's phone number -->
-        <EditText
-            android:id="@+id/EditTextPhoneNumber"
-            android:inputType="phone"
-            android:layout_height="wrap_content"
-            android:layout_width="fill_parent"
-            android:layout_marginTop="10dp"
-            android:paddingLeft="10dp"
-            android:background="@drawable/round_corners"
-            android:hint="@string/phone_hint" />
-
-
-        <!--  Prompt user to choose account type -->
-        <TextView
-            android:id="@+id/createAccountAddressDesc"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:layout_marginTop="10dp"
-            android:textSize="24dp"
-            android:textColor="@color/BLACK"
-            android:text="@string/string_address" />
-
-        <!-- Ask for user's address line 1 -->
-        <EditText
-            android:id="@+id/EditTextAddress1"
-            android:layout_height="wrap_content"
-            android:layout_width="fill_parent"
-            android:layout_marginTop="10dp"
-            android:paddingLeft="10dp"
-            android:background="@drawable/round_corners"
-            android:hint="@string/string_address_line" />
-
-        <!-- Ask for user's city-->
-        <EditText
-            android:id="@+id/EditTextCity"
-            android:layout_height="wrap_content"
-            android:layout_width="fill_parent"
-            android:layout_marginTop="10dp"
-            android:paddingLeft="10dp"
-            android:background="@drawable/round_corners"
-            android:hint="@string/string_current_city" />
-
-        <!-- A dropbox to select the state -->
-        <Spinner
-            android:id="@+id/SelectCurrentState"
-            android:layout_height="wrap_content"
-            android:layout_width="fill_parent"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/round_corners"/>
-
-        <!-- Ask for user's Zip code -->
-        <TextView
-            android:id="@+id/zipCodePrompt"
-            android:text="@string/string_box_number"
-            android:textSize="24dp"
-            android:layout_height="wrap_content"
-            android:layout_width="fill_parent"
-            android:layout_marginTop="10dp"
-            android:paddingLeft="10dp"/>
-
-        <!-- Ask for user's P.O. number -->
-        <EditText
-            android:id="@+id/EditTextBoxNumber"
-            android:inputType="number"
-            android:layout_height="wrap_content"
-            android:layout_width="fill_parent"
-            android:background="@drawable/round_corners"
-            android:layout_marginTop="10dp"
-            android:paddingLeft="10dp"
-            android:hint="@string/string_box_number" />
-
         <!--  Prompt user to choose account type -->
         <TextView
             android:id="@+id/createAccountAccTypeDesc"
@@ -152,6 +52,7 @@
             android:layout_height="wrap_content"
             android:layout_width="fill_parent"
             android:layout_marginTop="10dp"
+            android:paddingLeft="5dp"
             android:background="@drawable/round_corners"/>
 
         <!-- Submit button -->
@@ -160,6 +61,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="submitInfo"
+            android:background="@drawable/button_round_corners"
             android:text="@string/button_submit_info"
             android:textSize="24sp"
             android:layout_marginTop="20dp"
