@@ -37,8 +37,7 @@ public class ViewAccountPage extends Activity{
         }catch (Exception e){}
         
         // retrieve the user info for the account
-        ParseUser current = ParseUser.getCurrentUser();
-        String username = current.getUsername();
+        String username = ParseUser.getCurrentUser().getUsername();
         
         // find the bank accounts
         ParseQuery<ParseObject> query = ParseQuery.getQuery("bankAccount");

@@ -42,6 +42,7 @@
         android:text="@string/string_transfer"
         android:background="@drawable/button_round_corners"
         android:id="@+id/buttonTransferMoney"
+        android:onClick="selectTransferOption"
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
         android:layout_alignParentLeft="true"
@@ -49,16 +50,21 @@
         android:layout_marginTop="20dp"
         android:layout_below="@+id/currentBalance"/>
 
+    <!-- THreshold edit button -->
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="AVAILABLE SOON"
-        android:hint="@string/string_view_statement"
-        android:id="@+id/buttonViewStatement"
+        android:text="@string/string_threshold_change"
+        android:background="@drawable/button_round_corners"
+        android:id="@+id/buttonEditThreshold"
+        android:onClick="changeThreshold"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
         android:layout_alignBottom="@+id/buttonTransferMoney"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"/>
 
+    <!-- View statement (transaction history) button -->
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -73,6 +79,7 @@
         android:layout_alignEnd="@+id/buttonTransferMoney"
         android:onClick="viewHistory"/>
 
+    <!-- Close account button -->
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -82,10 +89,11 @@
         android:layout_alignBottom="@+id/buttonViewHistory"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_alignLeft="@+id/buttonViewStatement"
-        android:layout_alignStart="@+id/buttonViewStatement"
+        android:layout_alignLeft="@+id/buttonEditThreshold"
+        android:layout_alignStart="@+id/buttonEditThreshold"
         android:onClick="requestClose"/>
 
+    <!-- Home menu button -->
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

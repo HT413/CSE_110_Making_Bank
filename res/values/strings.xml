@@ -56,17 +56,26 @@
     <string name="account_actions_title">Info for account</string>
     <string name="string_transfer">Transfer Money</string>
     <string name="string_close">Close Account</string>
-    <string name="string_view_history">View History</string>
+    <string name="string_view_history">View Statement</string>
     <string name="string_current_balance">Current Balance: $</string>
-    <string name="string_view_statement">View Statement</string>
+    <string name="string_threshold_change">Change Threshold</string>
     <string name="string_home_menu">Home Menu</string>
 
-    <!-- String originating from admin's home page -->
+    <!-- Strings originating from admin's home page -->
     <string name="string_find_account">Account Lookup</string>
     <string name="string_perform_transaction">Perform Transaction</string>
     <string name="string_select_transaction">Transaction Type</string>
     <string name="string_account_name">Account Number</string>
     <string name="string_value">Transaction Amount</string>
+
+    <!-- Strings in the edit threshold page -->
+    <string name="threshold_prompt">You will be notified if your account balance falls below
+         the specified amount of money.
+    </string>
+
+    <!-- Strings in the transfer page -->
+    <string name="string_transfer_self">Transfer Between Accounts</string>
+    <string name="string_transfer_other">Transfer to Another Person</string>
 
     <!-- MISCELLANEOUS STRINGS AND VALUES -->
 

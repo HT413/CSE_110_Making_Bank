@@ -84,6 +84,7 @@ public class CreateAccountPage extends Activity{
                 bankAccount.put("accountNumber", name + accountRnd);
                 bankAccount.put("user", username); // Object holds username
                 bankAccount.put("balance", 0); // Object holds current balance
+                bankAccount.put("threshold", 0); // Object holds current default threshold
                 bankAccount.put("email", email); // Object holds user email
                 bankAccount.put("phone", phoneNum); // Object holds phone number
                 bankAccount.put("accountType", accountType); // Finally, record the account type

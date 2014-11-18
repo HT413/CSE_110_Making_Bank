@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TextView;
@@ -23,6 +24,7 @@ public class AccountOptions extends Activity {
     private String accountNumber;
     private double currentBalance;
     private ParseUser currentUser;
+    private ParseObject theAccount;
 
     /**
      * Method onCreate
@@ -54,11 +56,15 @@ public class AccountOptions extends Activity {
         query.findInBackground( new FindCallback<ParseObject>() {
             public void done(List<ParseObject> list, ParseException e){
                 if (list.size() > 0 && e == null){
+                    // Display the account balance
                     TextView balance = (TextView) findViewById(R.id.currentBalance);
-                    currentBalance = list.get(0).getDouble("balance");
+                    theAccount = list.get(0);
+                    currentBalance = theAccount.getDouble("balance");
                     balance.setText(balance.getText().toString() + currentBalance);
                 }
                 else{
+                    // If there was an error, it can only be a network error since the account
+                    // must have been found in order to get to this page in the first place
                     TextView balance = (TextView) findViewById(R.id.currentBalance);
                     balance.setText("NETWORK CONNECTION ERROR!");
                 }
@@ -68,11 +74,12 @@ public class AccountOptions extends Activity {
 
     /**
      * Overridden method onBackPressed
-     * Send user back to view accounts page
+     * Send user back to this account options page
      */
     @Override
     public void onBackPressed(){
-        Intent intent = new Intent(this, ViewAccountPage.class);
+        Intent intent = new Intent(this, AccountOptions.class);
+        intent.putExtra("accountName", accountNumber);
         this.startActivity(intent);
     }
 
@@ -84,16 +91,15 @@ public class AccountOptions extends Activity {
         // First, query for the account
         ParseQuery<ParseObject> query = ParseQuery.getQuery("bankAccount");
         query.whereEqualTo("accountNumber", accountNumber);
-        query.findInBackground( new FindCallback<ParseObject>() {
-            public void done(List<ParseObject> list, ParseException e){
-                if (list.size() > 0 && e == null){
+        query.findInBackground(new FindCallback<ParseObject>() {
+            public void done(List<ParseObject> list, ParseException e) {
+                if (list.size() > 0 && e == null) {
                     ParseObject account = list.get(0);
-                    if (currentBalance > 0){
+                    if (currentBalance > 0) {
                         // Should not let user delete the account if it has money
                         TextView pageTitle = (TextView) findViewById(R.id.accountInfoPageTitle);
                         pageTitle.setText("CAN'T DELETE AN ACCOUNT WITH MONEY");
-                    }
-                    else{
+                    } else {
                         // Close the account
                         account.deleteInBackground();
                         // Update the account index again
@@ -103,8 +109,7 @@ public class AccountOptions extends Activity {
                         // Now go back
                         onBackPressed();
                     }
-                }
-                else{
+                } else {
                     TextView balance = (TextView) findViewById(R.id.currentBalance);
                     balance.setText("NETWORK CONNECTION ERROR!");
                 }
@@ -123,7 +128,7 @@ public class AccountOptions extends Activity {
 
     /**
      * Method viewHistory
-     * Display the transaction history to the user
+     * Display the transaction history (statement) to the user
      */
     public void viewHistory(View view){
         // Query for transactions first
@@ -131,7 +136,7 @@ public class AccountOptions extends Activity {
         // Query for all transactions from this specific account
         query.whereEqualTo("account", accountNumber);
         // Now find all the transactions
-        query.findInBackground( new FindCallback<ParseObject>() {
+        query.findInBackground(new FindCallback<ParseObject>() {
             public void done(List<ParseObject> list, ParseException e) {
                 // Layout to list all fetched transactions
                 LinearLayout l = new LinearLayout(AccountOptions.this);
@@ -140,7 +145,7 @@ public class AccountOptions extends Activity {
                 l.setOrientation(LinearLayout.VERTICAL);
 
                 // List transactions only if no errors and if there were transactions in the list
-                if (list.size() > 0 && e == null){
+                if (list.size() > 0 && e == null) {
 
                     // Set the buttons to be 10 pixels from the sides and apart from each other
                     LinearLayout.LayoutParams params = new TableLayout.LayoutParams
@@ -154,10 +159,10 @@ public class AccountOptions extends Activity {
                         Button b = new Button(AccountOptions.this);
                         // Display the transaction info
                         b.setText("On " + transaction.getCreatedAt().toString() + ":\n" +
-                                  transaction.getString("type") + "ed $" +
-                                  transaction.getDouble("amount") + ".\n" +
-                                  "Balance before: $" + transaction.getDouble("before") +
-                                  "\nBalance after: $" + transaction.getDouble("after"));
+                                transaction.getString("type") + "ed $" +
+                                transaction.getDouble("amount") + ".\n" +
+                                "Balance before: $" + transaction.getDouble("before") +
+                                "\nBalance after: $" + transaction.getDouble("after"));
                         b.setTextSize(12);
                         b.setBackgroundResource(R.drawable.button_round_corners);
                         b.setLayoutParams(params);
@@ -165,15 +170,15 @@ public class AccountOptions extends Activity {
                     }
                 }
                 // No transactions, tell user that.
-                else{
+                else {
                     // display to the user that he has no accounts
                     TextView error = new TextView(AccountOptions.this);
                     error.setLayoutParams(new TableLayout.LayoutParams
-                        (TableLayout.LayoutParams.WRAP_CONTENT, TableLayout.LayoutParams.WRAP_CONTENT));
+                            (TableLayout.LayoutParams.WRAP_CONTENT, TableLayout.LayoutParams.WRAP_CONTENT));
                     error.setX(20);
                     error.setY(20);
                     error.setText("No transactions recorded for this account. " +
-                                  "Press the back button to return.");
+                            "Press the back button to return.");
                     error.setTextSize(30);
                     error.setTextColor(Color.RED);
                     l.addView(error);
@@ -181,5 +186,41 @@ public class AccountOptions extends Activity {
                 AccountOptions.this.setContentView(l);
             }
         });
+    }
+
+    /**
+     * Method changeThreshold
+     * This method will be called if user clicks on the Change Threshold button
+     * Change the current account notification threshold
+     */
+    public void changeThreshold(View view){
+        setContentView(R.layout.change_threshold_page);
+        // Change the page layout and display the current threshold
+        ((EditText) findViewById(R.id.valueForNotify)).
+            setText("" + theAccount.getInt("threshold"));
+    }
+
+    /**
+     * Method submitNewThreshold
+     * This method will be called if user clicks on the Submit button.
+     * Change the account notification threshold to the new value.
+     */
+    public void submitNewThreshold(View view){
+        // Android limits the keypad to be non-negative numerical only, so no error checks needed
+        theAccount.put("threshold", Integer.parseInt
+                      (((TextView) findViewById(R.id.valueForNotify)).getText().toString()));
+        // Now save the info
+        theAccount.saveInBackground();
+        // Go back to the main account view page
+        onBackPressed();
+    }
+
+    /**
+     * Method selectTransferOption
+     * This method is called when the user clicks on the transfer money button.
+     * Let the user pick which money transfer option to use.
+     */
+    public void selectTransferOption(View view){
+        setContentView(R.layout.select_transfer_option_page);
     }
 }
