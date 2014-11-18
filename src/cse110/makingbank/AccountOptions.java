@@ -45,7 +45,7 @@ public class AccountOptions extends Activity {
 
         // Get the passed in data
         Bundle extras = getIntent().getExtras();
-        accountNumber = extras.getString("accountName");
+        accountNumber = extras.getString("accountNum");
         TextView pageTitle = (TextView) findViewById(R.id.accountInfoPageTitle);
         pageTitle.setText(pageTitle.getText().toString() + " " + accountNumber);
 
@@ -222,5 +222,18 @@ public class AccountOptions extends Activity {
      */
     public void selectTransferOption(View view){
         setContentView(R.layout.select_transfer_option_page);
+    }
+
+    /**
+     * Method transferSelf
+     * This method is called when the user chooses to transfer money between his/her own
+     * accounts. Passes the current account onto the new account selection page.
+     */
+    public void transferSelf(View view){
+        Intent intent = new Intent (this, TransferSelfPage.class);
+        // Append to this new activity the account number and current balance
+        intent.putExtra("accountNum", accountNumber);
+        intent.putExtra("maxBalance", currentBalance);
+        startActivity(intent);
     }
 }

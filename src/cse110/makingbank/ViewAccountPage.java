@@ -47,22 +47,21 @@ public class ViewAccountPage extends Activity{
         	public void done(List<ParseObject> al, ParseException e) 
         	{
                 // create a layout to put fetched accounts in
-                LinearLayout l = new LinearLayout(ViewAccountPage.this);
-                l.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT,
+                LinearLayout layout = new LinearLayout(ViewAccountPage.this);
+                layout.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT,
                         LayoutParams.MATCH_PARENT));
-                l.setOrientation(LinearLayout.VERTICAL);
+                layout.setOrientation(LinearLayout.VERTICAL);
 
                 // Set the buttons to be 30 pixels from the sides and apart from each other
                 LinearLayout.LayoutParams params = new LayoutParams
                         (LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
                 params.setMargins(30, 30, 30, 0);
 
-                // if we found accounts
+                // Display accounts only if we found any
                 if ( e == null && al.size() != 0 ) {
-                    // add the layouts to the view
                     for (int i = 0; i < al.size(); i++) {
                         ParseObject account = al.get(i);
-                        // make them a button so that we can view in more detail
+                        // Add them as a list of buttons
                         Button b = new Button(ViewAccountPage.this);
                         final String nickname = account.getString("accountNumber");
                         String bText = account.getString("accountType") + " account " + nickname;
@@ -75,27 +74,27 @@ public class ViewAccountPage extends Activity{
                             public void onClick(View v) {
                                 Intent intent = new Intent(ViewAccountPage.this,
                                         AccountOptions.class);
-                                intent.putExtra("accountName", nickname);
+                                intent.putExtra("accountNum", nickname);
                                 ViewAccountPage.this.startActivity(intent);
                             }
                         });
-                        l.addView(b);
+                        layout.addView(b);
                     }
                 }
-                else // if no accounts are found
+                else // No accounts found
                 {
-                    // display to the user that he has no accounts
-                    TextView poor = new TextView(ViewAccountPage.this);
-                    poor.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT,
+                    // Give user a warning if no accounts are found
+                    TextView notice = new TextView(ViewAccountPage.this);
+                    notice.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT,
                             LayoutParams.WRAP_CONTENT));
-                    poor.setX(20);
-                    poor.setY(20);
-                    poor.setText("You have no accounts. Press the back button to return.");
-                    poor.setTextSize(30);
-                    poor.setTextColor(Color.RED);
-                    l.addView(poor);
+                    notice.setX(20);
+                    notice.setY(20);
+                    notice.setText("You have no accounts. Press the back button to return.");
+                    notice.setTextSize(30);
+                    notice.setTextColor(Color.RED);
+                    layout.addView(notice);
                 }
-                ViewAccountPage.this.setContentView(l);
+                ViewAccountPage.this.setContentView(layout);
                }
         } );
     }

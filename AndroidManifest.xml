@@ -48,6 +48,12 @@
         <activity
             android:name=".MyInfo">
         </activity>
+        <activity
+            android:name=".TransferSelfPage">
+        </activity>
+        <activity
+            android:name=".SelfTransfer">
+        </activity>
     </application>
 
 </manifest>
