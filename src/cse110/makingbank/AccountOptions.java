@@ -79,7 +79,7 @@ public class AccountOptions extends Activity {
     @Override
     public void onBackPressed(){
         Intent intent = new Intent(this, AccountOptions.class);
-        intent.putExtra("accountName", accountNumber);
+        intent.putExtra("accountNum", accountNumber);
         this.startActivity(intent);
     }
 

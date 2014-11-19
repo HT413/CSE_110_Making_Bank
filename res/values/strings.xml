@@ -76,6 +76,7 @@
     <!-- Strings in the transfer page -->
     <string name="string_transfer_self">Transfer Between Accounts</string>
     <string name="string_transfer_other">Transfer to Another Person</string>
+    <string name="string_amount_transfer">Amount to Transfer</string>
 
     <!-- MISCELLANEOUS STRINGS AND VALUES -->
 

@@ -92,7 +92,7 @@ public class TransferSelfPage extends Activity{
                             b.setOnClickListener(new View.OnClickListener() {
                                 public void onClick(View v) {
                                     Intent intent = new Intent(TransferSelfPage.this,
-                                            AccountOptions.class);
+                                            SelfTransfer.class);
                                     intent.putExtra("transferFrom", theAccount);
                                     intent.putExtra("transferTo", accountNum);
                                     intent.putExtra("maxBalance", balance);

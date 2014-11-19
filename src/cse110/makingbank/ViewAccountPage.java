@@ -63,8 +63,8 @@ public class ViewAccountPage extends Activity{
                         ParseObject account = al.get(i);
                         // Add them as a list of buttons
                         Button b = new Button(ViewAccountPage.this);
-                        final String nickname = account.getString("accountNumber");
-                        String bText = account.getString("accountType") + " account " + nickname;
+                        final String number = account.getString("accountNumber");
+                        String bText = account.getString("accountType") + " account " + number;
                         b.setText(bText);
                         b.setBackgroundResource(R.drawable.button_round_corners);
                         b.setLayoutParams(params);
@@ -74,7 +74,7 @@ public class ViewAccountPage extends Activity{
                             public void onClick(View v) {
                                 Intent intent = new Intent(ViewAccountPage.this,
                                         AccountOptions.class);
-                                intent.putExtra("accountNum", nickname);
+                                intent.putExtra("accountNum", number);
                                 ViewAccountPage.this.startActivity(intent);
                             }
                         });
