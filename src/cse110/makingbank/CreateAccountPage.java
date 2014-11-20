@@ -79,6 +79,13 @@ public class CreateAccountPage extends Activity{
                     (username.toString().charAt(2) - 0x17) + accountIndex;
                 int accountRnd = generateRnd(10 - name.length());
 
+                // Make this the default account for accepting transfers if it is the first ever
+                // created account.
+                if(accountIndex == 0){
+                    currentUser.put("defaultAccount", name + accountRnd);
+                    currentUser.saveInBackground();
+                }
+
                 // Create a new Parse object of type BankAccount
                 ParseObject bankAccount = new ParseObject("bankAccount");
                 bankAccount.put("accountNumber", name + accountRnd);

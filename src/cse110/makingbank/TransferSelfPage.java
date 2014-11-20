@@ -74,7 +74,7 @@ public class TransferSelfPage extends Activity{
                     notice.setY(20);
                     notice.setText("Please select an account to transfer money to.");
                     notice.setTextSize(30);
-                    notice.setTextColor(Color.GREEN);
+                    notice.setTextColor(Color.BLACK);
                     layout.addView(notice);
                     // Now add all accounts that we can transfer to to the layout
                     for (ParseObject account: al) {

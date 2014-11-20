@@ -60,6 +60,9 @@
     <string name="string_current_balance">Current Balance: $</string>
     <string name="string_threshold_change">Change Threshold</string>
     <string name="string_home_menu">Home Menu</string>
+    <string name="string_make_default">Make Default Account</string>
+    <string name="account_info_dashboard">Default Account is the account that receives money
+        during a transfer from another user.</string>
 
     <!-- Strings originating from admin's home page -->
     <string name="string_find_account">Account Lookup</string>
@@ -77,8 +80,19 @@
     <string name="string_transfer_self">Transfer Between Accounts</string>
     <string name="string_transfer_other">Transfer to Another Person</string>
     <string name="string_amount_transfer">Amount to Transfer</string>
+    <string name="string_transfer_other_explanation">Please enter either the phone number or
+        email of the person you wish to transfer to. Money will be transferred to the other
+        customer's default account.</string>
+    <string name="prompt_what_transfer_criteria">Select a criteria</string>
 
     <!-- MISCELLANEOUS STRINGS AND VALUES -->
+
+    <!-- Array for transfer search criteria -->
+    <string-array name="transfer_criteria_options">
+        <item>Select</item>
+        <item>Transfer to email</item>
+        <item>Transfer to phone</item>
+    </string-array>
 
     <!-- Array for account transaction type -->
     <string-array name="account_transaction_types">

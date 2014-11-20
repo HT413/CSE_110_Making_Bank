@@ -23,6 +23,7 @@ public class SelfTransfer extends Activity{
     private String theAccount, accountNum;
     private ParseObject source, destination;
     private double fromBalance, toBalance;
+    private ParseUser currentUser;
 
     /**
      * Method onCreate
@@ -43,20 +44,23 @@ public class SelfTransfer extends Activity{
         theAccount = extras.getString("transferFrom");
         accountNum = extras.getString("transferTo");
         fromBalance = extras.getDouble("maxBalance");
+        currentUser = ParseUser.getCurrentUser();
 
         // Now we need to fetch the accounts in question
         ParseQuery<ParseObject> query = ParseQuery.getQuery("bankAccount");
-        query.whereEqualTo("user", ParseUser.getCurrentUser().getUsername()); // base it on username
+        query.whereEqualTo("user", currentUser.getUsername()); // base it on username
         query.findInBackground(new FindCallback<ParseObject>() {
             // Store the bank accounts in to a list
             public void done(List<ParseObject> al, ParseException e) {
                 // Must find the appropriate account to have stored locally
                 for (ParseObject account: al){
                     String accountNumber = account.getString("accountNumber");
+                    if (accountNumber.equals(accountNum)) {
+                        destination = account;
+                        toBalance = destination.getDouble("balance");
+                    }
                     if (accountNumber.equals(theAccount))
                         source = account;
-                    if (accountNumber.equals(accountNum))
-                        destination = account;
                 }
             }
         });
@@ -65,7 +69,7 @@ public class SelfTransfer extends Activity{
         ((TextView) findViewById(R.id.fromAccountLine)).setText("Account " + theAccount +
             ", balance: $" + fromBalance);
         ((TextView) findViewById(R.id.toAccountLine)).setText("Account " + accountNum +
-            ", balance: $" + (toBalance = destination.getDouble("balance")));
+            ", balance: $" + toBalance);
     }
 
     /**
@@ -75,7 +79,7 @@ public class SelfTransfer extends Activity{
     public void submitTransfer(View view){
         // Due to Android itself limiting the keyboard, all numbers entered will have been
         // numerical
-        EditText amountField = (EditText) findViewById(R.id.transactionAmountField);
+        EditText amountField = (EditText) findViewById(R.id.transferAmountField);
         TextView transferPrompt = (TextView) findViewById(R.id.transferPrompt);
         double transactionAmount;
         if (amountField.getText().toString().equals("")) { // Check for an entry
@@ -91,13 +95,16 @@ public class SelfTransfer extends Activity{
                 transferPrompt.setText("INSUFFICIENT FUNDS!");
             else{ // Sufficient funds, proceed with transaction
                 // Due to minor precision problems with doubles, we need to round again
-                fromBalance = round(fromBalance - transactionAmount, 2);
-                toBalance = round(fromBalance + transactionAmount, 2);
+                double fromAfterBalance = round(fromBalance - transactionAmount, 2);
+                double toAfterBalance = round(toBalance + transactionAmount, 2);
                 // Now store and save the new balances
                 source.put("balance", fromBalance);
                 destination.put("balance", toBalance);
                 source.saveInBackground();
                 destination.saveInBackground();
+                // Log the transactions
+                logTransaction(fromBalance, transactionAmount, fromAfterBalance, "Transfer", theAccount);
+                logTransaction(toBalance, transactionAmount, toAfterBalance, "Receive", accountNum);
                 // Notify user of successful transaction
                 transactionComplete();
             }
@@ -137,5 +144,22 @@ public class SelfTransfer extends Activity{
         Intent intent = new Intent(this, AccountOptions.class);
         intent.putExtra("accountNum", theAccount);
         startActivity(intent);
+    }
+
+    /**
+     * Create transaction log
+     */
+    private void logTransaction(double balanceBefore, double amountChanged,
+                                double balanceAfter, String transactionType, String accountNumber){
+        // Log this successful transaction and save it
+        ParseObject transaction = new ParseObject("transaction");
+        transaction.put("account", accountNumber);
+        transaction.put("type", transactionType);
+        transaction.put("before", balanceBefore);
+        transaction.put("amount", amountChanged);
+        transaction.put("after", balanceAfter);
+        // Save the transaction.
+        transaction.saveInBackground();
+        onBackPressed(); // Go back to home page
     }
 }

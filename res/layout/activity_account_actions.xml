@@ -93,6 +93,20 @@
         android:layout_alignStart="@+id/buttonEditThreshold"
         android:onClick="requestClose"/>
 
+    <!-- Make default account button -->
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/string_make_default"
+        android:id="@+id/button_make_default"
+        android:background="@drawable/button_round_corners"
+        android:layout_alignTop="@+id/buttonGoHome"
+        android:onClick="makeDefault"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/buttonViewHistory"
+        android:layout_alignEnd="@+id/buttonViewHistory"/>
+
     <!-- Home menu button -->
     <Button
         android:layout_width="wrap_content"
@@ -102,9 +116,28 @@
         android:id="@+id/buttonGoHome"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:layout_below="@+id/buttonViewHistory"
-        android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:onClick="backToHome"/>
+        android:onClick="backToHome"
+        android:layout_below="@+id/buttonAccountClose"
+        android:layout_alignRight="@+id/buttonAccountClose"
+        android:layout_alignEnd="@+id/buttonAccountClose"
+        android:layout_alignLeft="@+id/buttonAccountClose"
+        android:layout_alignStart="@+id/buttonAccountClose"/>
 
+    <!-- Another dashboard -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/account_info_dashboard"
+        android:textColor="@color/BROWN"
+        android:textSize="24sp"
+        android:id="@+id/accountInfoDashboard"
+        android:background="@drawable/round_corners"
+        android:layout_below="@+id/button_make_default"
+        android:gravity="center"
+        android:layout_marginTop="20sp"
+        android:layout_alignRight="@+id/buttonGoHome"
+        android:layout_alignLeft="@+id/button_make_default"
+        android:layout_alignEnd="@+id/buttonGoHome"/>
 </RelativeLayout>

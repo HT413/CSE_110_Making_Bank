@@ -17,6 +17,8 @@
         android:name=".MakingBank"
         android:icon="@drawable/ic_launcher"
         android:theme="@style/AppTheme" >
+        <!-- NOTE: For each new Java page (class) created, this file MUST be changed to
+             have the newly created page added as an activity -->
         <activity
             android:name=".LoginPage"
             android:exported="true"
@@ -53,6 +55,9 @@
         </activity>
         <activity
             android:name=".SelfTransfer">
+        </activity>
+        <activity
+            android:name=".TransferOtherPage">
         </activity>
     </application>
 

@@ -22,6 +22,8 @@ import java.text.NumberFormat;
 public class MyInfo extends Activity{
 
     private Spinner stateSpinner;
+    private EditText firstNameField, lastNameField, addressField, cityField, zipField, phoneField;
+    private ParseUser currentUser;
 
     /**
      * Method: onCreate
@@ -47,6 +49,25 @@ public class MyInfo extends Activity{
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         stateSpinner.setAdapter(adapter);
+
+        // Initialize the private variables
+        firstNameField = (EditText) findViewById(R.id.EditTextFirstName);
+        lastNameField = (EditText) findViewById(R.id.EditTextLastName);
+        addressField = (EditText) findViewById(R.id.EditTextAddress1);
+        cityField = (EditText) findViewById(R.id.EditTextCity);
+        zipField = (EditText) findViewById(R.id.EditTextBoxNumber);
+        phoneField = (EditText) findViewById(R.id.EditTextPhoneNumber);
+        currentUser = ParseUser.getCurrentUser();
+
+        // Populate the current fields if entries already previously entered
+        if (currentUser.getBoolean("givenInfo")){
+            firstNameField.setText(currentUser.getString("firstName"));
+            lastNameField.setText(currentUser.getString("lastName"));
+            addressField.setText(currentUser.getString("address"));
+            cityField.setText(currentUser.getString("city"));
+            zipField.setText(currentUser.getInt("zipCode"));
+            phoneField.setText(currentUser.getString("phone"));
+        }
     }
 
     /**
@@ -59,38 +80,26 @@ public class MyInfo extends Activity{
     public void changeInfo(View button)
     {
         synchronized(this){
-            final EditText firstNameField = (EditText) findViewById(R.id.EditTextFirstName);
-            final EditText lastNameField = (EditText) findViewById(R.id.EditTextLastName);
-            final EditText addressField = (EditText) findViewById(R.id.EditTextAddress1);
-            final EditText cityField = (EditText) findViewById(R.id.EditTextCity);
-            final EditText POField = (EditText) findViewById(R.id.EditTextBoxNumber);
-            final EditText phoneField = (EditText) findViewById(R.id.EditTextPhoneNumber);
 
-            boolean validPO = true;
+            boolean validZip = true;
             boolean validPhone = true;
-            int PONumber = -1;
+            int zipCode = -1;
 
             // Get text from all fields
             String firstName = firstNameField.getText().toString();
             String lastName = lastNameField.getText().toString();
             String address = addressField.getText().toString();
             String city = cityField.getText().toString();
-            String PO = POField.getText().toString();
+            String zip = zipField.getText().toString();
             String phoneNum = phoneField.getText().toString();
 
-            // Check if PO box is valid or not
-            if (PO.equals(""))
-                validPO = false;
-            for (int i = 0; i < PO.length(); i++) {
-                if (!(PO.charAt(i) >= '0' && PO.charAt(i) <= '9')) {
-                    validPO = false;
-                    break;
-                }
-            }
-            if (validPO) {
-                PONumber = Integer.parseInt(PO);
-                if (!(PONumber >= 10000 && PONumber <= 99999)) // Check if valid PO box number
-                    PONumber = -1;
+            // Check if zip code is valid or not
+            if (zip.equals(""))
+                validZip = false;
+            if (validZip) {
+                zipCode = Integer.parseInt(zip);
+                if (!(zipCode >= 10000 && zipCode <= 99999)) // Check if valid PO box number
+                    zipCode = -1;
             }
 
             // Check if phone number is valid or not
@@ -104,7 +113,7 @@ public class MyInfo extends Activity{
             //All fields must be filled!
             if (!firstName.equals("") && !lastName.equals("") && !city.equals("")
                     && !currentState.equals("State") && !address.equals("")
-                    && PONumber != -1 && !phoneNum.equals("")) {
+                    && zipCode != -1 && !phoneNum.equals("")) {
                 final ParseUser currentUser = ParseUser.getCurrentUser(); // Get current user\
 
                 // Append the following info to the current user
@@ -114,7 +123,7 @@ public class MyInfo extends Activity{
                 currentUser.put("phone", phoneNum); // Phone number
                 currentUser.put("city", city); // Current city
                 currentUser.put("state", currentState); // Current state
-                currentUser.put("zipCode", PONumber); // Zip Code
+                currentUser.put("zipCode", zipCode); // Zip Code
                 // Save this info & send to Parse
                 currentUser.saveInBackground(new SaveCallback() {
                     public void done(ParseException e) {
@@ -154,9 +163,9 @@ public class MyInfo extends Activity{
             }
             //Throw error and tell user to fill in all fields
             else {
-                TextView pageNotice = (TextView) findViewById(R.id.createAccountPageDesc);
+                TextView pageNotice = (TextView) findViewById(R.id.editPageTitle);
                 pageNotice.setText("Please double check all fields.");
-                if (!validPO){
+                if (!validZip){
                     ((TextView) findViewById(R.id.zipCodePrompt)).setText("INVALID ZIP CODE");
                 }
                 if (!validPhone) {

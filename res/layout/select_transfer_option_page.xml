@@ -35,6 +35,7 @@
         android:textColor="@color/BROWN"
         android:paddingLeft="10sp"
         android:paddingRight="10sp"
+        android:onClick="transferOther"
         android:background="@drawable/button_round_corners"
         android:id="@+id/buttonTransferFriend"
         android:layout_gravity="center_horizontal"/>

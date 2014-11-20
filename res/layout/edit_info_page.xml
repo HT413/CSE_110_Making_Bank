@@ -18,7 +18,7 @@
         android:background="@color/BLUEGRAY"
         android:orientation="vertical" >
 
-        <!-- Title for account creation page -->
+        <!-- Title for edit account info page-->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -26,7 +26,7 @@
             android:text="@string/title_my_info"
             android:textSize="30sp"
             android:textColor="@color/BLUE"
-            android:id="@+id/createAccountPageTitle" />
+            android:id="@+id/editPageTitle" />
 
         <!-- Ask for user's first name -->
         <EditText

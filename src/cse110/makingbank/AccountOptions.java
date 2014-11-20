@@ -236,4 +236,27 @@ public class AccountOptions extends Activity {
         intent.putExtra("maxBalance", currentBalance);
         startActivity(intent);
     }
+
+    /**
+     * Method transferOther
+     * This method is called when the user chooses to transfer money to another user.
+     * Still passes the current account onto the newly created page.
+     */
+    public void transferOther(View view){
+        Intent intent = new Intent (this, TransferOtherPage.class);
+        // Append to this new activity the account number and current balance
+        intent.putExtra("accountNum", accountNumber);
+        intent.putExtra("maxBalance", currentBalance);
+        startActivity(intent);
+    }
+
+    /**
+     * Method makeDefault
+     * This method is called when the user clicks the Make Default Account button.
+     * Simply update the current user's default account.
+     */
+    public void makeDefault(View view){
+        currentUser.put("defaultAccount", accountNumber);
+        currentUser.saveInBackground();
+    }
 }
