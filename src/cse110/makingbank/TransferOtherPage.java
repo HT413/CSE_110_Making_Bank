@@ -141,8 +141,8 @@ public class TransferOtherPage extends Activity{
                 double fromAfterBalance = new Round(currentBalance - transactionAmount, 2).toDouble();
                 double toAfterBalance = new Round(destinationBalance + transactionAmount, 2).toDouble();
                 // Now store and save the new balances
-                source.put("balance", currentBalance);
-                destination.put("balance", destinationBalance);
+                source.put("balance", fromAfterBalance);
+                destination.put("balance", toAfterBalance);
                 source.saveInBackground();
                 destination.saveInBackground();
                 // Log the transactions

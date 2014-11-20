@@ -98,8 +98,8 @@ public class SelfTransfer extends Activity{
                 double fromAfterBalance = new Round(fromBalance - transactionAmount, 2).toDouble();
                 double toAfterBalance = new Round(toBalance + transactionAmount, 2).toDouble();
                 // Now store and save the new balances
-                source.put("balance", fromBalance);
-                destination.put("balance", toBalance);
+                source.put("balance", fromAfterBalance);
+                destination.put("balance", toAfterBalance);
                 source.saveInBackground();
                 destination.saveInBackground();
 
