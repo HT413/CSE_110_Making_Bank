@@ -23,8 +23,7 @@ public class TransferOtherPage extends Activity{
     private String accountNum, destinationNum;
     private double currentBalance, destinationBalance;
     private ParseObject source, destination;
-    private ParseUser transferTo;
-    private Spinner transferCriteria;
+    private ParseUser transferTo = null;
 
     /**
      * Method onCreate
@@ -56,18 +55,8 @@ public class TransferOtherPage extends Activity{
         });
 
         // Display the appropriate info
-        ((TextView) findViewById(R.id.fromAccountLine)).setText("Your account " + accountNum +
+        ((TextView) findViewById(R.id.fromAccountLine)).setText("Account " + accountNum +
             ", balance: $" + currentBalance);
-
-        // Finally populate the Spinner
-        // Set up spinner for selecting the account type
-        transferCriteria = (Spinner) findViewById(R.id.selectCriteria);
-
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.transfer_criteria_options, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-        transferCriteria.setAdapter(adapter);
     }
 
     /**
@@ -76,32 +65,30 @@ public class TransferOtherPage extends Activity{
      */
     public void submitTransfer(View view){
         // Ensure that the user actually entered some information
-        String theCriteria = transferCriteria.getSelectedItem().toString();
         String theValue = ((EditText) findViewById(R.id.criteriaData)).getText().toString();
-        if (theCriteria.equals("Select") || theValue.equals(""))
-            ((TextView) findViewById(R.id.toWhatTypePrompt)).setText("Invalid entries!");
+        if (theValue.equals(""))
+            ((TextView) findViewById(R.id.toWhatTypePrompt)).setText("Cannot be empty!");
         else{ // Now we search for the other user and make a transfer, if possible.
             // Query parse users
             ParseQuery<ParseUser> query = ParseUser.getQuery();
-            // Base it off of the entered criteria
-            if (theCriteria.equals("Transfer to email")){
-                query.whereEqualTo("email", theValue);
-            }
-            else{
-                query.whereEqualTo("phone", theValue);
-            }
+            query.whereEqualTo("email", theValue);
+            ParseQuery<ParseUser> query2 = ParseUser.getQuery();
+            query2.whereEqualTo("phone", theValue);
             // Now search for the user
-            query.findInBackground(new FindCallback<ParseUser>() {
-                public void done(List<ParseUser> objects, ParseException e){
-                    // If no errors, i.e. a user was found
-                    if (e == null) {
-                        transferTo = objects.get(0); // Only 1 such user at any time
-                    } else {
-                        ((TextView) findViewById(R.id.toWhatTypePrompt)).setText("User not found!");
-                        transferTo = null;
-                    }
-                }
-            });
+            List<ParseUser> users = null;
+            try {
+                users = query2.find();
+            }catch (Exception e){}
+            if (users.size() > 0)
+                transferTo = users.get(0);
+            else try {
+                users = query2.find();
+            }catch (Exception e){}
+            if (users.size() > 0)
+                transferTo = users.get(0);
+            if (transferTo == null) {
+                ((TextView) findViewById(R.id.toWhatTypePrompt)).setText("User not found!");
+            }
         }
 
         // Now load up the default account

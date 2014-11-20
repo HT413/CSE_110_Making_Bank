@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_marginTop="5sp"
-        android:textSize="18sp"
+        android:textSize="20sp"
         android:textColor="@color/BROWN"
         android:id="@+id/fromAccountLine"/>
 
@@ -43,7 +43,7 @@
         android:textColor="@color/BROWN"
         android:id="@+id/toAccountExplanation"/>
 
-    <!-- This line tells the user to select an option -->
+    <!-- This line tells the user to enter something -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -54,15 +54,6 @@
         android:text="@string/prompt_what_transfer_criteria"
         android:id="@+id/toWhatTypePrompt"
         android:layout_gravity="center_horizontal"/>
-
-    <!-- This spinner allows the user to select whether to input email or phone -->
-    <Spinner
-        android:id="@+id/selectCriteria"
-        android:layout_height="wrap_content"
-        android:layout_width="fill_parent"
-        android:layout_marginTop="5sp"
-        android:paddingLeft="5dp"
-        android:background="@drawable/round_corners"/>
 
     <!-- This is where the user enters the data to enter -->
     <EditText

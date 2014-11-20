@@ -83,7 +83,7 @@
     <string name="string_transfer_other_explanation">Please enter either the phone number or
         email of the person you wish to transfer to. Money will be transferred to the other
         customer\'s default account.</string>
-    <string name="prompt_what_transfer_criteria">Select a criteria</string>
+    <string name="prompt_what_transfer_criteria">Enter email or phone</string>
 
     <!-- MISCELLANEOUS STRINGS AND VALUES -->
 
