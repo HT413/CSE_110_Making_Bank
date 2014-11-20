@@ -55,8 +55,6 @@ public class TransferOtherPage extends Activity{
             }
         });
 
-        // Now display the appropriate info
-        currentBalance = source.getDouble("balance");
         ((TextView) findViewById(R.id.fromAccountLine)).setText("Your account " + accountNum +
             ", balance: $" + currentBalance);
 
