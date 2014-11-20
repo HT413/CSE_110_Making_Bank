@@ -86,8 +86,8 @@ public class AdminHomePage extends Activity {
             final String accountNumber = accountNumField.getText().toString();
             if (transactionAmtField.getText().toString().equals(""))
                 transactionAmtField.setText("-1");
-            final double transactionAmount = round(Double.parseDouble
-                                                   (transactionAmtField.getText().toString()), 2);
+            final double transactionAmount = new Round(Double.parseDouble
+                                          (transactionAmtField.getText().toString()), 2).toDouble();
             final String transactionType = transactionTypeSpinner.getSelectedItem().toString();
 
             boolean valid = true;
@@ -122,11 +122,12 @@ public class AdminHomePage extends Activity {
                             double balanceBefore = account.getDouble("balance");
                             if (transactionType.equals("Credit")){
                                 // Round to nearest 2 decimal places
-                                double balanceAfter = round(balanceBefore + transactionAmount, 2);
+                                double balanceAfter = new Round(balanceBefore + transactionAmount, 2).toDouble();
                                 account.put("balance", balanceAfter); // Apply new balance
                                 account.saveInBackground(); // Update account
-                                logTransaction(balanceBefore, round(transactionAmount, 2),
+                                new TransactionLog(balanceBefore, transactionAmount,
                                         balanceAfter, transactionType, accountNumber);
+                                completeTransaction();
                             }
                             else if (transactionType.equals("Debit")){
                                 // Check if sufficient funds
@@ -135,11 +136,12 @@ public class AdminHomePage extends Activity {
                                             .setText("INSUFFICIENT FUNDS");
                                 else{
                                     // Round to nearest 2 decimal places
-                                    double balanceAfter = round(balanceBefore - transactionAmount, 2);
+                                    double balanceAfter = new Round(balanceBefore - transactionAmount, 2).toDouble();
                                     account.put("balance", balanceAfter); // Apply new balance
                                     account.saveInBackground(); // Update account
-                                    logTransaction(balanceBefore, round(transactionAmount, 2),
+                                    new TransactionLog(balanceBefore, transactionAmount,
                                             balanceAfter, transactionType, accountNumber);
+                                    completeTransaction();
                                 }
                             }
                         }
@@ -150,31 +152,12 @@ public class AdminHomePage extends Activity {
     }
 
     /**
-     * Create transaction log
+     * Method completeTransaction
+     * Tell the user the transaction is done
      */
-    private void logTransaction(double balanceBefore, double amountChanged,
-                                double balanceAfter, String transactionType, String accountNumber){
-        // Log this successful transaction and save it
-        ParseObject transaction = new ParseObject("transaction");
-        transaction.put("account", accountNumber);
-        transaction.put("type", transactionType);
-        transaction.put("before", balanceBefore);
-        transaction.put("amount", amountChanged);
-        transaction.put("after", balanceAfter);
-        // Save the transaction.
-        transaction.saveInBackground();
-        onBackPressed(); // Go back to home page
-    }
-
-    /**
-     * Method round
-     * This will round any decimal number to the nearest 2 decimal digits
-     */
-    public static double round(double value, int places) {
-        if (places < 0) throw new IllegalArgumentException();
-
-        BigDecimal bd = new BigDecimal(value);
-        bd = bd.setScale(places, RoundingMode.HALF_DOWN);
-        return bd.doubleValue();
+    private void completeTransaction(){
+        setContentView(R.layout.page_with_message);
+        ((TextView) findViewById(R.id.theMessage)).setText("Transaction complete. " +
+                "Press back button to return.");
     }
 }

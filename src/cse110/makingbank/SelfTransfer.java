@@ -90,39 +90,28 @@ public class SelfTransfer extends Activity{
         if (transactionAmount <= 0) // Check if non-negative
             transferPrompt.setText("Must enter a positive number!");
         else{ // Now proceed to round it to 2 decimal places if valid entry
-            transactionAmount = round(transactionAmount, 2);
+            transactionAmount = new Round(transactionAmount, 2).toDouble();
             if (transactionAmount > fromBalance) // Check if enough money
                 transferPrompt.setText("INSUFFICIENT FUNDS!");
             else{ // Sufficient funds, proceed with transaction
                 // Due to minor precision problems with doubles, we need to round again
-                double fromAfterBalance = round(fromBalance - transactionAmount, 2);
-                double toAfterBalance = round(toBalance + transactionAmount, 2);
+                double fromAfterBalance = new Round(fromBalance - transactionAmount, 2).toDouble();
+                double toAfterBalance = new Round(toBalance + transactionAmount, 2).toDouble();
                 // Now store and save the new balances
                 source.put("balance", fromBalance);
                 destination.put("balance", toBalance);
                 source.saveInBackground();
                 destination.saveInBackground();
+
                 // Log the transactions
-                logTransaction(fromBalance, transactionAmount, fromAfterBalance, "Transfer", theAccount);
-                logTransaction(toBalance, transactionAmount, toAfterBalance, "Receive", accountNum);
+                new TransactionLog(fromBalance, transactionAmount, fromAfterBalance,
+                        "Transfer", theAccount);
+                new TransactionLog(toBalance, transactionAmount, toAfterBalance,
+                        "Receive", accountNum);
                 // Notify user of successful transaction
                 transactionComplete();
             }
         }
-    }
-
-
-
-    /**
-     * Method round
-     * This will round any decimal number to the nearest 2 decimal digits
-     */
-    private static double round(double value, int places) {
-        if (places < 0) throw new IllegalArgumentException();
-
-        BigDecimal bd = new BigDecimal(value);
-        bd = bd.setScale(places, RoundingMode.HALF_DOWN);
-        return bd.doubleValue();
     }
 
     /**
@@ -144,22 +133,5 @@ public class SelfTransfer extends Activity{
         Intent intent = new Intent(this, AccountOptions.class);
         intent.putExtra("accountNum", theAccount);
         startActivity(intent);
-    }
-
-    /**
-     * Create transaction log
-     */
-    private void logTransaction(double balanceBefore, double amountChanged,
-                                double balanceAfter, String transactionType, String accountNumber){
-        // Log this successful transaction and save it
-        ParseObject transaction = new ParseObject("transaction");
-        transaction.put("account", accountNumber);
-        transaction.put("type", transactionType);
-        transaction.put("before", balanceBefore);
-        transaction.put("amount", amountChanged);
-        transaction.put("after", balanceAfter);
-        // Save the transaction.
-        transaction.saveInBackground();
-        onBackPressed(); // Go back to home page
     }
 }
