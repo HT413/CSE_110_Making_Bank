@@ -104,10 +104,11 @@ public class AccountOptions extends Activity {
                         account.deleteInBackground();
                         // Update the account index again
                         int oldIndex = currentUser.getInt("numAccounts");
+                        setDefaultAccount(currentUser);
                         currentUser.put("numAccounts", oldIndex - 1);
                         currentUser.saveInBackground();
-                        // Now go back
-                        onBackPressed();
+                        // Now go back to the home menu
+                        backToHome();
                     }
                 } else {
                     TextView balance = (TextView) findViewById(R.id.currentBalance);
@@ -115,6 +116,10 @@ public class AccountOptions extends Activity {
                 }
             }
         });
+    }
+
+    private void backToHome(){
+        backToHome(null);
     }
 
     /**
@@ -125,6 +130,26 @@ public class AccountOptions extends Activity {
         Intent intent = new Intent(this, BankHomePage.class);
         startActivity(intent);
     }
+
+    String newDefault = "";
+    /**
+     * Method setDefaultAccount()
+     * Sets the default account of the user to the first created account
+     */
+    private void setDefaultAccount(ParseUser user){
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("bankAccount");
+        query.whereEqualTo("user", currentUser.getUsername());
+        query.findInBackground(new FindCallback<ParseObject>() {
+            public void done(List<ParseObject> list, ParseException e) {
+                if (list.size() > 0 && e == null) {
+                    newDefault = list.get(0).getString("accountNumber");
+                }
+            }
+        });
+        user.put("defaultAccount", newDefault);
+        user.saveInBackground();
+    }
+
 
     /**
      * Method viewHistory
@@ -159,7 +184,7 @@ public class AccountOptions extends Activity {
                         Button b = new Button(AccountOptions.this);
                         // Display the transaction info
                         b.setText("On " + transaction.getCreatedAt().toString() + ":\n" +
-                                transaction.getString("type") + "ed $" +
+                                transaction.getString("type") + ": $" +
                                 transaction.getDouble("amount") + ".\n" +
                                 "Balance before: $" + transaction.getDouble("before") +
                                 "\nBalance after: $" + transaction.getDouble("after"));
