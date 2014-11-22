@@ -2,8 +2,6 @@ package cse110.makingbank;
 
 import java.util.List;
 
-import com.parse.*;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
@@ -13,6 +11,8 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.TableLayout.LayoutParams;
+
+import com.parse.*;
 
 /**
  * Class: ViewAccountPage
@@ -44,7 +44,7 @@ public class ViewAccountPage extends Activity{
         query.whereEqualTo("user", username); // base it on username
         query.findInBackground( new FindCallback<ParseObject>() {
         	// store the bank accounts in to a list
-        	public void done(List<ParseObject> al, ParseException e) 
+        	public void done(List<ParseObject> al, ParseException e)
         	{
                 // create a layout to put fetched accounts in
                 LinearLayout layout = new LinearLayout(ViewAccountPage.this);
@@ -60,7 +60,7 @@ public class ViewAccountPage extends Activity{
                 // Display accounts only if we found any
                 if ( e == null && al.size() != 0 ) {
                     for (int i = 0; i < al.size(); i++) {
-                        ParseObject account = al.get(i);
+                        final ParseObject account = al.get(i);
                         // Add them as a list of buttons
                         Button b = new Button(ViewAccountPage.this);
                         final String number = account.getString("accountNumber");
@@ -69,7 +69,7 @@ public class ViewAccountPage extends Activity{
                         b.setBackgroundResource(R.drawable.button_round_corners);
                         b.setLayoutParams(params);
 
-                        // Go to account transaction history page to view the account
+                        // Go to account options page if button is pressed
                         b.setOnClickListener(new View.OnClickListener() {
                             public void onClick(View v) {
                                 Intent intent = new Intent(ViewAccountPage.this,

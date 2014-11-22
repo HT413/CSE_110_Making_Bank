@@ -59,6 +59,12 @@
         <activity
             android:name=".TransferOtherPage">
         </activity>
+        <activity
+            android:name=".AdminTransactionPage">
+        </activity>
+        <activity
+            android:name=".ViewStatementPage">
+        </activity>
     </application>
 
 </manifest>
