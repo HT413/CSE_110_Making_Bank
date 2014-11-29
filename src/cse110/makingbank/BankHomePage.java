@@ -16,12 +16,6 @@ public class BankHomePage extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        // Check if this is the admin. If yes, go to admin page
-        if (ParseUser.getCurrentUser().getUsername().equals("admin")){
-            Intent intent = new Intent (this, AdminHomePage.class);
-            startActivity(intent);
-        }
-
         // Otherwise, load normal page
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_page);

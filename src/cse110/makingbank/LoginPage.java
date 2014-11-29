@@ -78,10 +78,17 @@ public class LoginPage extends Activity {
      * Defines what happens when the user successfully logs in.
      */
     private void completeLogin(){
-        if (ParseUser.getCurrentUser().getBoolean("givenInfo")) {
+        // Determines which page to transition to.
+        if (ParseUser.getCurrentUser().getBoolean("givenInfo") &&
+            !ParseUser.getCurrentUser().getUsername().equals("admin")) {
             Intent intent = new Intent(this, BankHomePage.class);
             startActivity(intent);
         }
+        // Check if this is the admin. If yes, go to admin page
+        else if (ParseUser.getCurrentUser().getUsername().equals("admin")){
+                Intent intent = new Intent (this, AdminHomePage.class);
+                startActivity(intent);
+            }
         else{
             Intent intent = new Intent(this, MyInfo.class);
             startActivity(intent);
@@ -108,39 +115,35 @@ public class LoginPage extends Activity {
      * @param view The View object from which this method was called
      */
     public void submitSignUp(View view){
+        // Get the input fields
         EditText usernameField = (EditText) findViewById(R.id.EditTextUserNameR);
         EditText passwordField = (EditText) findViewById(R.id.EditTextPasswordR);
         EditText emailField = (EditText) findViewById(R.id.EditTextEmailR);
-        EditText securityField = (EditText) findViewById(R.id.EditTextAnswerR);
-        EditText securityQuestionField = (EditText) findViewById(R.id.EditTextSecurityQuestion);
-
-        // Get the inputs from each field
-        String username = usernameField.getText().toString();
-        String password = passwordField.getText().toString();
-        String email = emailField.getText().toString();
-        String answer = securityField.getText().toString();
-        String question = securityQuestionField.getText().toString();
-
-        boolean noError = true;
-        if (username.length() < 4)
-            noError = false;
-
-        // Complete the registration if the user filled in all fields
-        if (!username.equals("") && !password.equals("") && !email.equals("")
-                && !answer.equals("") && !question.equals("") && noError){
+        EditText questionField = (EditText) findViewById(R.id.EditTextSecurityQuestion);
+        EditText answerField = (EditText) findViewById(R.id.EditTextAnswerR);
+        // Check validity of inputs
+        EditText[] inputs = {usernameField, passwordField, emailField,
+                questionField, answerField};
+        Rule checker = new AppRegisterRule(inputs);
+        // Determine if there are errors are not
+        if (checker.hasErrors()){
+            TextView pageNotice = (TextView) findViewById(R.id.registerPagePrompt);
+            checker.printError(pageNotice);
+        }
+        else{ // Sign up the user if no errors. Cannot be done in a helper class
             ParseUser user = new ParseUser();
-            user.setUsername(username);
-            user.setPassword(password);
-            user.setEmail(email);
-            user.put ("securityQuestion", question);
-            user.put ("questionAnswer", answer);
+            user.setUsername(usernameField.getText().toString());
+            user.setPassword(passwordField.getText().toString());
+            user.setEmail(emailField.getText().toString());
+            user.put ("securityQuestion", questionField.getText().toString());
+            user.put ("questionAnswer", answerField.getText().toString());
             user.put ("numAccounts", 0);
             user.put ("isAdmin", false);
             // Complete the registration and go back to the login screen
             user.signUpInBackground(new SignUpCallback() {
                 public void done(ParseException e) {
                     if (e == null) { // No exception, we can proceed normally
-                            setContentView(R.layout.activity_log_in);
+                        setContentView(R.layout.activity_log_in);
                     } else { // Invalid username throws error
                         TextView pageNotice = (TextView) findViewById(R.id.registerPagePrompt);
                         if (e.getCode() == ParseException.USERNAME_TAKEN)
@@ -149,21 +152,11 @@ public class LoginPage extends Activity {
                             pageNotice.setText ("Invalid email!");
                         else if (e.getCode() == ParseException.EMAIL_TAKEN)
                             pageNotice.setText ("Email already taken!");
-                        else if (e.getCode() == ParseException.CONNECTION_FAILED)
-                            pageNotice.setText ("Failed to connect to server!");
                         else
-                            pageNotice.setText ("Something went wrong and we don't know why!");
+                            pageNotice.setText ("Server connection error!");
                     }
                 }
             });
-        }
-        // Not all fields complete, give an error message until the user fills in everything
-        else{
-            TextView pageNotice = (TextView) findViewById(R.id.registerPagePrompt);
-            if (username.length() < 4)
-                ((TextView) findViewById(R.id.usernamePrompt)).setText("Must be at least" +
-                                                                       " 4 characters long!");
-            pageNotice.setText ("At least one field is invalid!");
         }
     }
 

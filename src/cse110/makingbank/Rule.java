@@ -1,6 +1,7 @@
 package cse110.makingbank;
 
 import android.widget.EditText;
+import android.widget.TextView;
 
 /**
  * Class Rule
@@ -10,11 +11,14 @@ import android.widget.EditText;
 public class Rule {
     protected EditText[] inputs;
     protected int errorFlags; // For determining the error flags
-    protected final int emptyInput = 0x00000001; // Used for setting the error flags
+    private String errorMessage; // For determining the error message to display
+    // Below are error flags for use in the application.
+    // Please set successive bits to 1 if new error codes are created.
+    protected final int EMPTY_INPUT = 0x00000001;
+    protected final int USERNAME_SHORT = 0x00000002;
 
     /**
      * Constructor method for the Rule object
-     *
      * @param args An array of arguments, typically the input fields
      */
     public Rule (EditText[] args){
@@ -41,7 +45,7 @@ public class Rule {
         for (EditText input: inputs){
             // Check if the input is empty
             if (input.getText().toString().equals(""))
-                errorFlags |= emptyInput; // If yes, set error flag
+                errorFlags |= EMPTY_INPUT; // If yes, set error flag
         }
     }
 
@@ -52,6 +56,7 @@ public class Rule {
      * @return Returns true if error flags are set, false otherwise
      */
     public boolean hasErrors(){
+        checkErrors(); // Check if there are any errors
         return errorFlags != 0;
     }
 
@@ -62,5 +67,32 @@ public class Rule {
      */
     public int getErrorCode(){
         return errorFlags;
+    }
+
+    /**
+     * Method determineErrors
+     * Determine the errors for this object and update the appropriate error message
+     */
+    private void determineErrorMessages(){
+        // UPDATE THIS AS NEW ERROR CODES ARE CREATED, PLEASE
+        if (((errorFlags >> 0) & 0x1) == 1){
+            errorMessage += "EMPTY INPUT FIELD FOUND!\n";
+        }
+        if (((errorFlags >> 1) & 0x1) == 1){
+            errorMessage += "USERNAME MUST BE AT LEAST 4 CHARACTERS LONG!\n";
+        }
+    }
+
+    /**
+     * Method printError
+     * Prints out the errors associated with whatever had an error
+     *
+     * @param display The TextView that displays the message
+     */
+    public void printError(TextView display){
+        determineErrorMessages();
+        if (errorMessage.equals("")) // Just in case there wasn't an error
+            errorMessage = display.getText().toString();
+        display.setText(errorMessage);
     }
 }
