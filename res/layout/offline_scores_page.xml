@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- IMPORTANT NOTICE
+   - This file is a direct copy + paste from the source code of the
+   - "Teleporting Button" app, designed by Hoang Tran in November, 2014.
+   - This layout file is only to be loaded when the device goes offline, to
+   - allow the user to kill time while waiting to reconnect to the Internet.
+   - DO NOT REPRODUCE THIS FILE WITHOUT PERMISSION
+   -
+   - Author: Hoang Tran
+   - Original Source: "Teleporting Button" app, by Hoang Tran (architect,
+   - developer, and business developer of team Making Bank), Google Play Store -->
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:background="#FFFFEE">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/scores_page_title"
+        android:textSize="40dp"
+        android:textColor="#882222"
+        android:id="@+id/scorePageTitle"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/str_easy_mode"
+        android:textSize="30dp"
+        android:textColor="#222288"
+        android:id="@+id/easyModeHS"
+        android:layout_below="@+id/scorePageTitle"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/str_normal_mode"
+        android:textSize="30dp"
+        android:textColor="#222288"
+        android:id="@+id/normalModeHS"
+        android:layout_below="@+id/easyModeHS"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/str_hard_mode"
+        android:textSize="30dp"
+        android:textColor="#222288"
+        android:id="@+id/hardModeHS"
+        android:layout_below="@+id/normalModeHS"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/str_reset_score"
+        android:background="@drawable/button_round_corners"
+        android:textSize="24dp"
+        android:id="@+id/buttonResetHS"
+        android:layout_below="@+id/hardModeHS"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:onClick="highScoreReset"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/main_menu"
+        android:background="@drawable/button_round_corners"
+        android:textSize="24dp"
+        android:id="@+id/buttonMainMenu"
+        android:layout_below="@+id/buttonResetHS"
+        android:layout_marginTop="20dp"
+        android:layout_alignRight="@+id/buttonResetHS"
+        android:layout_alignEnd="@+id/buttonResetHS"
+        android:layout_alignLeft="@+id/buttonResetHS"
+        android:layout_alignStart="@+id/buttonResetHS"
+        android:onClick="backToMenu"/>
+
+
+</RelativeLayout>

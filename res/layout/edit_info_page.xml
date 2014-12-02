@@ -18,6 +18,16 @@
         android:background="@color/BLUEGRAY"
         android:orientation="vertical" >
 
+
+        <!-- The bank logo -->
+        <ImageView
+            android:contentDescription="login_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/banklogo"
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/bankLogo"/>
+
         <!-- Title for edit account info page-->
         <TextView
             android:layout_width="wrap_content"

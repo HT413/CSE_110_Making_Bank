@@ -183,4 +183,33 @@
     <color name="BLUEGRAY">#CCCCFF</color>
     <color name="LIGHTBLUE">#AAAADD</color>
 
+    <!-- OTHER STRINGS ORIGINATING FROM HOANG'S "TELEPORTING BUTTON" APP
+       - DO NOT REPRODUCE WITHOUT PERMISSION -->
+    <!-- Strings from home screen -->
+    <string name="start_game">Start</string>
+    <string name="help_game">Instructions</string>
+    <string name="scores_page">High Scores</string>
+    <!-- Strings from the high scores page -->
+    <string name="scores_page_title">High Scores</string>
+    <string name="str_easy_mode">Easy Mode: </string>
+    <string name="str_normal_mode">Normal Mode: </string>
+    <string name="str_hard_mode">Hard Mode: </string>
+    <string name="str_reset_score">Reset high scores</string>
+    <!-- Strings for game mode selection page -->
+    <string name="game_mode_prompt">Select game mode</string>
+    <string name="option_easy_mode">Easy Mode</string>
+    <string name="option_normal_mode">Normal Mode</string>
+    <string name="option_hard_mode">Hard Mode</string>
+    <!-- Strings for game page -->
+    <string name="time_left">Time left:</string>
+    <string name="points">Score:</string>
+    <string name="easy_game_message">The button never moves!</string>
+    <!-- Strings for game over page -->
+    <string name="game_over">Game Over!</string>
+    <string name="your_score">Your score: </string>
+    <string name="new_high_score">New high score!</string>
+    <string name="high_score">Best score: </string>
+    <string name="replay">Play again</string>
+    <string name="main_menu">Main menu</string>
+
 </resources>

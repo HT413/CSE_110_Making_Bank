@@ -1,0 +1,45 @@
+<!-- IMPORTANT NOTICE
+   - This file is a direct copy + paste from the source code of the
+   - "Teleporting Button" app, designed by Hoang Tran in November, 2014.
+   - This layout file is only to be loaded when the device goes offline, to
+   - allow the user to kill time while waiting to reconnect to the Internet.
+   - DO NOT REPRODUCE THIS FILE WITHOUT PERMISSION
+   -
+   - Author: Hoang Tran
+   - Original Source: "Teleporting Button" app, by Hoang Tran (architect,
+   - developer, and business developer of team Making Bank), Google Play Store -->
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="ht.teleportingbutton.MainPage"
+    android:background="#FFFFEE">
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/instructionsImg"
+        android:src="@drawable/instructions"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
+        android:text="@string/main_menu"
+        android:background="@drawable/button_round_corners"
+        android:textSize="24dp"
+        android:id="@+id/mainMenuButton"
+        android:layout_below="@+id/instructionsImg"
+        android:layout_centerHorizontal="true"
+        android:onClick="backToMenu"
+        android:layout_marginTop="30dp"/>
+
+</RelativeLayout>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- IMPORTANT NOTICE
+   - This file is a direct copy + paste from the source code of the
+   - "Teleporting Button" app, designed by Hoang Tran in November, 2014.
+   - This layout file is only to be loaded when the device goes offline, to
+   - allow the user to kill time while waiting to reconnect to the Internet.
+   - DO NOT REPRODUCE THIS FILE WITHOUT PERMISSION
+   -
+   - Author: Hoang Tran
+   - Original Source: "Teleporting Button" app, by Hoang Tran (architect,
+   - developer, and business developer of team Making Bank), Google Play Store -->
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:background="#FFFFDD">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/game_mode_prompt"
+        android:textSize="30dp"
+        android:id="@+id/selectModePrompt"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/option_easy_mode"
+        android:id="@+id/selectEasyMode"
+        android:background="@drawable/button_round_corners"
+        android:textSize="24dp"
+        android:layout_below="@+id/selectModePrompt"
+        android:layout_marginTop="30dp"
+        android:layout_alignRight="@+id/selectNormalMode"
+        android:layout_alignEnd="@+id/selectNormalMode"
+        android:layout_alignLeft="@+id/selectNormalMode"
+        android:layout_alignStart="@+id/selectNormalMode"
+        android:onClick="startGameEasy"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/option_normal_mode"
+        android:textSize="24dp"
+        android:background="@drawable/button_round_corners"
+        android:id="@+id/selectNormalMode"
+        android:layout_marginTop="30dp"
+        android:onClick="startGameNormal"
+        android:layout_below="@+id/selectEasyMode"
+        android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/option_hard_mode"
+        android:textSize="24dp"
+        android:background="@drawable/button_round_corners"
+        android:id="@+id/selectHardMode"
+        android:layout_below="@+id/selectNormalMode"
+        android:layout_marginTop="30dp"
+        android:onClick="startGameHard"
+        android:layout_alignRight="@+id/selectNormalMode"
+        android:layout_alignEnd="@+id/selectNormalMode"
+        android:layout_alignLeft="@+id/selectNormalMode"
+        android:layout_alignStart="@+id/selectNormalMode"/>
+
+
+</RelativeLayout>

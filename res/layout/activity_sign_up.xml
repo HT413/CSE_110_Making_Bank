@@ -19,13 +19,15 @@
     android:layout_width="fill_parent"
     android:layout_height="wrap_content">
 
-    <!-- Replace this image with something nicer later on -->
+
+    <!-- The bank logo -->
     <ImageView
         android:contentDescription="login_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/placeholder"
-        android:id="@+id/imageView3"/>
+        android:src="@drawable/banklogo"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/bankLogo"/>
 
     <!-- Prompt for register page -->
     <TextView

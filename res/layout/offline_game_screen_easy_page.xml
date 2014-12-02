@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- IMPORTANT NOTICE
+   - This file is a direct copy + paste from the source code of the
+   - "Teleporting Button" app, designed by Hoang Tran in November, 2014.
+   - This layout file is only to be loaded when the device goes offline, to
+   - allow the user to kill time while waiting to reconnect to the Internet.
+   - DO NOT REPRODUCE THIS FILE WITHOUT PERMISSION
+   -
+   - Author: Hoang Tran
+   - Original Source: "Teleporting Button" app, by Hoang Tran (architect,
+   - developer, and business developer of team Making Bank), Google Play Store -->
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:onClick="minusPoints"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFEE">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:gravity="left"
+        android:textSize="25dp"
+        android:textColor="#EE2222"
+        android:text="@string/time_left"
+        android:id="@+id/timeLeft"
+        android:layout_gravity="center_horizontal"
+        android:background="#BBFFFF"
+        android:layout_alignParentTop="true"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:gravity="right"
+        android:textSize="25dp"
+        android:textColor="#228822"
+        android:text="@string/points"
+        android:id="@+id/scorePoints"
+        android:layout_gravity="center_horizontal"
+        android:background="#BBFFFF"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/timeLeft"
+        android:layout_toEndOf="@+id/timeLeft"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/easy_game_message"
+        android:textSize="18dp"
+        android:background="#BBFFFF"
+        android:textColor="#DDDD00"
+        android:id="@+id/easyGameMessage"
+        android:gravity="center"
+        android:layout_below="@+id/scorePoints"
+        android:layout_alignRight="@+id/scorePoints"
+        android:layout_alignParentLeft="true"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/button"
+        android:id="@+id/gameButton"
+        android:onClick="addPoints"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"/>
+
+
+</RelativeLayout>

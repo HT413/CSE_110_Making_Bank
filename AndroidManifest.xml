@@ -65,6 +65,21 @@
         <activity
             android:name=".ViewStatementPage">
         </activity>
+        <activity
+            android:name=".TeleportingButton"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".GamePage"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".EasyGamePage"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".HardGamePage"
+            android:screenOrientation="portrait">
+        </activity>
     </application>
-
 </manifest>

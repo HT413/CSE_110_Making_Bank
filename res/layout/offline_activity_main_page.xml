@@ -1,0 +1,61 @@
+<!-- IMPORTANT NOTICE
+   - This file is a direct copy + paste from the source code of the
+   - "Teleporting Button" app, designed by Hoang Tran in November, 2014.
+   - This layout file is only to be loaded when the device goes offline, to
+   - allow the user to kill time while waiting to reconnect to the Internet.
+   - DO NOT REPRODUCE THIS FILE WITHOUT PERMISSION
+   -
+   - Author: Hoang Tran
+   - Original Source: "Teleporting Button" app, by Hoang Tran (architect,
+   - developer, and business developer of team Making Bank), Google Play Store -->
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="ht.teleportingbutton.MainPage"
+    android:background="#FFFFEE">
+
+    <Button
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
+        android:text="@string/start_game"
+        android:background="@drawable/button_round_corners"
+        android:textSize="24dp"
+        android:id="@+id/startGameButton"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"
+        android:onClick="startGame"/>
+
+    <Button
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
+        android:text="@string/help_game"
+        android:background="@drawable/button_round_corners"
+        android:textSize="24dp"
+        android:id="@+id/helpButton"
+        android:layout_marginTop="40dp"
+        android:onClick="helpPage"
+        android:layout_below="@+id/startGameButton"
+        android:layout_alignLeft="@+id/highScoreButton"
+        android:layout_alignStart="@+id/highScoreButton"/>
+
+    <Button
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_round_corners"
+        android:text="@string/scores_page"
+        android:textSize="24dp"
+        android:id="@+id/highScoreButton"
+        android:layout_marginTop="40dp"
+        android:onClick="viewScores"
+        android:layout_below="@+id/helpButton"
+        android:layout_centerHorizontal="true"/>
+
+</RelativeLayout>
