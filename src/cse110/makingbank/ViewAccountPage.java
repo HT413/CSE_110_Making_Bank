@@ -81,7 +81,7 @@ public class ViewAccountPage extends Activity{
                         layout.addView(b);
                     }
                 }
-                else // No accounts found
+                else if (e == null)// No accounts found
                 {
                     // Give user a warning if no accounts are found
                     TextView notice = new TextView(ViewAccountPage.this);
@@ -94,6 +94,9 @@ public class ViewAccountPage extends Activity{
                     notice.setTextColor(Color.RED);
                     layout.addView(notice);
                 }
+                else{ // No Internet
+                    noInternet();
+                }
                 ViewAccountPage.this.setContentView(layout);
                }
         } );
@@ -105,6 +108,15 @@ public class ViewAccountPage extends Activity{
     @Override
     public void onBackPressed(){
         Intent intent = new Intent (this, BankHomePage.class);
+        startActivity(intent);
+    }
+
+    /**
+     * Method noInternet()
+     * Brings the user to a time killing mini-game while waiting to reconnect
+     */
+    private void noInternet(){
+        Intent intent = new Intent (this, TeleportingButton.class);
         startActivity(intent);
     }
 }

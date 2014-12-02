@@ -186,6 +186,10 @@
     <!-- OTHER STRINGS ORIGINATING FROM HOANG'S "TELEPORTING BUTTON" APP
        - DO NOT REPRODUCE WITHOUT PERMISSION -->
     <!-- Strings from home screen -->
+    <string name="offline_prompt">Oh no! You\'re disconnected from the Internet!
+    But don\'t fret, enjoy this fun mini-game while reconnecting!
+    \nOriginally designed by Hoang Tran for the \"Teleporting Button\" app,
+    available in the Google Play Store!</string>
     <string name="start_game">Start</string>
     <string name="help_game">Instructions</string>
     <string name="scores_page">High Scores</string>

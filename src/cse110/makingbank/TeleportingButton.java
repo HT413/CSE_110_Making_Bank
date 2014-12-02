@@ -48,7 +48,7 @@ public class TeleportingButton extends Activity {
         //Remove notification bar
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_main_page);
+        setContentView(R.layout.offline_activity_main_page);
 
         // Sound files
         mMediaPlayer = new MediaPlayer();
@@ -60,7 +60,7 @@ public class TeleportingButton extends Activity {
      */
     @Override
     public void onBackPressed(){
-        setContentView(R.layout.activity_main_page);
+        setContentView(R.layout.offline_activity_main_page);
     }
 
     @Override
@@ -105,7 +105,7 @@ public class TeleportingButton extends Activity {
      */
     public void backToMenu(View view){
         playSound(chime);
-        setContentView(R.layout.activity_main_page);
+        setContentView(R.layout.offline_activity_main_page);
     }
 
 
@@ -205,5 +205,15 @@ public class TeleportingButton extends Activity {
         } catch (Exception e) {
             // don't care
         }
+    }
+
+    /**
+     * Method goHome
+     *
+     * Go back to the "Making Bank" application home page
+     */
+    public void goHome(View view){
+        Intent intent = new Intent (this, BankHomePage.class);
+        startActivity(intent);
     }
 }
