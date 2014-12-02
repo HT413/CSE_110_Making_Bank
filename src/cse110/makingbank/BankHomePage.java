@@ -85,6 +85,15 @@ public class BankHomePage extends Activity {
     private void displayDashboardMessage(){
         // We will notify users of accounts under their current set threshold, if any
         final TextView dashBoard = (TextView) findViewById(R.id.dashboardMessage);
-        dashBoard.setText((new BalanceNotifier(ParseUser.getCurrentUser().getUsername())).getMessage());
+        dashBoard.setText((new BalanceNotifier(this, ParseUser.getCurrentUser().getUsername())).getMessage());
+    }
+
+    /**
+     * Method noInternet
+     * Defines what happens when there's no Internet. It's a bonus feature!
+     */
+    public void noInternet(){
+        Intent intent = new Intent(this, TeleportingButton.class);
+        startActivity(intent);
     }
 }

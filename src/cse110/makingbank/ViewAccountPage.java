@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -38,7 +39,15 @@ public class ViewAccountPage extends Activity{
         
         // retrieve the user info for the account
         String username = ParseUser.getCurrentUser().getUsername();
-        
+
+        // A timer to time whether the application connects to the Internet or not
+        // It's a bonus feature!
+        CountDownTimer timer = new CountDownTimer(20000, 20000) {
+            public void onTick(long l) {}
+            public void onFinish() { noInternet();}
+        };
+        timer.start();
+
         // find the bank accounts
         ParseQuery<ParseObject> query = ParseQuery.getQuery("bankAccount");
         query.whereEqualTo("user", username); // base it on username
@@ -81,7 +90,7 @@ public class ViewAccountPage extends Activity{
                         layout.addView(b);
                     }
                 }
-                else if (e == null)// No accounts found
+                else // No accounts found
                 {
                     // Give user a warning if no accounts are found
                     TextView notice = new TextView(ViewAccountPage.this);
@@ -93,9 +102,6 @@ public class ViewAccountPage extends Activity{
                     notice.setTextSize(30);
                     notice.setTextColor(Color.RED);
                     layout.addView(notice);
-                }
-                else{ // No Internet
-                    noInternet();
                 }
                 ViewAccountPage.this.setContentView(layout);
                }
