@@ -1,7 +1,5 @@
 package cse110.makingbank;
 
-import android.os.CountDownTimer;
-
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
@@ -18,14 +16,6 @@ public class BalanceNotifier{
 
     public BalanceNotifier(BankHomePage caller, String user){
         homePage = caller;
-
-        // A timer to time whether the application connects to the Internet or not
-        // It's a bonus feature!
-        CountDownTimer timer = new CountDownTimer(20000, 20000) {
-            public void onTick(long l) {}
-            public void onFinish() { noInternet();}
-        };
-        timer.start();
 
         // Fetch all user accounts first
         ParseQuery<ParseObject> query = ParseQuery.getQuery("bankAccount");
@@ -51,13 +41,5 @@ public class BalanceNotifier{
                 return "You have accounts with low funds!" + message;
         }
         return "NO INTERNET CONNECTION";
-    }
-
-    /**
-     * Method noInternet
-     * Defines what happens when there's no internet. It's a bonus feature!
-     */
-    private void noInternet(){
-        homePage.noInternet();
     }
 }

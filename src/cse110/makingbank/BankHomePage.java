@@ -13,6 +13,7 @@ import com.parse.ParseUser;
  * This is the home page for all events after a successful log in.
  */
 public class BankHomePage extends Activity {
+    private int tapIndex;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +28,9 @@ public class BankHomePage extends Activity {
         try {
             getActionBar().hide();
         }catch (Exception e){}
+
+        // For the app secret feature
+        tapIndex = 1;
     }
 
     /**
@@ -89,11 +93,14 @@ public class BankHomePage extends Activity {
     }
 
     /**
-     * Method noInternet
-     * Defines what happens when there's no Internet. It's a bonus feature!
+     * Method secret
+     * Activates a bonus feature in the app!
      */
-    public void noInternet(){
-        Intent intent = new Intent(this, TeleportingButton.class);
-        startActivity(intent);
+    public void secret(View view){
+        ++tapIndex;
+        if (tapIndex == 10){
+            Intent intent = new Intent (this, TeleportingButton.class);
+            startActivity(intent);
+        }
     }
 }

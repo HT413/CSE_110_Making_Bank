@@ -58,6 +58,9 @@ public class SelfTransfer extends Activity{
                     if (accountNumber.equals(accountNum)) {
                         destination = account;
                         toBalance = destination.getDouble("balance");
+                        // Update the account balance value
+                        ((TextView) findViewById(R.id.toAccountLine)).setText("Account " + accountNum +
+                                ", balance: $" + toBalance);
                     }
                     if (accountNumber.equals(theAccount))
                         source = account;
@@ -68,8 +71,6 @@ public class SelfTransfer extends Activity{
         // And finally update the account information lines
         ((TextView) findViewById(R.id.fromAccountLine)).setText("Account " + theAccount +
             ", balance: $" + fromBalance);
-        ((TextView) findViewById(R.id.toAccountLine)).setText("Account " + accountNum +
-            ", balance: $" + toBalance);
     }
 
     /**

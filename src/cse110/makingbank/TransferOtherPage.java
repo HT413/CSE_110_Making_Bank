@@ -63,7 +63,7 @@ public class TransferOtherPage extends Activity{
      * Method submitTransfer
      * This method is called after submitting all info for the transfer operation
      */
-    public void submitTransfer(View view){
+    public void submitSearch(View view){
         // Ensure that the user actually entered some information
         String theValue = ((EditText) findViewById(R.id.criteriaData)).getText().toString();
         if (theValue.equals(""))
@@ -74,49 +74,98 @@ public class TransferOtherPage extends Activity{
             query.whereEqualTo("email", theValue);
             ParseQuery<ParseUser> query2 = ParseUser.getQuery();
             query2.whereEqualTo("phone", theValue);
-            // Now search for the user
-            List<ParseUser> users = null;
-            try {
-                users = query2.find();
-            }catch (Exception e){}
-            if (users.size() > 0)
-                transferTo = users.get(0);
-            else try {
-                users = query2.find();
-            }catch (Exception e){}
-            if (users.size() > 0)
-                transferTo = users.get(0);
-            if (transferTo == null) {
-                ((TextView) findViewById(R.id.toWhatTypePrompt)).setText("User not found!");
-            }
-        }
-
-        // Now load up the default account
-        if (transferTo != null && (transferTo.getInt("numAccounts") > 0)){
-            ParseQuery<ParseObject> accountQuery = ParseQuery.getQuery("bankAccount");
-            accountQuery.whereEqualTo("accountNumber", (destinationNum = transferTo.getString("defaultAccount")));
-            // Now find that default account in the database
-            accountQuery.findInBackground( new FindCallback<ParseObject>() {
-                public void done(List<ParseObject> list, ParseException e)
-                {
-                    if (e == null){ // Typically no error should happen here
-                        destination = list.get(0); // There should only be 1 account
-                        destinationBalance = destination.getDouble("balance");
-                    } else {
-                        destination = null;
+            // Now search for the user. If user is found, load up the default account
+            query.findInBackground(new FindCallback<ParseUser>() {
+                @Override
+                public void done(List<ParseUser> parseUsers, ParseException e) {
+                    if (parseUsers.size() > 0){
+                        transferTo = parseUsers.get(0);
+                        if (transferTo.getInt("numAccounts") > 0)
+                            setUpTransfer();
+                        else
+                            ((TextView) findViewById(R.id.toWhatTypePrompt)).setText("User has no accounts!");
+                    }
+                    else{
+                        ((TextView) findViewById(R.id.toWhatTypePrompt)).setText("No user found!");
+                    }
+                }
+            });
+            query2.findInBackground(new FindCallback<ParseUser>() {
+                @Override
+                public void done(List<ParseUser> parseUsers, ParseException e) {
+                    if (parseUsers.size() > 0){
+                        transferTo = parseUsers.get(0);
+                        if (transferTo.getInt("numAccounts") > 0)
+                            setUpTransfer();
+                        else
+                            ((TextView) findViewById(R.id.toWhatTypePrompt)).setText("User has no accounts!");
+                    }
+                    else{
+                        ((TextView) findViewById(R.id.toWhatTypePrompt)).setText("No user found!");
                     }
                 }
             });
         }
-        else{
-            ((TextView) findViewById(R.id.toWhatTypePrompt)).setText("User has no accounts!");
-        }
+    }
+
+    /**
+     * Method onBackPressed
+     * We will go back to the original account menu page that led to this transfer page
+     */
+    @Override
+    public void onBackPressed(){
+        Intent intent = new Intent(this, AccountOptions.class);
+        intent.putExtra("accountNum", accountNum);
+        startActivity(intent);
+    }
+
+    /**
+     * Method transactionComplete
+     * Tell the user the transaction is done
+     */
+    private void transactionComplete(){
+        setContentView(R.layout.page_with_message);
+        ((TextView) findViewById(R.id.theMessage)).setText("Transaction complete. " +
+                "Press back button to return.");
+    }
+
+    /**
+     * Method setUpTransfer
+     * Sets up the transfer page between current account and destination account
+     */
+    private void setUpTransfer(){
+        // Find the default account to transfer to
+        ParseQuery<ParseObject> accountQuery = ParseQuery.getQuery("bankAccount");
+        accountQuery.whereEqualTo("accountNumber", (destinationNum = transferTo.getString("defaultAccount")));
+        // Now find that default account in the database
+        accountQuery.findInBackground( new FindCallback<ParseObject>() {
+            public void done(List<ParseObject> list, ParseException e)
+            {
+                if (e == null){ // Typically no error should happen here
+                    destination = list.get(0); // There should only be 1 account
+                    destinationBalance = destination.getDouble("balance");
+                } else {
+                    destination = null;
+                }
+            }
+        });
+        setContentView(R.layout.transfer_other_amount_page);
+        // Display the appropriate info
+        ((TextView) findViewById(R.id.fromAccountLine)).setText("Account " + accountNum +
+                ", balance: $" + currentBalance);
+    }
+
+    /**
+     * Method submitTransfer
+     * Submit the info for the account money transfer
+     */
+    public void submitTransfer(View view) {
         TextView transferPrompt = ((TextView) findViewById(R.id.transferPrompt));
         // Finally, attempt to do the transaction
         if (((EditText) findViewById(R.id.transferAmountField)).getText().toString().equals("")){
             transferPrompt.setText("Cannot be empty!");
         }
-        else if (destination != null){
+        else{
             // Get the transaction amount
             double transactionAmount = new Round(Double.parseDouble(((EditText) findViewById
                     (R.id.transferAmountField)).getText().toString()), 2).toDouble();
@@ -140,26 +189,5 @@ public class TransferOtherPage extends Activity{
                 transactionComplete();
             }
         }
-    }
-
-    /**
-     * Method onBackPressed
-     * We will go back to the original account menu page that led to this transfer page
-     */
-    @Override
-    public void onBackPressed(){
-        Intent intent = new Intent(this, AccountOptions.class);
-        intent.putExtra("accountNum", accountNum);
-        startActivity(intent);
-    }
-
-    /**
-     * Method transactionComplete
-     * Tell the user the transaction is done
-     */
-    private void transactionComplete(){
-        setContentView(R.layout.page_with_message);
-        ((TextView) findViewById(R.id.theMessage)).setText("Transaction complete. " +
-                "Press back button to return.");
     }
 }

@@ -1,7 +1,5 @@
 package cse110.makingbank;
 
-import java.util.List;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -140,6 +138,7 @@ public class AccountOptions extends Activity {
     public void transferSelf(View view){
         Intent intent = new Intent (this, TransferSelfPage.class);
         intent.putExtra("accountNum", accountNumber);
+        intent.putExtra("maxBalance", currentBalance);
         startActivity(intent);
     }
 
@@ -151,6 +150,7 @@ public class AccountOptions extends Activity {
     public void transferOther(View view){
         Intent intent = new Intent (this, TransferOtherPage.class);
         intent.putExtra("accountNum", accountNumber);
+        intent.putExtra("maxBalance", currentBalance);
         startActivity(intent);
     }
 

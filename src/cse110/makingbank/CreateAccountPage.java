@@ -73,28 +73,27 @@ public class CreateAccountPage extends Activity{
 
                 // Assign a unique account number to the account
                 final int accountIndex = currentUser.getInt("numAccounts");
-                // 0x17 chosen so that values returned are always 99 max
-                String name = "" + (username.toString().charAt(0) - 0x17) +
-                    (username.toString().charAt(1) - 0x17) +
-                    (username.toString().charAt(2) - 0x17) + accountIndex;
-                int accountRnd = generateRnd(10 - name.length());
+                // Unified the account index determination method
+                String name = "" + (username.hashCode() % 1000000);
+                name += generateIndex(10 - name.length());
 
                 // Make this the default account for accepting transfers if it is the first ever
                 // created account.
                 if(accountIndex == 0){
-                    currentUser.put("defaultAccount", name + accountRnd);
+                    currentUser.put("defaultAccount", name);
                     currentUser.saveInBackground();
                 }
 
                 // Create a new Parse object of type BankAccount
                 ParseObject bankAccount = new ParseObject("bankAccount");
-                bankAccount.put("accountNumber", name + accountRnd);
+                bankAccount.put("accountNumber", name);
                 bankAccount.put("user", username); // Object holds username
                 bankAccount.put("balance", 0); // Object holds current balance
                 bankAccount.put("threshold", 0); // Object holds current default threshold
                 bankAccount.put("email", email); // Object holds user email
                 bankAccount.put("phone", phoneNum); // Object holds phone number
                 bankAccount.put("accountType", accountType); // Finally, record the account type
+                bankAccount.put("isActive", true);
                 // Save this info & send to Parse
                 bankAccount.saveInBackground(new SaveCallback() {
                     public void done(ParseException e) {
@@ -135,14 +134,12 @@ public class CreateAccountPage extends Activity{
      * number, so that users have an extremely low chance of having the same account
      * numbers.
      */
-    private int generateRnd(int length){
-        if (length <= 0)
-            return ParseUser.getCurrentUser().getInt("numAccounts") % 10;
+    private String generateIndex(int length){
         NumberFormat fmt = NumberFormat.getInstance();
         fmt.setMinimumIntegerDigits(length);
         fmt.setMaximumIntegerDigits(length);
         fmt.setGroupingUsed(false);
-        return Integer.parseInt(fmt.format((int) (Math.random() * Math.pow(10, length))));
+        return fmt.format(ParseUser.getCurrentUser().getInt("numAccounts"));
     }
 
     /**

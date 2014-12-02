@@ -20,17 +20,6 @@
         android:layout_gravity="center_horizontal"
         android:id="@+id/bankLogo"/>
 
-    <!-- This is the page title -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/string_transfer_other"
-        android:textSize="24sp"
-        android:textColor="@color/BROWN"
-        android:id="@+id/transferPageTitle"
-        android:layout_gravity="center_horizontal"/>
-
     <!-- This line describes the "from" account -->
     <TextView
         android:layout_width="wrap_content"
@@ -41,19 +30,7 @@
         android:textColor="@color/BROWN"
         android:id="@+id/fromAccountLine"/>
 
-    <!-- This line describes what to do for the "to" account -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_marginTop="5sp"
-        android:text="@string/string_transfer_other_explanation"
-        android:gravity="center"
-        android:textSize="19sp"
-        android:textColor="@color/BROWN"
-        android:id="@+id/toAccountExplanation"/>
-
-    <!-- This line tells the user to enter something -->
+    <!-- This line tells the user what to do here -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -61,21 +38,34 @@
         android:layout_marginTop="5sp"
         android:textSize="24sp"
         android:textColor="@color/BROWN"
-        android:text="@string/prompt_what_transfer_criteria"
-        android:id="@+id/toWhatTypePrompt"
+        android:text="@string/string_transfer_amount_prompt"
+        android:id="@+id/transferPageInfo"
         android:layout_gravity="center_horizontal"/>
 
-    <!-- This is where the user enters the data to enter -->
+    <!-- This line prompts user to enter some numerical value -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_marginTop="5sp"
+        android:textSize="24sp"
+        android:textColor="@color/BROWN"
+        android:text="@string/string_amount_transfer"
+        android:id="@+id/transferPrompt"
+        android:layout_gravity="center_horizontal"/>
+
+    <!-- This is where the user enters the amount to transfer -->
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
         android:gravity="center"
         android:layout_marginTop="5sp"
         android:textSize="24sp"
         android:background="@drawable/round_corners"
         android:paddingTop="3sp"
         android:paddingBottom="3sp"
-        android:id="@+id/criteriaData"
+        android:id="@+id/transferAmountField"
         android:layout_gravity="center_horizontal"/>
 
     <!-- Submit button -->
@@ -89,6 +79,6 @@
         android:paddingRight="10sp"
         android:layout_marginTop="5sp"
         android:layout_gravity="center_horizontal"
-        android:onClick="submitSearch"/>
+        android:onClick="submitTransfer"/>
 
 </LinearLayout>

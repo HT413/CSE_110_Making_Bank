@@ -1,8 +1,5 @@
 package cse110.makingbank;
 
-import android.content.Intent;
-import android.os.CountDownTimer;
-
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
@@ -16,14 +13,6 @@ public class DatabaseQuery{
     private List results;
 
     public DatabaseQuery (String className, String key, String value){
-        // A timer to time whether the application connects to the Internet or not
-        // It's a bonus feature!
-        CountDownTimer timer = new CountDownTimer(20000, 20000) {
-            public void onTick(long l) {}
-            public void onFinish() { noInternet();}
-        };
-        timer.start();
-
         ParseQuery<ParseObject> query = ParseQuery.getQuery(className);
         query.whereEqualTo(key, value);
         try {
@@ -48,10 +37,5 @@ public class DatabaseQuery{
             return null;
         else
             return (ParseObject) results.get(index);
-    }
-
-    private void noInternet(){
-        BankHomePage b = new BankHomePage();
-        b.startActivity(new Intent(b, TeleportingButton.class));
     }
 }

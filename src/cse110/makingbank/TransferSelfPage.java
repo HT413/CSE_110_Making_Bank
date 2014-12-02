@@ -47,6 +47,7 @@ public class TransferSelfPage extends Activity{
         // Find all other bank accounts associated with the user
         ParseQuery<ParseObject> query = ParseQuery.getQuery("bankAccount");
         query.whereEqualTo("user", username); // base it on username
+        query.whereEqualTo("isActive", true);
         query.findInBackground(new FindCallback<ParseObject>() {
             // store the bank accounts in to a list
             public void done(List<ParseObject> al, ParseException e) {

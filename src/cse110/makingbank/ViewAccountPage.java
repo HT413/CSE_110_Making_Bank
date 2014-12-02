@@ -6,7 +6,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -40,17 +39,10 @@ public class ViewAccountPage extends Activity{
         // retrieve the user info for the account
         String username = ParseUser.getCurrentUser().getUsername();
 
-        // A timer to time whether the application connects to the Internet or not
-        // It's a bonus feature!
-        CountDownTimer timer = new CountDownTimer(20000, 20000) {
-            public void onTick(long l) {}
-            public void onFinish() { noInternet();}
-        };
-        timer.start();
-
         // find the bank accounts
         ParseQuery<ParseObject> query = ParseQuery.getQuery("bankAccount");
         query.whereEqualTo("user", username); // base it on username
+        query.whereEqualTo("isActive", true); // Must be an active account
         query.findInBackground( new FindCallback<ParseObject>() {
         	// store the bank accounts in to a list
         	public void done(List<ParseObject> al, ParseException e)
@@ -114,15 +106,6 @@ public class ViewAccountPage extends Activity{
     @Override
     public void onBackPressed(){
         Intent intent = new Intent (this, BankHomePage.class);
-        startActivity(intent);
-    }
-
-    /**
-     * Method noInternet()
-     * Brings the user to a time killing mini-game while waiting to reconnect
-     */
-    private void noInternet(){
-        Intent intent = new Intent (this, TeleportingButton.class);
         startActivity(intent);
     }
 }

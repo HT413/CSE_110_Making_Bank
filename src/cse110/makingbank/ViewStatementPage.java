@@ -43,7 +43,6 @@ public class ViewStatementPage extends Activity{
 
                 // List transactions only if no errors and if there were transactions in the list
                 if (list.size() > 0 && e == null) {
-
                     // Set the buttons to be 10 pixels from the sides and apart from each other
                     LinearLayout.LayoutParams params = new TableLayout.LayoutParams
                             (TableLayout.LayoutParams.WRAP_CONTENT, TableLayout.LayoutParams.WRAP_CONTENT);
