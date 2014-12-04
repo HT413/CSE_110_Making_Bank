@@ -31,7 +31,7 @@ public class BalanceNotifier{
     public String getMessage(){
         if (results != null) {
             for (ParseObject account : results) {
-                if (account.getDouble("balance") > account.getInt("threshold"))
+                if (account.getDouble("balance") < account.getInt("threshold"))
                     message += "\nAccount " + account.getString("accountNumber") +
                             " is way over $" + account.getInt("threshold") + "!";
             }
