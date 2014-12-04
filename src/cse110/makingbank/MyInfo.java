@@ -65,7 +65,7 @@ public class MyInfo extends Activity{
             lastNameField.setText(currentUser.getString("lastName"));
             addressField.setText(currentUser.getString("address"));
             cityField.setText(currentUser.getString("city"));
-            zipField.setText(currentUser.getInt("zipCode"));
+            zipField.setText("" + currentUser.getInt("zipCode"));
             phoneField.setText(currentUser.getString("phone"));
         }
     }
