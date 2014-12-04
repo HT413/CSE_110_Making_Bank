@@ -31,14 +31,14 @@ public class BalanceNotifier{
     public String getMessage(){
         if (results != null) {
             for (ParseObject account : results) {
-                if (account.getDouble("balance") < account.getInt("threshold"))
+                if (account.getDouble("balance") > account.getInt("threshold"))
                     message += "\nAccount " + account.getString("accountNumber") +
-                            " is under $" + account.getInt("threshold") + "!";
+                            " is way over $" + account.getInt("threshold") + "!";
             }
             if (message.equals(""))
                 return "Have a nice day!";
             else
-                return "You have accounts with low funds!" + message;
+                return "Dude, spend more money!" + message;
         }
         return "NO INTERNET CONNECTION";
     }
