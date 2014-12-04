@@ -69,10 +69,12 @@ public class AccountOptions extends Activity {
             TextView pageTitle = (TextView) findViewById(R.id.accountInfoPageTitle);
             pageTitle.setText("CAN'T DELETE AN ACCOUNT WITH MONEY");
         }
-        // If no money, then delete the account
-        new AccountDeleter(theAccount);
-        // Finally, return to the main menu since we don't want to access this account anymore
-        backToHome(view);
+        else {
+            // If no money, then delete the account
+            new AccountDeleter(theAccount);
+            // Finally, return to the main menu since we don't want to access this account anymore
+            backToHome(view);
+        }
     }
 
     /**

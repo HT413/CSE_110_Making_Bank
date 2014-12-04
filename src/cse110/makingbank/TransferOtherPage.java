@@ -100,7 +100,7 @@ public class TransferOtherPage extends Activity{
                         else
                             ((TextView) findViewById(R.id.toWhatTypePrompt)).setText("User has no accounts!");
                     }
-                    else{
+                    else if (findViewById(R.id.toWhatTypePrompt) != null){
                         ((TextView) findViewById(R.id.toWhatTypePrompt)).setText("No user found!");
                     }
                 }
