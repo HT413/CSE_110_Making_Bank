@@ -30,7 +30,7 @@ public class HumanityCheck extends Activity{
      * Determine the animal to question the user about
      */
     private void determineAnimal(){
-        switch((int) (Math.random() * 3)){
+        switch((int) (Math.random() * 5)){
             case 0:
                 solution = "duck";
                 findViewById(R.id.animalImage).setBackgroundResource(R.drawable.duck);
@@ -38,6 +38,14 @@ public class HumanityCheck extends Activity{
             case 1:
                 solution = "cat";
                 findViewById(R.id.animalImage).setBackgroundResource(R.drawable.cat);
+                break;
+            case 2:
+                solution = "cow";
+                findViewById(R.id.animalImage).setBackgroundResource(R.drawable.cow);
+                break;
+            case 3:
+                solution = "snake";
+                findViewById(R.id.animalImage).setBackgroundResource(R.drawable.snake);
                 break;
             default:
                 solution = "dog";
