@@ -107,7 +107,7 @@ public class TransferOtherPage extends Activity{
         accountQuery.findInBackground( new FindCallback<ParseObject>() {
             public void done(List<ParseObject> list, ParseException e)
             {
-                if (e == null){ // Typically no error should happen here
+                if (e == null && list.size() > 0){ // Typically no error should happen here
                     destination = list.get(0); // There should only be 1 account
                     destinationBalance = destination.getDouble("balance");
                 } else {
