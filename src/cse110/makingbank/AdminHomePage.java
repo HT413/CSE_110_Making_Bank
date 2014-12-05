@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 
 import com.parse.ParseUser;
 
@@ -46,6 +47,24 @@ public class AdminHomePage extends Activity {
      */
     public void doTransaction(View view){
         Intent intent = new Intent (this, AdminTransactionPage.class);
+        startActivity(intent);
+    }
+
+    /**
+     * Method accountLookup
+     * Change the view to the account lookup page
+     */
+    public void accountLookup(View view){
+        setContentView(R.layout.account_lookup_page);
+    }
+
+    /**
+     * Method searchID
+     * Search for all bank accounts associated with this user ID
+     */
+    public void searchID(View view){
+        Intent intent = new Intent(this, AdminViewAccounts.class);
+        intent.putExtra("ID", ((EditText) findViewById(R.id.idField)).getText().toString());
         startActivity(intent);
     }
 }

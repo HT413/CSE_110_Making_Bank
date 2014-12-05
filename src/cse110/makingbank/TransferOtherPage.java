@@ -24,6 +24,7 @@ public class TransferOtherPage extends Activity{
     private double currentBalance, destinationBalance;
     private ParseObject source, destination;
     private ParseUser transferTo = null;
+    private String theValue;
 
     /**
      * Method onCreate
@@ -65,46 +66,11 @@ public class TransferOtherPage extends Activity{
      */
     public void submitSearch(View view){
         // Ensure that the user actually entered some information
-        String theValue = ((EditText) findViewById(R.id.criteriaData)).getText().toString();
+        theValue = ((EditText) findViewById(R.id.criteriaData)).getText().toString();
         if (theValue.equals(""))
             ((TextView) findViewById(R.id.toWhatTypePrompt)).setText("Cannot be empty!");
         else{ // Now we search for the other user and make a transfer, if possible.
-            // Query parse users
-            ParseQuery<ParseUser> query = ParseUser.getQuery();
-            query.whereEqualTo("email", theValue);
-            ParseQuery<ParseUser> query2 = ParseUser.getQuery();
-            query2.whereEqualTo("phone", theValue);
-            // Now search for the user. If user is found, load up the default account
-            query.findInBackground(new FindCallback<ParseUser>() {
-                @Override
-                public void done(List<ParseUser> parseUsers, ParseException e) {
-                    if (parseUsers.size() > 0){
-                        transferTo = parseUsers.get(0);
-                        if (transferTo.getInt("numAccounts") > 0)
-                            setUpTransfer();
-                        else
-                            ((TextView) findViewById(R.id.toWhatTypePrompt)).setText("User has no accounts!");
-                    }
-                    else{
-                        ((TextView) findViewById(R.id.toWhatTypePrompt)).setText("No user found!");
-                    }
-                }
-            });
-            query2.findInBackground(new FindCallback<ParseUser>() {
-                @Override
-                public void done(List<ParseUser> parseUsers, ParseException e) {
-                    if (parseUsers.size() > 0){
-                        transferTo = parseUsers.get(0);
-                        if (transferTo.getInt("numAccounts") > 0)
-                            setUpTransfer();
-                        else
-                            ((TextView) findViewById(R.id.toWhatTypePrompt)).setText("User has no accounts!");
-                    }
-                    else if (findViewById(R.id.toWhatTypePrompt) != null){
-                        ((TextView) findViewById(R.id.toWhatTypePrompt)).setText("No user found!");
-                    }
-                }
-            });
+            findByEmail();
         }
     }
 
@@ -189,5 +155,54 @@ public class TransferOtherPage extends Activity{
                 transactionComplete();
             }
         }
+    }
+
+    /**
+     * Method findByEmail
+     * Finds a user by their email
+     */
+    private void findByEmail(){
+        ParseQuery<ParseUser> query = ParseUser.getQuery();
+        query.whereEqualTo("email", theValue);
+        // Now search for the user. If user is found, load up the default account
+        query.findInBackground(new FindCallback<ParseUser>() {
+            @Override
+            public void done(List<ParseUser> parseUsers, ParseException e) {
+                if (parseUsers.size() > 0){
+                    transferTo = parseUsers.get(0);
+                    if (transferTo.getInt("numAccounts") > 0)
+                        setUpTransfer();
+                    else
+                        ((TextView) findViewById(R.id.toWhatTypePrompt)).setText("User has no accounts!");
+                }
+                else{
+                    findByPhone();
+                }
+            }
+        });
+    }
+
+    /**
+     * Method findByPhone
+     * Finds a user by their phone number
+     */
+    private void findByPhone(){
+        ParseQuery<ParseUser> query2 = ParseUser.getQuery();
+        query2.whereEqualTo("phone", theValue);
+        query2.findInBackground(new FindCallback<ParseUser>() {
+            @Override
+            public void done(List<ParseUser> parseUsers, ParseException e) {
+                if (parseUsers.size() > 0){
+                    transferTo = parseUsers.get(0);
+                    if (transferTo.getInt("numAccounts") > 0)
+                        setUpTransfer();
+                    else
+                        ((TextView) findViewById(R.id.toWhatTypePrompt)).setText("User has no accounts!");
+                }
+                else{
+                    ((TextView) findViewById(R.id.toWhatTypePrompt)).setText("No user found!");
+                }
+            }
+        });
     }
 }

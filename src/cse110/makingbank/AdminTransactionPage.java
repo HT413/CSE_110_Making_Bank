@@ -18,6 +18,7 @@ import java.util.List;
 
 public class AdminTransactionPage extends Activity {
     private Spinner transactionTypeSpinner; // The dropdown menu for transaction type
+    private double balanceAfter;
 
     /**
      * Method onCreate
@@ -33,6 +34,11 @@ public class AdminTransactionPage extends Activity {
 
         // Switch to transaction page layout
         setContentView(R.layout.bank_transaction_page);
+
+        Bundle extras = getIntent().getExtras();
+        if (extras != null){
+            ((EditText) findViewById(R.id.accountNameField)).setText(extras.getString("ID"));
+        }
 
         // Set up spinner for account transaction type
         transactionTypeSpinner = (Spinner) findViewById(R.id.spinnerTransactionType);
@@ -102,7 +108,7 @@ public class AdminTransactionPage extends Activity {
                             double balanceBefore = account.getDouble("balance");
                             if (transactionType.equals("Credit")){
                                 // Round to nearest 2 decimal places
-                                double balanceAfter = new Round(balanceBefore + transactionAmount, 2).toDouble();
+                                balanceAfter = new Round(balanceBefore + transactionAmount, 2).toDouble();
                                 account.put("balance", balanceAfter); // Apply new balance
                                 account.saveInBackground(); // Update account
                                 new TransactionLog(balanceBefore, transactionAmount,
@@ -116,7 +122,7 @@ public class AdminTransactionPage extends Activity {
                                             .setText("INSUFFICIENT FUNDS");
                                 else{
                                     // Round to nearest 2 decimal places
-                                    double balanceAfter = new Round(balanceBefore - transactionAmount, 2).toDouble();
+                                    balanceAfter = new Round(balanceBefore - transactionAmount, 2).toDouble();
                                     account.put("balance", balanceAfter); // Apply new balance
                                     account.saveInBackground(); // Update account
                                     new TransactionLog(balanceBefore, transactionAmount,
@@ -138,6 +144,7 @@ public class AdminTransactionPage extends Activity {
     private void completeTransaction(){
         setContentView(R.layout.page_with_message);
         ((TextView) findViewById(R.id.theMessage)).setText("Transaction complete. " +
-                "Press back button to return.");
+                "\nNew balance is $" + balanceAfter +
+                "\nPress back button to return.");
     }
 }

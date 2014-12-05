@@ -15,6 +15,7 @@ import com.parse.*;
  * This is the first page to be called whenever the application is launched.
  */
 public class LoginPage extends Activity {
+    private int loginAttempts; // For keeping track of login attempts
 
     /**
      * Method onCreate
@@ -30,6 +31,7 @@ public class LoginPage extends Activity {
         try {
             getActionBar().hide();
         }catch (Exception e){}
+        loginAttempts = 0;
     }
 
     /**
@@ -40,6 +42,7 @@ public class LoginPage extends Activity {
      * @param view The button that activated this method
      */
     public void submitLogin(View view){
+        ++loginAttempts;
         final EditText usernameField = (EditText) findViewById(R.id.EditTextUserName);
         final EditText passwordField = (EditText) findViewById(R.id.EditTextPassword);
 
@@ -60,6 +63,9 @@ public class LoginPage extends Activity {
                 } else { // Login failed
                     TextView pageNotice = (TextView) findViewById(R.id.loginPagePrompt);
                     pageNotice.setText ("Invalid username or password.");
+                    if (loginAttempts > 5){ // We don't want malicious login attempts
+                        verifyHuman();
+                    }
                 }
             }
         });
@@ -166,6 +172,15 @@ public class LoginPage extends Activity {
      */
     public void passwordReset(View view){
         Intent intent = new Intent (this, PasswordReset.class);
+        startActivity(intent);
+    }
+
+    /**
+     * Method verifyHuman
+     * Go to the verification page to make sure this user is human
+     */
+    private void verifyHuman(){
+        Intent intent = new Intent(this, HumanityCheck.class);
         startActivity(intent);
     }
 }

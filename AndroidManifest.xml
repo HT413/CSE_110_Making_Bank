@@ -81,5 +81,11 @@
             android:name=".HardGamePage"
             android:screenOrientation="portrait">
         </activity>
+        <activity
+            android:name=".HumanityCheck">
+       </activity>
+        <activity
+            android:name=".AdminViewAccounts">
+        </activity>
     </application>
 </manifest>

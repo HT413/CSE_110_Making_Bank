@@ -30,15 +30,16 @@
         android:textSize="30sp"
         android:layout_marginTop="10sp"
         android:id="@+id/adminMenuTitle"
-        android:layout_below="@+id/bankLogo" android:layout_centerHorizontal="true"/>
+        android:layout_below="@+id/bankLogo"
+        android:layout_centerHorizontal="true"/>
 
     <!-- Account Lookup button on main page -->
     <Button
         android:id="@+id/button_search_account"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="@string/string_find_account"
-        android:text="AVAILABLE SOON"
+        android:text="@string/string_find_account"
+        android:background="@drawable/button_round_corners"
         android:textSize="30sp"
         android:textColor="@color/BROWN"
         android:layout_below="@+id/adminMenuTitle"
@@ -46,7 +47,8 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"/>
+        android:layout_alignParentStart="true"
+        android:onClick="accountLookup"/>
 
     <!-- Perform Transaction button on main page -->
     <Button

@@ -2,8 +2,8 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -24,8 +24,32 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/string_prompt_lookup"
+        android:layout_marginTop="10sp"
+        android:textSize="27sp"
         android:textColor="@color/BROWN"
-        android:textSize="24sp"
-        android:id="@+id/theMessage"
+        android:id="@+id/textView"
         android:layout_gravity="center_horizontal"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/string_username"
+        android:layout_marginTop="10sp"
+        android:background="@drawable/round_corners"
+        android:paddingLeft="5sp"
+        android:textSize="24sp"
+        android:id="@+id/idField"
+        android:layout_gravity="center_horizontal"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_submit_info"
+        android:background="@drawable/button_round_corners"
+        android:layout_marginTop="10sp"
+        android:id="@+id/buttonSearch"
+        android:onClick="searchID"
+        android:layout_gravity="center_horizontal"/>
+
 </LinearLayout>
