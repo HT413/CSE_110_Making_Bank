@@ -10,6 +10,10 @@ import android.widget.TextView;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
 
+/**
+ * Class AccountOptions
+ * This class allows the user to select what they want to do with their bank account
+ */
 public class AccountOptions extends Activity {
 
     private String accountNumber;

@@ -16,6 +16,7 @@ public class Rule {
     // Please set successive bits to 1 if new error codes are created.
     protected final int EMPTY_INPUT = 0x00000001;
     protected final int USERNAME_SHORT = 0x00000002;
+    protected final int ZIP_SHORT = 0x00000004;
 
     /**
      * Constructor method for the Rule object
@@ -80,6 +81,9 @@ public class Rule {
         }
         if (((errorFlags >> 1) & 0x1) == 1){
             errorMessage += "USERNAME MUST BE AT LEAST 4 CHARACTERS LONG!\n";
+        }
+        if (((errorFlags >> 2) & 0x1) == 1){
+            errorMessage += "INVALID ZIP CODE!\n";
         }
     }
 

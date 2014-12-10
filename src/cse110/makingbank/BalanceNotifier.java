@@ -18,14 +18,7 @@ public class BalanceNotifier{
         homePage = caller;
 
         // Fetch all user accounts first
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("bankAccount");
-        // Search based on the current user
-        query.whereEqualTo("user", user);
-        try {
-            results = query.find();
-        }catch(Exception e){
-            results = null;
-        }
+        results = new DatabaseQuery("bankAccount", "user", user).get();
     }
 
     public String getMessage(){

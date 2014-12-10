@@ -143,8 +143,6 @@ public class AdminTransactionPage extends Activity {
      */
     private void completeTransaction(){
         setContentView(R.layout.page_with_message);
-        ((TextView) findViewById(R.id.theMessage)).setText("Transaction complete. " +
-                "\nNew balance is $" + balanceAfter +
-                "\nPress back button to return.");
+        ((TextView) findViewById(R.id.theMessage)).setText("Transaction complete. ");
     }
 }

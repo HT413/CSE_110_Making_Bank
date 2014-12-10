@@ -80,50 +80,25 @@ public class MyInfo extends Activity{
     public void changeInfo(View button)
     {
         synchronized(this){
-
-            boolean validZip = true;
-            boolean validPhone = true;
-            int zipCode = -1;
-
-            // Get text from all fields
-            String firstName = firstNameField.getText().toString();
-            String lastName = lastNameField.getText().toString();
-            String address = addressField.getText().toString();
-            String city = cityField.getText().toString();
-            String zip = zipField.getText().toString();
-            String phoneNum = phoneField.getText().toString();
-
-            // Check if zip code is valid or not
-            if (zip.equals(""))
-                validZip = false;
-            if (validZip) {
-                zipCode = Integer.parseInt(zip);
-                if (!(zipCode >= 10000 && zipCode <= 99999)) // Check if valid PO box number
-                    zipCode = -1;
-            }
-
-            // Check if phone number is valid or not
-            if (!(phoneNum.length() == 12 && phoneNum.charAt(3) == '-' && phoneNum.charAt(7) == '-')){
-                validPhone = false;
-                phoneNum = "";
-            }
+            // Get all the inputs
+            EditText[] inputs = {firstNameField, lastNameField, addressField, cityField, zipField,
+                    phoneField};
+            Rule checker = new InfoRule(inputs);
 
             String currentState = stateSpinner.getSelectedItem().toString();
 
             //All fields must be filled!
-            if (!firstName.equals("") && !lastName.equals("") && !city.equals("")
-                    && !currentState.equals("State") && !address.equals("")
-                    && zipCode != -1 && !phoneNum.equals("")) {
+            if (!checker.hasErrors() && !currentState.equals("State")) {
                 final ParseUser currentUser = ParseUser.getCurrentUser(); // Get current user\
 
                 // Append the following info to the current user
-                currentUser.put("firstName", firstName); // First name
-                currentUser.put("lastName", lastName); // Last Name
-                currentUser.put("address", address); // Address
-                currentUser.put("phone", phoneNum); // Phone number
-                currentUser.put("city", city); // Current city
+                currentUser.put("firstName", firstNameField.getText().toString()); // First name
+                currentUser.put("lastName", lastNameField.getText().toString()); // Last Name
+                currentUser.put("address", addressField.getText().toString()); // Address
+                currentUser.put("phone", phoneField.getText().toString()); // Phone number
+                currentUser.put("city", cityField.getText().toString()); // Current city
                 currentUser.put("state", currentState); // Current state
-                currentUser.put("zipCode", zipCode); // Zip Code
+                currentUser.put("zipCode", zipField.getText().toString()); // Zip Code
                 // Save this info & send to Parse
                 currentUser.saveInBackground(new SaveCallback() {
                     public void done(ParseException e) {
@@ -132,31 +107,11 @@ public class MyInfo extends Activity{
                             currentUser.put("givenInfo", true);
                             currentUser.saveInBackground();
                             goHome(); // Go back to the main page
-                        } else { // Some error occured!
-                            if (e.getCode() == ParseException.CONNECTION_FAILED){
-                                TextView pageNotice = (TextView) findViewById(R.id.createAccountPageDesc);
-                                pageNotice.setText("Can't connect to server!");
-                                ScrollView mainView = (ScrollView) findViewById(R.id.scrollviewCreateAccount);
-                                mainView.fullScroll(ScrollView.FOCUS_UP);
-                            }
-                            else if (e.getCode() == ParseException.INCORRECT_TYPE){
-                                TextView pageNotice = (TextView) findViewById(R.id.createAccountPageDesc);
-                                pageNotice.setText("Invalid type entry!");
-                                ScrollView mainView = (ScrollView) findViewById(R.id.scrollviewCreateAccount);
-                                mainView.fullScroll(ScrollView.FOCUS_UP);
-                            }
-                            else if (e.getCode() == ParseException.MISSING_OBJECT_ID){
-                                TextView pageNotice = (TextView) findViewById(R.id.createAccountPageDesc);
-                                pageNotice.setText("Error with object ID!");
-                                ScrollView mainView = (ScrollView) findViewById(R.id.scrollviewCreateAccount);
-                                mainView.fullScroll(ScrollView.FOCUS_UP);
-                            }
-                            else{
-                                TextView pageNotice = (TextView) findViewById(R.id.createAccountPageDesc);
-                                pageNotice.setText("Unknown error!");
-                                ScrollView mainView = (ScrollView) findViewById(R.id.scrollviewCreateAccount);
-                                mainView.fullScroll(ScrollView.FOCUS_UP);
-                            }
+                        } else {
+                            TextView pageNotice = (TextView) findViewById(R.id.createAccountPageDesc);
+                            pageNotice.setText("An error occured!");
+                            ScrollView mainView = (ScrollView) findViewById(R.id.scrollviewCreateAccount);
+                            mainView.fullScroll(ScrollView.FOCUS_UP);
                         }
                     }
                 });
@@ -164,14 +119,7 @@ public class MyInfo extends Activity{
             //Throw error and tell user to fill in all fields
             else {
                 TextView pageNotice = (TextView) findViewById(R.id.editPageTitle);
-                pageNotice.setText("Please double check all fields.");
-                if (!validZip){
-                    ((TextView) findViewById(R.id.zipCodePrompt)).setText("INVALID ZIP CODE");
-                }
-                if (!validPhone) {
-                    ((TextView) findViewById(R.id.createAccountPhoneDesc))
-                            .setText("MUST BE XXX-YYY-ZZZ FORMAT!");
-                }
+                checker.printError(pageNotice);
                 ScrollView mainView = (ScrollView) findViewById(R.id.scrollviewCreateAccount);
                 mainView.fullScroll(ScrollView.FOCUS_UP);
             }
@@ -188,6 +136,10 @@ public class MyInfo extends Activity{
             goHome();
     }
 
+    /**
+     * Method goHome
+     * Goes back to the home menu
+     */
     private void goHome(){
         // Now go back to the main page
         Intent intent = new Intent(this, BankHomePage.class);

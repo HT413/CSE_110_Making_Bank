@@ -13,7 +13,7 @@ import com.parse.ParseUser;
  * This is the home page for all events after a successful log in.
  */
 public class BankHomePage extends Activity {
-    private int tapIndex;
+    private int tapIndex; // For activating the bonus feature!
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

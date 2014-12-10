@@ -102,18 +102,8 @@ public class CreateAccountPage extends Activity{
                             currentUser.saveInBackground(); // Save this new user info
                             goHome(); // Go back to the main page
                         } else { // Some error occured!
-                            if (e.getCode() == ParseException.CONNECTION_FAILED){
-                                TextView pageNotice = (TextView) findViewById(R.id.createAccountPageDesc);
-                                pageNotice.setText("Can't connect to server!");
-                                ScrollView mainView = (ScrollView) findViewById(R.id.scrollviewCreateAccount);
-                                mainView.fullScroll(ScrollView.FOCUS_UP);
-                            }
-                            else{
-                                TextView pageNotice = (TextView) findViewById(R.id.createAccountPageDesc);
-                                pageNotice.setText("Unknown error!");
-                                ScrollView mainView = (ScrollView) findViewById(R.id.scrollviewCreateAccount);
-                                mainView.fullScroll(ScrollView.FOCUS_UP);
-                            }
+                            TextView pageNotice = (TextView) findViewById(R.id.createAccountPageDesc);
+                            pageNotice.setText("Error!");
                         }
                     }
                 });
