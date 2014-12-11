@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-
+<!-- XML file to specify the layout for the edit info page -->
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/scrollviewCreateAccount"

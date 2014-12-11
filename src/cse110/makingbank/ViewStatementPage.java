@@ -43,10 +43,10 @@ public class ViewStatementPage extends Activity{
 
                 // List transactions only if no errors and if there were transactions in the list
                 if (list.size() > 0 && e == null) {
-                    // Set the buttons to be 10 pixels from the sides and apart from each other
+                    // Set the buttons to be 5 pixels from the sides and apart from each other
                     LinearLayout.LayoutParams params = new TableLayout.LayoutParams
                             (TableLayout.LayoutParams.WRAP_CONTENT, TableLayout.LayoutParams.WRAP_CONTENT);
-                    params.setMargins(10, 10, 10, 0);
+                    params.setMargins(5, 5, 5, 0);
                     // List transactions one by one, in reverse chronological order
                     for (int i = list.size() - 1; i >= 0; i--) {
                         ParseObject transaction = list.get(i);

@@ -17,11 +17,9 @@ import java.text.NumberFormat;
 /**
  * Class: CreateAccountPage.java
  * This is the class created after the user presses on the Create Account
- * button in the main Menu.
- *
- * Date: October 21, 2014
+ * button in the main Menu. Allows the user to select whether they want to
+ * create a Checking or Savings account.
  */
-
 public class CreateAccountPage extends Activity{
 
 	private Spinner accountTypeSpinner;
@@ -119,7 +117,7 @@ public class CreateAccountPage extends Activity{
     }
 
     /**
-     * Method generateRnd
+     * Method generateIndex
      * This method allows the generation of randomized final digits for the account
      * number, so that users have an extremely low chance of having the same account
      * numbers.

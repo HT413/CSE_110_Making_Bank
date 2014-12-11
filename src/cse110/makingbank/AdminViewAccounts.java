@@ -15,11 +15,10 @@ import android.widget.TableLayout.LayoutParams;
 import com.parse.*;
 
 /**
- * Class: ViewAccountPage
- *
- * This page shows the account information.
+ * Class: AdminViewAccounts
+ * This page will allow the admin to view all accounts attributed to the specified user,
+ * and select an account to perform a transaction on.
  */
-
 public class AdminViewAccounts extends Activity{
 
     /**

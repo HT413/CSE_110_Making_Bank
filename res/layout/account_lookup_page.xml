@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- XML file to specify the layout for the account lookup page -->
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
@@ -20,6 +21,7 @@
         android:layout_gravity="center_horizontal"
         android:id="@+id/bankLogo"/>
 
+    <!-- Prompt for the user input -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -31,6 +33,7 @@
         android:id="@+id/textView"
         android:layout_gravity="center_horizontal"/>
 
+    <!-- The input field -->
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -42,6 +45,7 @@
         android:id="@+id/idField"
         android:layout_gravity="center_horizontal"/>
 
+    <!-- Submit button -->
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

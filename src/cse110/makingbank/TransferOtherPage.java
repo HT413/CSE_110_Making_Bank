@@ -19,6 +19,10 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.List;
 
+/**
+ * Class TransferOtherPage
+ * This page deals with transferring money to other users
+ */
 public class TransferOtherPage extends Activity{
     private String accountNum, destinationNum;
     private double currentBalance, destinationBalance;

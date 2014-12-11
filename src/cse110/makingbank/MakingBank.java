@@ -5,15 +5,17 @@ import android.app.Application;
 import com.parse.*;
 
 /**
- * Class: MainPage
+ * Class: MakingBank
  *
- * This is the first page to be called whenever the application is launched.
+ * This is the first class to be created whenever the application is launched.
  */
 public class MakingBank extends Application {
 
     /**
      * Method onCreate
      * The first method to be called when this application is created.
+     * This will establish a connection to the Parse server, so we can do
+     * server related stuff later on.
      */
     public void onCreate() {
         Parse.enableLocalDatastore(this);

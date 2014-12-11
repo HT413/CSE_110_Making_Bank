@@ -2,8 +2,9 @@ package cse110.makingbank;
 
 import com.parse.ParseObject;
 
-// Class TransactionLog
-// This class will create a transaction log and save it onto the database
+/* Class TransactionLog
+ * This class will create a transaction log and save it onto the database
+ */
 public class TransactionLog{
     public TransactionLog(double balanceBefore, double amountChanged,
                           double balanceAfter, String transactionType, String accountNumber){

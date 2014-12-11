@@ -18,6 +18,11 @@ import com.parse.ParseUser;
 
 import java.util.List;
 
+/**
+ * Class TransferSelfPage
+ * This class allows the user to select an account belonging to them to transfer
+ * money to.
+ */
 public class TransferSelfPage extends Activity{
     private String theAccount;
     private double balance;

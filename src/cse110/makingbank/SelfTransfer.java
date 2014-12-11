@@ -19,6 +19,11 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.List;
 
+/**
+ * Class SelfTransfer
+ * This class will handle the money transfers for accounts belonging to the
+ * same user.
+ */
 public class SelfTransfer extends Activity{
     private String theAccount, accountNum;
     private ParseObject source, destination;

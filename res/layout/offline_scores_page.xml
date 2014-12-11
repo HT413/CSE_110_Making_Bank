@@ -2,13 +2,15 @@
 <!-- IMPORTANT NOTICE
    - This file is a direct copy + paste from the source code of the
    - "Teleporting Button" app, designed by Hoang Tran in November, 2014.
-   - This layout file is only to be loaded when the device goes offline, to
-   - allow the user to kill time while waiting to reconnect to the Internet.
+   - This layout file is only to be loaded when the user activates the
+   - secret bonus feature, where the bank icon is tapped NINE (9) times
+   - while on the Making Bank app home screen.
+   -
    - DO NOT REPRODUCE THIS FILE WITHOUT PERMISSION
    -
    - Author: Hoang Tran
    - Original Source: "Teleporting Button" app, by Hoang Tran (architect,
-   - developer, and business developer of team Making Bank), Google Play Store -->
+   - developer, and business analyst of team Making Bank), Google Play Store -->
 
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"

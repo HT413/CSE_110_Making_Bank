@@ -1,13 +1,13 @@
 /** IMPORTANT NOTICE
- *  This file is a direct copy + paste from the source code of the
+ *  This file is a direct copy + paste with minor modifications tailored
+ *  to integrate into team Making Bank's application, from the source code of the
  *  "Teleporting Button" app, designed by Hoang Tran in November, 2014.
- *  This layout file is only to be loaded when the device goes offline, to
- *  allow the user to kill time while waiting to reconnect to the Internet.
  *  DO NOT REPRODUCE THIS FILE WITHOUT PERMISSION
  *
  *  Author: Hoang Tran
  *  Original Source: "Teleporting Button" app, by Hoang Tran (architect,
- *  developer, and business developer of team Making Bank), Google Play Store */
+ *  developer, and business analyst of team Making Bank), Google Play Store */
+
 package cse110.makingbank;
 
 import android.app.Activity;
@@ -32,6 +32,9 @@ import java.io.InputStreamReader;
  * This will be the main menu page for the app.
  *
  * Author: Hoang Tran
+ * DO NOT REPRODUCE WITHOUT PERMISSION!
+ * This class is a slight modification to the original source code in
+ * V1.2 of app, released November 17, 2014.
  */
 public class TeleportingButton extends Activity {
 

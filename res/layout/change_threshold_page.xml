@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- XML file to specify the layout for the threshold setting page -->
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
@@ -20,7 +21,7 @@
         android:layout_gravity="center_horizontal"
         android:id="@+id/bankLogo"/>
 
-
+    <!-- Explain to the user what this page does -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -31,6 +32,7 @@
         android:layout_gravity="center_horizontal"
         android:gravity="center"/>
 
+    <!-- Input field for threshold amount -->
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -42,6 +44,7 @@
         android:paddingLeft="5sp"
         android:id="@+id/valueForNotify"/>
 
+    <!-- Submit button -->
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

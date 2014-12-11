@@ -16,8 +16,8 @@ import com.parse.*;
 
 /**
  * Class: ViewAccountPage
- *
- * This page shows the account information.
+ * This page lists all accounts belonging to the current user, and allows the user
+ * to select an account to perform transactions on.
  */
 
 public class ViewAccountPage extends Activity{

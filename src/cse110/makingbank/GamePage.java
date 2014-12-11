@@ -1,13 +1,13 @@
 /** IMPORTANT NOTICE
- *  This file is a direct copy + paste from the source code of the
+ *  This file is a direct copy + paste with minor modifications tailored
+ *  to integrate into team Making Bank's application, from the source code of the
  *  "Teleporting Button" app, designed by Hoang Tran in November, 2014.
- *  This layout file is only to be loaded when the device goes offline, to
- *  allow the user to kill time while waiting to reconnect to the Internet.
  *  DO NOT REPRODUCE THIS FILE WITHOUT PERMISSION
  *
  *  Author: Hoang Tran
  *  Original Source: "Teleporting Button" app, by Hoang Tran (architect,
- *  developer, and business developer of team Making Bank), Google Play Store */
+ *  developer, and business analyst of team Making Bank), Google Play Store */
+
 package cse110.makingbank;
 
 import android.app.Activity;
@@ -28,7 +28,15 @@ import android.widget.TextView;
 import java.io.*;
 
 /**
- * Main game page
+ * Class: GamePage
+ * This class defines the behavioral patterns for the game in Normal mode.
+ * Originally the only available game mode in V1.0 of the app, hence the
+ * class name GamePage rather than NormalGamePage.
+ *
+ * Author: Hoang Tran
+ * DO NOT REPRODUCE WITHOUT PERMISSION!
+ * This class is a slight modification to the original source code in
+ * V1.0 of the app, released October 31, 2014.
  */
 public class GamePage extends Activity{
 
